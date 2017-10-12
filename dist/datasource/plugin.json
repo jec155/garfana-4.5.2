@@ -1,0 +1,5 @@
+{
+  "type": "datasource",
+  "name": "站点管理",
+  "id": "grafana-example-app-datasource"
+}
