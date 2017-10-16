@@ -3,8 +3,9 @@ import './my-pagination.css!';
 import './cityList.css!';
 export class StreamPageCtrl
 {
-    constructor($scope,$http,$location)
+    constructor($scope,$http,$location,$rootScope)
     {
+        this.root=$rootScope;
         //分页
         $scope.myPage={
             currentPage:1,//访问第几页数据，从1开始
@@ -17,10 +18,11 @@ export class StreamPageCtrl
         this.http=$http;
         this.selall=false;//全选标志
         this.checkedItems=[];
+        $scope.cityListUrl=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+        $scope.cityTip=$rootScope.cityTip?$rootScope.cityTip:{};
     }
     selectAll(all,names)
     {
-        console.info(all);
         all? Object.assign(this.checkedItems, names):this.checkedItems.splice(0,this.checkedItems.length);
         //console.info(this.checkedItems);
     }
@@ -31,26 +33,60 @@ export class StreamPageCtrl
         item.checked?ctrl.checkedItems.push(x):ctrl.checkedItems.splice(x,1);
 
     }
-
-    /*jumpPage()
+    deleteCity(item)
     {
-        //this.location.path("public/plugins/grafana-example-app/components/Log view.html");
-        //var curUrl = this.location.absUrl();
-        //console.info(curUrl);
-        //window.location="public/plugins/grafana-example-app/components/cityAdd.html";
+        if(confirm('确定删除此项?'))
+        {
+            $.ajax({
+                type: 'POST',
+                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
+                //'http://127.0.0.1:8080/grafana/addCity',
+                data: {id:item.id},
+                dataType:'json',
+                success:function (da)
+                {
+                    location.reload();
+                    alert('删除成功');
+                },
+                error:function (re) {
+                    console.info(re);
+                }
+            });
+        }
+
     }
-
-    add()
+    deleteSelCities()
     {
+        if(confirm('确定删除选中项目?'))
+        {
+            var ids=[];
+            for(let i=0;i<this.checkedItems.length;i++)
+            {
+                ids.push(this.checkedItems[i].id);
+            }
+
+            $.ajax({
+                type: 'POST',
+                traditional: true,
+                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelCities',
+               // 'http://127.0.0.1:8080/grafana/deleteSelCities',
+                data: {ids:ids},
+                success:function (da)
+                {
+                    location.reload();
+                    alert('删除成功');
+                },
+                error:function (re) {
+                    console.info(re.responseText);
+                }
+            });
+        }
+    }
+    setModel(item)
+    {
+        this.root.cityModel=item;
 
     }
-
-    deleteAll()
-    {
-        this.p.get("deleteCheckedAll",{params:{this.checkedItems}).then(function () {
-        
-        });
-    }*/
 
     link(scope, elem, attrs, ctrl)
     {
@@ -79,7 +115,7 @@ export class StreamPageCtrl
                 scope.myPage.currentPage = p;
                 myPage.setPageNub(scope.myPage.currentPage);
             }
-            getPagination();
+            getPagination(scope.cityListUrl);
         };
         scope.prevPage = function(){
             if(scope.myPage.currentPage > 1){
@@ -88,7 +124,7 @@ export class StreamPageCtrl
                 scope.myPage.currentPage=1;
             }
             myPage.setPageNub(scope.myPage.currentPage);
-            getPagination();
+            getPagination(scope.cityListUrl);
         };
         // nextPage
         scope.nextPage = function(){
@@ -98,7 +134,7 @@ export class StreamPageCtrl
                 scope.myPage.currentPage=scope.myPage.numberOfPages;
             }
             myPage.setPageNub(scope.myPage.currentPage);
-            getPagination()
+            getPagination(scope.cityListUrl)
         };
 
         // 跳转页
@@ -106,24 +142,27 @@ export class StreamPageCtrl
             if(scope.myPage.jumpPageNum>0 || scope.myPage.jumpPageNum<=scope.myPage.numberOfPages){
                 scope.myPage.currentPage=scope.myPage.jumpPageNum;
                 myPage.setPageNub(scope.myPage.currentPage);
-                getPagination();
-                scope.myPage.jumpPageNum='';
+                getPagination(scope.cityListUrl);
+                //scope.myPage.jumpPageNum='';
             }else {
                 scope.myPage.showError=true;
             }
         };
         // 修改每页显示的条数
         scope.changeItemsPerPage = function(){
-            getPagination();
+            getPagination(scope.cityListUrl);
         };
-        getPagination();
+        getPagination(scope.cityListUrl);
 
-        function getPagination(){
-            ctrl.http.get('http://61.164.218.158:8080/AirServer/grafana/cityListByPage'
-                ,{params:{"page":scope.myPage.currentPage,"limit":scope.myPage.itemsPerPage}}).then(
+        function getPagination(url){
+            ctrl.http.get(url
+                ,{params:{"page":scope.myPage.currentPage,"limit":scope.myPage.itemsPerPage,
+                "cityName":scope.cityTip.cityName,"cityPingyin":scope.cityTip.cityPingyin,
+                    "province":scope.cityTip.province,"country":scope.cityTip.country}}).then(
                 function (response)
                 {
                     scope.names=response.data.data;
+
                     scope.myPage.totalItems=response.data.totalItems;//当获取总数据后，修改默认值
                     scope.myPage.currentPage = parseInt(myPage.pageNub);
                     // pg.totalItems
@@ -140,7 +179,6 @@ export class StreamPageCtrl
                     if(scope.myPage.currentPage > scope.myPage.numberOfPages){
                         scope.myPage.currentPage = scope.myPage.numberOfPages;
                     }
-
 
                     scope.pageList = [];
                     var i;
@@ -186,11 +224,7 @@ export class StreamPageCtrl
                         }
                     }
                 }
-
             )
-            // pg.currentPage
-
-
         }
     }
 }

@@ -1,23 +1,35 @@
 'use strict';
 
-System.register(['./components/cityAdd', './components/cityList', './components/config'], function (_export, _context) {
+System.register(['./components/cityAdd', './components/cityEdit', './components/cityView', './components/cityList', './components/cityQuery', './components/citySiteManage'], function (_export, _context) {
   "use strict";
 
-  var LogsPageCtrl, StreamPageCtrl, ExampleAppConfigCtrl;
+  var CityAddCtrl, CityEditCtrl, CityViewCtrl, StreamPageCtrl, CityQueryCtrl, CitySiteManageCtrl;
   return {
     setters: [function (_componentsCityAdd) {
-      LogsPageCtrl = _componentsCityAdd.LogsPageCtrl;
+      CityAddCtrl = _componentsCityAdd.CityAddCtrl;
+    }, function (_componentsCityEdit) {
+      CityEditCtrl = _componentsCityEdit.CityEditCtrl;
+    }, function (_componentsCityView) {
+      CityViewCtrl = _componentsCityView.CityViewCtrl;
     }, function (_componentsCityList) {
       StreamPageCtrl = _componentsCityList.StreamPageCtrl;
-    }, function (_componentsConfig) {
-      ExampleAppConfigCtrl = _componentsConfig.ExampleAppConfigCtrl;
+    }, function (_componentsCityQuery) {
+      CityQueryCtrl = _componentsCityQuery.CityQueryCtrl;
+    }, function (_componentsCitySiteManage) {
+      CitySiteManageCtrl = _componentsCitySiteManage.CitySiteManageCtrl;
     }],
     execute: function () {
-      _export('ConfigCtrl', ExampleAppConfigCtrl);
-
       _export('StreamPageCtrl', StreamPageCtrl);
 
-      _export('LogsPageCtrl', LogsPageCtrl);
+      _export('CityAddCtrl', CityAddCtrl);
+
+      _export('CityEditCtrl', CityEditCtrl);
+
+      _export('CityViewCtrl', CityViewCtrl);
+
+      _export('CityQueryCtrl', CityQueryCtrl);
+
+      _export('CitySiteManageCtrl', CitySiteManageCtrl);
     }
   };
 });

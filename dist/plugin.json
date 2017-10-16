@@ -28,8 +28,12 @@
   },
 
   "includes": [
-    { "type":"page","name": "Log View", "component": "LogsPageCtrl", "role": "Viewer","addToNav": false},
-    {"type":"page", "name": "Live stream", "component": "StreamPageCtrl", "role": "Editor","addToNav": true,
+    { "type":"page","name": "CityAdd", "component": "CityAddCtrl", "role": "Viewer","addToNav": false},
+    { "type":"page","name": "CityView", "component": "CityViewCtrl", "role": "Viewer","addToNav": false},
+    { "type":"page","name": "CityEdit", "component": "CityEditCtrl", "role": "Viewer","addToNav": false},
+    { "type":"page","name": "CityQuery", "component": "CityQueryCtrl", "role": "Viewer","addToNav": false},
+    { "type":"page","name": "CitySiteManage", "component": "CitySiteManageCtrl", "role": "Viewer","addToNav": false},
+    {"type":"page", "name": "CityList", "component": "StreamPageCtrl", "role": "Editor","addToNav": true,
       "defaultNav": true},
     {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/example_app_dashboard.json","defaultNav": false},
     {"type": "panel", "name": "Example App Panel"},

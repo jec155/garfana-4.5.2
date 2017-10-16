@@ -3,7 +3,7 @@
 System.register([], function (_export, _context) {
     "use strict";
 
-    var _createClass, CityAddCtrl;
+    var _createClass, CityEditCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -32,39 +32,30 @@ System.register([], function (_export, _context) {
                 };
             }();
 
-            _export('CityAddCtrl', CityAddCtrl = function () {
-                function CityAddCtrl($scope, $http, $location) {
-                    _classCallCheck(this, CityAddCtrl);
+            _export('CityEditCtrl', CityEditCtrl = function () {
+                function CityEditCtrl($scope, $http, $location, $rootScope) {
+                    _classCallCheck(this, CityEditCtrl);
 
                     this.http = $http;
                     this.scope = $scope;
                     this.location = $location;
-                    $scope.cityModel = {
-                        cityName: '',
-                        cityPingyin: '',
-                        province: '',
-                        country: '中国',
-                        east: 0,
-                        west: 0,
-                        south: 0,
-                        north: 0,
-                        comment: ''
-                    };
+                    $scope.cityModel = $rootScope.cityModel;
                 }
 
-                _createClass(CityAddCtrl, [{
-                    key: 'save',
-                    value: function save() {
+                _createClass(CityEditCtrl, [{
+                    key: 'update',
+                    value: function update() {
                         var loc = this.location;
                         $.ajax({
                             type: 'POST',
-                            url: 'http://61.164.218.158:8080/AirServer/grafana/addCity',
-                            //'http://127.0.0.1:8080/grafana/addCity',
+                            url: 'http://61.164.218.158:8080/AirServer/grafana/editCity',
+                            //'http://127.0.0.1:8080/grafana/editCity',
                             data: this.scope.cityModel,
                             dataType: 'json',
                             success: function success(da) {
+                                //loc.path('plugins/grafana-example-app/page/live-stream');
                                 history.go(-1);
-                                alert('添加成功');
+                                alert('编辑成功');
                             },
                             error: function error(re) {
                                 console.info(re);
@@ -76,13 +67,13 @@ System.register([], function (_export, _context) {
                     }
                 }]);
 
-                return CityAddCtrl;
+                return CityEditCtrl;
             }());
 
-            _export('CityAddCtrl', CityAddCtrl);
+            _export('CityEditCtrl', CityEditCtrl);
 
-            CityAddCtrl.templateUrl = 'public/plugins/grafana-example-app/components/cityAdd.html';
+            CityEditCtrl.templateUrl = 'public/plugins/grafana-example-app/components/cityEdit.html';
         }
     };
 });
-//# sourceMappingURL=cityAdd.js.map
+//# sourceMappingURL=cityEdit.js.map

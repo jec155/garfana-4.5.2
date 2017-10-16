@@ -1,9 +1,15 @@
-import {LogsPageCtrl} from './components/cityAdd';
+import {CityAddCtrl} from './components/cityAdd';
+import {CityEditCtrl} from './components/cityEdit';
+import {CityViewCtrl} from './components/cityView';
 import {StreamPageCtrl} from './components/cityList';
-import {ExampleAppConfigCtrl} from './components/config';
+import {CityQueryCtrl} from './components/cityQuery';
+import {CitySiteManageCtrl} from './components/citySiteManage';
 
 export {
-  ExampleAppConfigCtrl as ConfigCtrl,
   StreamPageCtrl, //Matches pages.component in plugin.json
-  LogsPageCtrl //Matches pages.component in plugin.json
+    CityAddCtrl, //Matches pages.component in
+    CityEditCtrl,
+    CityViewCtrl,
+    CityQueryCtrl,
+    CitySiteManageCtrl
 };
