@@ -4,8 +4,14 @@ import {CityViewCtrl} from './components/cityView';
 import {StreamPageCtrl} from './components/cityList';
 import {CityQueryCtrl} from './components/cityQuery';
 import {CitySiteManageCtrl} from './components/citySiteManage';
-import {SiteListDevice} from './components/siteList';
-import {SiteQueryDevice} from './components/siteQuery';
+import {DeviceStreamPageCtrl} from './components/deviceList';
+import {DeviceQueryCtrl} from './components/deviceQuery';
+import {SiteAddCtrl} from './components/siteAdd';
+import {SiteEditCtrl} from './components/siteEdit';
+import {SiteViewCtrl} from './components/siteView';
+import {SiteStreamPageCtrl} from './components/siteList';
+import {SiteQueryCtrl} from './components/siteQuery';
+import {SiteCityManageCtrl} from './components/siteCityManage';
 
 export {
   StreamPageCtrl, //Matches pages.component in plugin.json
@@ -14,6 +20,12 @@ export {
     CityViewCtrl,
     CityQueryCtrl,
     CitySiteManageCtrl,
-    SiteListDevice,
-    SiteQueryDevice
+    DeviceStreamPageCtrl,
+    DeviceQueryCtrl,
+    SiteAddCtrl,
+    SiteEditCtrl,
+    SiteViewCtrl,
+    SiteStreamPageCtrl,
+    SiteQueryCtrl,
+    SiteCityManageCtrl,
 };

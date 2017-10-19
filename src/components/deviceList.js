@@ -1,7 +1,7 @@
 
 import './my-pagination.css!';
 import './cityList.css!';
-export class SiteStreamPageCtrl
+export class DeviceStreamPageCtrl
 {
     constructor($scope,$http,$location,$rootScope)
     {
@@ -18,9 +18,16 @@ export class SiteStreamPageCtrl
         this.http=$http;
         this.selall=false;//全选标志
         this.checkedItems=[];
-        $scope.cityListUrl=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+        $scope.cityListUrl=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/deivceListByPage';
         $scope.cityTip=$rootScope.cityTip?$rootScope.cityTip:{};
+        $scope.siteMap = {
+                        'AIR':'空气质量',
+                        'WATER':'水环境',
+                        'MULTI':'多功能'
+                    }
+
     }
+    
     selectAll(all,names)
     {
         all? Object.assign(this.checkedItems, names):this.checkedItems.splice(0,this.checkedItems.length);
@@ -33,15 +40,16 @@ export class SiteStreamPageCtrl
         item.checked?ctrl.checkedItems.push(x):ctrl.checkedItems.splice(x,1);
 
     }
-    deleteCity(item)
-    {
+    deleteDevice(item)
+    {alert(item.id);
         if(confirm('确定删除此项?'))
         {
             $.ajax({
                 type: 'POST',
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
+                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteDeviceByID',
                 //'http://127.0.0.1:8080/grafana/addCity',
                 data: {id:item.id},
+                
                 dataType:'json',
                 success:function (da)
                 {
@@ -55,7 +63,7 @@ export class SiteStreamPageCtrl
         }
 
     }
-    deleteSelCities()
+    deleteSelDevices()
     {
         if(confirm('确定删除选中项目?'))
         {
@@ -68,7 +76,7 @@ export class SiteStreamPageCtrl
             $.ajax({
                 type: 'POST',
                 traditional: true,
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelCities',
+                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelDevices',
                // 'http://127.0.0.1:8080/grafana/deleteSelCities',
                 data: {ids:ids},
                 success:function (da)
@@ -155,14 +163,18 @@ export class SiteStreamPageCtrl
         getPagination(scope.cityListUrl);
 
         function getPagination(url){
+            
             ctrl.http.get(url
                 ,{params:{"page":scope.myPage.currentPage,"limit":scope.myPage.itemsPerPage,
-                "cityName":scope.cityTip.cityName,"cityPingyin":scope.cityTip.cityPingyin,
-                    "province":scope.cityTip.province,"country":scope.cityTip.country}}).then(
+                "name":scope.cityTip.name,"monType":scope.cityTip.monType,
+                "seqno":scope.cityTip.seqno,"firmware":scope.cityTip.firmware,
+                "siteName":scope.cityTip.siteName,"status":scope.cityTip.status,
+                "productDate":scope.cityTip.productDate,"useDate":scope.cityTip.useDate,
+                "lastModifierId":scope.cityTip.lastModifierId,"checkUserName":scope.cityTip.checkUserName}}).then(
                 function (response)
                 {
+    
                     scope.names=response.data.data;
-
                     scope.myPage.totalItems=response.data.totalItems;//当获取总数据后，修改默认值
                     scope.myPage.currentPage = parseInt(myPage.pageNub);
                     // pg.totalItems
@@ -228,6 +240,6 @@ export class SiteStreamPageCtrl
         }
     }
 }
-SiteStreamPageCtrl.templateUrl = 'components/siteList.html';
+DeviceStreamPageCtrl.templateUrl = 'components/siteList.html';
 
 
