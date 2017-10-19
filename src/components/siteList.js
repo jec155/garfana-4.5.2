@@ -18,8 +18,24 @@ export class SiteStreamPageCtrl
         this.http=$http;
         this.selall=false;//全选标志
         this.checkedItems=[];
-        $scope.cityListUrl=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+        $scope.cityListUrl=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
         $scope.cityTip=$rootScope.cityTip?$rootScope.cityTip:{};
+        $scope.siteMonTypeMap = {
+            "1" : "空气质量",
+            "2" : "空气污染重点企业",
+            "3" : "饮用水水质",
+            "4" : "污水水质",
+            "5" : "水污染重点企业",
+            "6" : "主要流域重点断面水质"
+        }
+        $scope.siteTypeMap = {
+            "PUBLIC" : "公有站点",
+            "PRIVATE" : "私有站点"
+        }
+        $scope.statusMap = {
+            "SITE_NORMAL" : "正常",
+            "SITE_DISABLE" : "停用"
+        }
     }
     selectAll(all,names)
     {
@@ -157,8 +173,11 @@ export class SiteStreamPageCtrl
         function getPagination(url){
             ctrl.http.get(url
                 ,{params:{"page":scope.myPage.currentPage,"limit":scope.myPage.itemsPerPage,
-                "cityName":scope.cityTip.cityName,"cityPingyin":scope.cityTip.cityPingyin,
-                    "province":scope.cityTip.province,"country":scope.cityTip.country}}).then(
+                "siteCode":scope.cityTip.siteCode,"siteName":scope.cityTip.siteName,
+                "siteType":scope.cityTip.siteType,"siteMonType":scope.cityTip.siteMonType,
+                "province":scope.cityTip.province,"cityName":scope.cityTip.cityName,
+                "managerment":scope.cityTip.managerment,"realName":scope.cityTip.realName,
+                "status":scope.cityTip.status,"siteCreateTime":scope.cityTip.siteCreateTime}}).then(
                 function (response)
                 {
                     scope.names=response.data.data;

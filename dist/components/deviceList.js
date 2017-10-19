@@ -3,7 +3,7 @@
 System.register(['./my-pagination.css!', './cityList.css!'], function (_export, _context) {
     "use strict";
 
-    var _createClass, SiteStreamPageCtrl;
+    var _createClass, DeviceStreamPageCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -32,9 +32,9 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                 };
             }();
 
-            _export('SiteStreamPageCtrl', SiteStreamPageCtrl = function () {
-                function SiteStreamPageCtrl($scope, $http, $location, $rootScope) {
-                    _classCallCheck(this, SiteStreamPageCtrl);
+            _export('DeviceStreamPageCtrl', DeviceStreamPageCtrl = function () {
+                function DeviceStreamPageCtrl($scope, $http, $location, $rootScope) {
+                    _classCallCheck(this, DeviceStreamPageCtrl);
 
                     this.root = $rootScope;
                     //分页
@@ -49,27 +49,16 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                     this.http = $http;
                     this.selall = false; //全选标志
                     this.checkedItems = [];
-                    $scope.cityListUrl = $rootScope.cityListUrl ? $rootScope.cityListUrl : 'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
+                    $scope.cityListUrl = $rootScope.cityListUrl ? $rootScope.cityListUrl : 'http://61.164.218.158:8080/AirServer/grafana/deivceListByPage';
                     $scope.cityTip = $rootScope.cityTip ? $rootScope.cityTip : {};
-                    $scope.siteMonTypeMap = {
-                        "1": "空气质量",
-                        "2": "空气污染重点企业",
-                        "3": "饮用水水质",
-                        "4": "污水水质",
-                        "5": "水污染重点企业",
-                        "6": "主要流域重点断面水质"
-                    };
-                    $scope.siteTypeMap = {
-                        "PUBLIC": "公有站点",
-                        "PRIVATE": "私有站点"
-                    };
-                    $scope.statusMap = {
-                        "SITE_NORMAL": "正常",
-                        "SITE_DISABLE": "停用"
+                    $scope.siteMap = {
+                        'AIR': '空气质量',
+                        'WATER': '水环境',
+                        'MULTI': '多功能'
                     };
                 }
 
-                _createClass(SiteStreamPageCtrl, [{
+                _createClass(DeviceStreamPageCtrl, [{
                     key: 'selectAll',
                     value: function selectAll(all, names) {
                         all ? Object.assign(this.checkedItems, names) : this.checkedItems.splice(0, this.checkedItems.length);
@@ -83,14 +72,16 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                         item.checked ? ctrl.checkedItems.push(x) : ctrl.checkedItems.splice(x, 1);
                     }
                 }, {
-                    key: 'deleteCity',
-                    value: function deleteCity(item) {
+                    key: 'deleteDevice',
+                    value: function deleteDevice(item) {
+                        alert(item.id);
                         if (confirm('确定删除此项?')) {
                             $.ajax({
                                 type: 'POST',
-                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
+                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteDeviceByID',
                                 //'http://127.0.0.1:8080/grafana/addCity',
                                 data: { id: item.id },
+
                                 dataType: 'json',
                                 success: function success(da) {
                                     location.reload();
@@ -103,8 +94,8 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                         }
                     }
                 }, {
-                    key: 'deleteSelCities',
-                    value: function deleteSelCities() {
+                    key: 'deleteSelDevices',
+                    value: function deleteSelDevices() {
                         if (confirm('确定删除选中项目?')) {
                             var ids = [];
                             for (var i = 0; i < this.checkedItems.length; i++) {
@@ -114,7 +105,7 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                             $.ajax({
                                 type: 'POST',
                                 traditional: true,
-                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelCities',
+                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelDevices',
                                 // 'http://127.0.0.1:8080/grafana/deleteSelCities',
                                 data: { ids: ids },
                                 success: function success(da) {
@@ -200,14 +191,15 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                         getPagination(scope.cityListUrl);
 
                         function getPagination(url) {
-                            ctrl.http.get(url, { params: { "page": scope.myPage.currentPage, "limit": scope.myPage.itemsPerPage,
-                                    "siteCode": scope.cityTip.siteCode, "siteName": scope.cityTip.siteName,
-                                    "siteType": scope.cityTip.siteType, "siteMonType": scope.cityTip.siteMonType,
-                                    "province": scope.cityTip.province, "cityName": scope.cityTip.cityName,
-                                    "managerment": scope.cityTip.managerment, "realName": scope.cityTip.realName,
-                                    "status": scope.cityTip.status, "siteCreateTime": scope.cityTip.siteCreateTime } }).then(function (response) {
-                                scope.names = response.data.data;
 
+                            ctrl.http.get(url, { params: { "page": scope.myPage.currentPage, "limit": scope.myPage.itemsPerPage,
+                                    "name": scope.cityTip.name, "monType": scope.cityTip.monType,
+                                    "seqno": scope.cityTip.seqno, "firmware": scope.cityTip.firmware,
+                                    "siteName": scope.cityTip.siteName, "status": scope.cityTip.status,
+                                    "productDate": scope.cityTip.productDate, "useDate": scope.cityTip.useDate,
+                                    "lastModifierId": scope.cityTip.lastModifierId, "checkUserName": scope.cityTip.checkUserName } }).then(function (response) {
+
+                                scope.names = response.data.data;
                                 scope.myPage.totalItems = response.data.totalItems; //当获取总数据后，修改默认值
                                 scope.myPage.currentPage = parseInt(myPage.pageNub);
                                 // pg.totalItems
@@ -273,13 +265,13 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                     }
                 }]);
 
-                return SiteStreamPageCtrl;
+                return DeviceStreamPageCtrl;
             }());
 
-            _export('SiteStreamPageCtrl', SiteStreamPageCtrl);
+            _export('DeviceStreamPageCtrl', DeviceStreamPageCtrl);
 
-            SiteStreamPageCtrl.templateUrl = 'components/siteList.html';
+            DeviceStreamPageCtrl.templateUrl = 'components/siteList.html';
         }
     };
 });
-//# sourceMappingURL=siteList.js.map
+//# sourceMappingURL=deviceList.js.map

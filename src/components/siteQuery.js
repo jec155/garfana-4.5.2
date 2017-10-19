@@ -6,10 +6,15 @@ export class SiteQueryCtrl
       this.scope = $scope;
       this.location = $location;
       this.root=$rootScope;
-      $scope.cityTip={"cityName":'',
-                        "cityPingyin":'',
+      $scope.cityTip={"siteCode":'',
+                        "siteName":'',
+                        "siteType":'',
+                        "siteMonType":'',
                         "province":'',
-                        "country":''};
+                        "cityName":'',
+                        "status":'',
+                        "managerment":'',
+                        "realName":''};
   }
 
   query()

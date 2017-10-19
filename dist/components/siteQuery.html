@@ -1,65 +1,38 @@
 <h3 class="page-heading">
-	查询设备
+	查询站点
 </h3>
 
 <div name="form" novalidate>
 	<table>
 		<tr>
-			<td>所属站点:</td><td><input name="siteName" required type="text" ng-model="cityTip.siteName"></td>
-		</tr>
-		<tr>
-			<td>名称:</td><td><input name="name"  required type="text" ng-model="cityTip.name"></td>
+			<td>代码:</td><td><input name="siteCode" required type="text" ng-model="cityTip.siteCode"></td>
 
 		</tr>
 		<tr>
-			<td>设备监测类型:</td>
-			<td><select name="monType" ng-model="cityTip.monType">
-					<option value=""></option>
-					<option value="MULTI">多功能</option>
-					<option value="AIR">空气质量</option>
-					<option value="NOISE">噪声</option>
-					<option value="WATER">水环境</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>序列号:</td><td><input required type="text" ng-model="cityTip.seqno"></td>
-		</tr>
-		<tr>
-			<td>固件版本:</td><td><input required type="text" ng-model="cityTip.firmware"></td>
-		</tr>
-		<tr>
-			<td>状态:</td>
-			<td>
-				<select name="status" ng-model="cityTip.status">
-					<option value=""></option>
-					<option value="NORMAL">正常</option>
-					<option value="DISABLE">停用</option>
-					<option value="ABNORMAL">异常</option>
-				</select>
+			<td>名称:</td><td><input name="siteName"  required type="text" ng-model="cityTip.siteName"></td>
 
-			</td>
 		</tr>
 		<tr>
-			<td>生产日期:</td><td><p id="date"></p></td>
+			<td>类型:</td><td><input name="siteType" type="text" ng-model="cityTip.siteType"></td>
+
 		</tr>
 		<tr>
-			<td>～:</td><td><input required type="text" ng-model="cityTip.productDate"></td>
+			<td>站点监测类型:</td><td><input name="siteMonType" type="text" ng-model="cityTip.siteMonType"></td>
 		</tr>
 		<tr>
-			<td>启用日期:</td><td><input required type="text" ng-model="cityTip.useDate"></td>
+			<td>省(直辖市):</td><td><input name="province" type="text" ng-model="cityTip.province"></td>
 		</tr>
 		<tr>
-			<td>～:</td><td><input required type="text" ng-model="cityTip.useDate"></td>
+			<td>城市:</td><td><input name="cityName" type="text" ng-model="cityTip.cityName"></td>
 		</tr>
 		<tr>
-			<td>上次检测时间:</td><td><input required type="text" ng-model="cityTip.lastModifierId"></td>
+			<td>状态:</td><td><input name="status" type="text" ng-model="cityTip.status"></td>
 		</tr>
 		<tr>
-			<td>～:</td><td><input required type="text" ng-model="cityTip.lastModifierId"></td>
+			<td>管理机构:</td><td><input name="managerment" type="text" ng-model="cityTip.managerment"></td>
 		</tr>
 		<tr>
-			<td>责任人:</td><td><input required type="text" ng-model="cityTip.checkUserName"></td>
+			<td>责任人:</td><td><input name="realName" type="text" ng-model="cityTip.realName"></td>
 		</tr>
 		<tr>
 			<td ng-click="ctrl.query()" style="cursor: pointer">查询</td>

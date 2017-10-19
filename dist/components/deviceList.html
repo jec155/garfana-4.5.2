@@ -1,41 +1,41 @@
 <div style="background-color: #FFFFCC;width: 100%" >
 	<h3 class="page-heading">
-		站点管理
+		设备管理
 	</h3>
 	<div style="overflow-y: scroll;height: 450px;overflow-x: scroll">
 		<table >
 			<tr>
 				<th  class="pointer" data-stat="min"></th>
 				<th  class="pointer" data-stat="min"> <input type="checkbox" ng-model="ctrl.selall" ng-click="ctrl.selectAll(ctrl.selall,names)"></th>
-				<th  class="pointer" data-stat="min">代码</th>
-				<th  class="pointer" data-stat="max">名称</th>
-				<th  class="pointer" data-stat="max">类型</th>
-				<th  class="pointer" data-stat="max">站点监测类型</th>
-				<th  class="pointer" data-stat="max">省(直辖市)</th>
-				<th  class="pointer" data-stat="max">城市</th>
-				<th  class="pointer" data-stat="max">管理机构</th>
-				<th  class="pointer" data-stat="max">责任人</th>
+				<th  class="pointer" data-stat="min">名称</th>
+				<th  class="pointer" data-stat="max">设备监测类型</th>
+				<th  class="pointer" data-stat="max">序列号</th>
+				<th  class="pointer" data-stat="max">固件版本</th>
+				<th  class="pointer" data-stat="max">所属站点</th>
 				<th  class="pointer" data-stat="max">状态</th>
-				<th  class="pointer" data-stat="max">设立时间</th>
+				<th  class="pointer" data-stat="max">生产日期</th>
+				<th  class="pointer" data-stat="max">启用日期</th>
+				<th  class="pointer" data-stat="max">上次检测时间</th>
+				<th  class="pointer" data-stat="max">责任人</th>
 			</tr>
 			<tr ng-repeat="x in names">
 				<td>{{ $index + 1 }}</td>
 				<td> <input type="checkbox" ng-checked="ctrl.selall" ng-click="ctrl.updateSelection($event,x,ctrl)"></td>
-				<td>{{ x.siteCode }}</td>
+				<td>{{ x.name }}</td>
+				<td>{{ siteMap[x.monType]}}</td>
+				<td>{{ x.seqno }}</td>
+				<td>{{ x.firmware }}</td>
 				<td>{{ x.siteName }}</td>
-				<td>{{ siteTypeMap[x.siteType] }}</td>
-				<td>{{ siteMonTypeMap[x.siteMonType] }}</td>
-				<td>{{ x.province }}</td>
-				<td>{{ x.cityName }}</td>
-				<td>{{ x.managerment }}</td>
-				<td>{{ x.realName }}</td>
-				<td>{{ statusMap[x.status] }}</td>
-				<td>{{ x.siteCreateTime }}</td>
+				<td>{{ x.status }}</td>
+				<td>{{ x.productDate }}</td>
+				<td>{{ x.useDate }}</td>
+				<td>{{ x.lastModifierId }}</td>
+				<td>{{ x.checkUserName }}</td>
 				<td style="cursor:pointer"><img src="public/plugins/grafana-example-app/components/img/view.png"/>
 					<a href="plugins/grafana-example-app/page/cityview" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 查看</a></td>
 				<td style="cursor:pointer" ><img src="public/plugins/grafana-example-app/components/img/edit.png"/>
 					<a href="plugins/grafana-example-app/page/cityedit" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 编辑</a></td>
-				<td style="cursor:pointer" ng-click="ctrl.deleteCity(x)"><img src="public/plugins/grafana-example-app/components/img/delete.gif"/>删除</td>
+				<td style="cursor:pointer" ng-click="ctrl.deleteDevice(x)"><img src="public/plugins/grafana-example-app/components/img/delete.gif"/>删除</td>
 				<td style="cursor:pointer"><img src="public/plugins/grafana-example-app/components/img/relation.png"/>
 					<a href="plugins/grafana-example-app/page/citysitemanage" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 管理城市站点</a></td>
 			</tr>
@@ -60,13 +60,13 @@
 		<span><img src="public/plugins/grafana-example-app/components/img/add.gif"/>
 			<a href="plugins/grafana-example-app/page/cityadd"  style="pointer:cursor">添加&nbsp</a></span>
 		<span><img src="public/plugins/grafana-example-app/components/img/delete.gif"/>
-			<a href="#"  style="pointer:cursor" ng-click="ctrl.deleteSelCities()">删除&nbsp</a></span>
+			<a href="#"  style="pointer:cursor" ng-click="ctrl.deleteSelDevices()">删除&nbsp</a></span>
 		<span><img src="public/plugins/grafana-example-app/components/img/search.gif"/>
-			<a href="plugins/grafana-example-app/page/cityquery"  style="pointer:cursor">查询&nbsp</a></span>
+			<a href="plugins/grafana-example-app/page/sitequery"  style="pointer:cursor">查询&nbsp</a></span>
 	</div>
 </div>
-<!--<script>
-    var app = angular.module('listap', []);
+<script>
+    /*var app = angular.module('listap', []);
 	app.config(function($routeProvider) {
 	    console.info('ddfdfd');
         $routeProvider.when('/h', {
@@ -76,6 +76,7 @@
             controller: 'LogsPageCtrl'
 
         })
-    });
+    });*/
 
-</script>-->
+	
+</script>

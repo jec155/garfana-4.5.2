@@ -3,7 +3,7 @@
 System.register([], function (_export, _context) {
     "use strict";
 
-    var _createClass, SiteQueryCtrl;
+    var _createClass, DeviceQueryCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -32,42 +32,43 @@ System.register([], function (_export, _context) {
                 };
             }();
 
-            _export("SiteQueryCtrl", SiteQueryCtrl = function () {
-                function SiteQueryCtrl($scope, $http, $location, $rootScope) {
-                    _classCallCheck(this, SiteQueryCtrl);
+            _export("DeviceQueryCtrl", DeviceQueryCtrl = function () {
+                function DeviceQueryCtrl($scope, $http, $location, $rootScope) {
+                    _classCallCheck(this, DeviceQueryCtrl);
 
                     this.http = $http;
                     this.scope = $scope;
                     this.location = $location;
                     this.root = $rootScope;
-                    $scope.cityTip = { "siteCode": '',
+                    $scope.cityTip = { "name": '',
+                        "monType": '',
+                        "seqno": '',
+                        "firmware": '',
                         "siteName": '',
-                        "siteType": '',
-                        "siteMonType": '',
-                        "province": '',
-                        "cityName": '',
                         "status": '',
-                        "managerment": '',
-                        "realName": '' };
+                        "productDate": '',
+                        "useDate": '',
+                        "lastModifierId": '',
+                        "checkUserName": '' };
                 }
 
-                _createClass(SiteQueryCtrl, [{
+                _createClass(DeviceQueryCtrl, [{
                     key: "query",
                     value: function query() {
                         this.root.cityTip = this.scope.cityTip;
-                        this.root.cityListUrl = 'http://61.164.218.158:8080/AirServer/grafana/searchCities';
+                        this.root.cityListUrl = 'http://61.164.218.158:8080/AirServer/grafana/searchDevices';
                         // 'http://127.0.0.1:8080/grafana/searchCities';
                         history.go(-1);
                     }
                 }]);
 
-                return SiteQueryCtrl;
+                return DeviceQueryCtrl;
             }());
 
-            _export("SiteQueryCtrl", SiteQueryCtrl);
+            _export("DeviceQueryCtrl", DeviceQueryCtrl);
 
-            SiteQueryCtrl.templateUrl = 'public/plugins/grafana-example-app/components/siteQuery.html';
+            DeviceQueryCtrl.templateUrl = 'public/plugins/grafana-example-app/components/deviceQuery.html';
         }
     };
 });
-//# sourceMappingURL=siteQuery.js.map
+//# sourceMappingURL=deviceQuery.js.map
