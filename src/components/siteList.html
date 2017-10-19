@@ -1,6 +1,6 @@
 <div style="background-color: #FFFFCC;width: 100%" >
 	<h3 class="page-heading">
-		城市站点管理
+		设备管理
 	</h3>
 	<div style="overflow-y: scroll;height: 450px;overflow-x: scroll">
 		<table >
@@ -8,31 +8,29 @@
 				<th  class="pointer" data-stat="min"></th>
 				<th  class="pointer" data-stat="min"> <input type="checkbox" ng-model="ctrl.selall" ng-click="ctrl.selectAll(ctrl.selall,names)"></th>
 				<th  class="pointer" data-stat="min">名称</th>
-				<th  class="pointer" data-stat="max">拼音</th>
-				<th  class="pointer" data-stat="max">省份</th>
-				<th  class="pointer" data-stat="max">国家</th>
-				<th  class="pointer" data-stat="max">经度</th>
-				<th  class="pointer" data-stat="max">纬度</th>
-				<th  class="pointer" data-stat="max">东(城市区域)</th>
-				<th  class="pointer" data-stat="max">南(城市区域)</th>
-				<th  class="pointer" data-stat="max">西(城市区域)</th>
-				<th  class="pointer" data-stat="max">北(城市区域)</th>
-				<th  class="pointer" data-stat="max">备注</th>
+				<th  class="pointer" data-stat="max">设备监测类型</th>
+				<th  class="pointer" data-stat="max">序列号</th>
+				<th  class="pointer" data-stat="max">固件版本</th>
+				<th  class="pointer" data-stat="max">所属站点</th>
+				<th  class="pointer" data-stat="max">状态</th>
+				<th  class="pointer" data-stat="max">生产日期</th>
+				<th  class="pointer" data-stat="max">启用日期</th>
+				<th  class="pointer" data-stat="max">上次检测时间</th>
+				<th  class="pointer" data-stat="max">责任人</th>
 			</tr>
 			<tr ng-repeat="x in names">
 				<td>{{ $index + 1 }}</td>
 				<td> <input type="checkbox" ng-checked="ctrl.selall" ng-click="ctrl.updateSelection($event,x,ctrl)"></td>
-				<td>{{ x.cityName }}</td>
-				<td>{{ x.cityPingyin }}</td>
-				<td>{{ x.province }}</td>
-				<td>{{ x.country }}</td>
-				<td>{{ x.longitude }}</td>
-				<td>{{ x.latitude }}</td>
-				<td>{{ x.east }}</td>
-				<td>{{ x.south }}</td>
-				<td>{{ x.west }}</td>
-				<td>{{ x.north }}</td>
-				<td>{{ x.comment }}</td>
+				<td>{{ x.name }}</td>
+				<td>{{ siteMap[x.monType]}}</td>
+				<td>{{ x.seqno }}</td>
+				<td>{{ x.firmware }}</td>
+				<td>{{ x.siteName }}</td>
+				<td>{{ x.status }}</td>
+				<td>{{ x.productDate }}</td>
+				<td>{{ x.useDate }}</td>
+				<td>{{ x.lastModifierId }}</td>
+				<td>{{ x.checkUserName }}</td>
 				<td style="cursor:pointer"><img src="public/plugins/grafana-example-app/components/img/view.png"/>
 					<a href="plugins/grafana-example-app/page/cityview" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 查看</a></td>
 				<td style="cursor:pointer" ><img src="public/plugins/grafana-example-app/components/img/edit.png"/>
@@ -64,14 +62,11 @@
 		<span><img src="public/plugins/grafana-example-app/components/img/delete.gif"/>
 			<a href="#"  style="pointer:cursor" ng-click="ctrl.deleteSelCities()">删除&nbsp</a></span>
 		<span><img src="public/plugins/grafana-example-app/components/img/search.gif"/>
-			<a href="plugins/grafana-example-app/page/cityquery"  style="pointer:cursor">查询&nbsp</a></span>
+			<a href="plugins/grafana-example-app/page/sitequery"  style="pointer:cursor">查询&nbsp</a></span>
 	</div>
-	<datepicker ng-model="ctrl.absolute.fromJs" class="gf-timepicker-component" show-weeks="true"
-				starting-day="ctrl.firstDayOfWeek" ng-change="ctrl.absoluteFromChanged()"></datepicker>
-	<input type="text" class="gf-form-input input-large" ng-model="ctrl.from" input-datetime>
 </div>
-<!--<script>
-    var app = angular.module('listap', []);
+<script>
+    /*var app = angular.module('listap', []);
 	app.config(function($routeProvider) {
 	    console.info('ddfdfd');
         $routeProvider.when('/h', {
@@ -81,6 +76,7 @@
             controller: 'LogsPageCtrl'
 
         })
-    });
+    });*/
 
-</script>-->
+	
+</script>

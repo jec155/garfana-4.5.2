@@ -1,14 +1,10 @@
 
 import './my-pagination.css!';
 import './cityList.css!';
-import {coreModule, appEvents} from  'app/core/core';
-import angular from 'angular';
-import moment from 'moment';
-export class StreamPageCtrl
+export class SiteListDevice
 {
-    constructor($scope,$http,$location,$rootScope,timeSrv)
+    constructor($scope,$http,$location,$rootScope)
     {
-        //console.info("fdsgg");
         this.root=$rootScope;
         //分页
         $scope.myPage={
@@ -18,38 +14,20 @@ export class StreamPageCtrl
             pagesLength: 15,
             perPageOptions: [10,15,25]//可选择的每页展示多少条数据
         };
-
         this.location=$location;
         this.http=$http;
         this.selall=false;//全选标志
         this.checkedItems=[];
-        $scope.cityListUrl=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+        $scope.cityListUrl=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/deivceListByPage';
         $scope.cityTip=$rootScope.cityTip?$rootScope.cityTip:{};
-        /*appEvents.emit('show-modal', {
-            src: 'public/plugins/grafana-example-app/components/cityView.html',
-            //'plugins/grafana-example-app/page/cityquery',
-            //controller:CityViewCtrl,
-            modalClass: 'confirm-modal',
-            model: {}
-        });*/
-        /*var confirmModal = $modal({
-            template: 'public/plugins/grafana-example-app/components/cityView.html',
-            persist: false,
-            modalClass: 'confirm-modal',
-            show: false,
-            //scope: scope,
-            keyboard: false
-        });
+        $scope.siteMap = {
+                        'AIR':'空气质量',
+                        'WATER':'水环境',
+                        'MULTI':'多功能'
+                    }
 
-        confirmModal.then(function(modalEl) {
-            console.info(modalEl);
-            modalEl.modal('show');
-        });*/
-        //var range = {from: 'now', to: 'now'};
-
-        //timeSrv.setTime(range);
     }
-
+    
     selectAll(all,names)
     {
         all? Object.assign(this.checkedItems, names):this.checkedItems.splice(0,this.checkedItems.length);
@@ -61,11 +39,6 @@ export class StreamPageCtrl
 
         item.checked?ctrl.checkedItems.push(x):ctrl.checkedItems.splice(x,1);
 
-    }
-    absoluteFromChanged()
-    {
-        this.from=moment().utc(this.absolute.fromJs);
-        console.info(moment(this.absolute.fromJs));
     }
     deleteCity(item)
     {
@@ -189,14 +162,18 @@ export class StreamPageCtrl
         getPagination(scope.cityListUrl);
 
         function getPagination(url){
+            
             ctrl.http.get(url
                 ,{params:{"page":scope.myPage.currentPage,"limit":scope.myPage.itemsPerPage,
-                "cityName":scope.cityTip.cityName,"cityPingyin":scope.cityTip.cityPingyin,
-                    "province":scope.cityTip.province,"country":scope.cityTip.country}}).then(
+                "name":scope.cityTip.name,"monType":scope.cityTip.monType,
+                "seqno":scope.cityTip.seqno,"firmware":scope.cityTip.firmware,
+                "siteName":scope.cityTip.siteName,"status":scope.cityTip.status,
+                "productDate":scope.cityTip.productDate,"useDate":scope.cityTip.useDate,
+                "lastModifierId":scope.cityTip.lastModifierId,"checkUserName":scope.cityTip.checkUserName}}).then(
                 function (response)
                 {
+    
                     scope.names=response.data.data;
-
                     scope.myPage.totalItems=response.data.totalItems;//当获取总数据后，修改默认值
                     scope.myPage.currentPage = parseInt(myPage.pageNub);
                     // pg.totalItems
@@ -262,8 +239,6 @@ export class StreamPageCtrl
         }
     }
 }
-StreamPageCtrl.templateUrl = 'components/cityList.html';
-import {inputDateDirective} from './input_date';
-angular.module("grafana.directives").directive('inputDatetime', inputDateDirective);
+SiteListDevice.templateUrl = 'components/siteList.html';
 
 
