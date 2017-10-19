@@ -13,26 +13,46 @@
 
 		</tr>
 		<tr>
-			<td>类型:</td><td><input name="siteType" type="text" ng-model="cityTip.siteType"></td>
+			<td>类型:</td><td>
+							  <select name="siteType" type="text" ng-model="cityTip.siteType">
+								  <option value=""></option>
+								  <option value="PUBLIC">公有站点</option>
+								  <option value="PRIVATE">私有站点</option>
+							  </select></td>
 
 		</tr>
 		<tr>
-			<td>站点监测类型:</td><td><input name="siteMonType" type="text" ng-model="cityTip.siteMonType"></td>
+			<td>站点监测类型:</td><td>
+									<select name="siteMonType" type="text" ng-model="cityTip.siteMonType">
+										<option value=""></option>
+								  		<option value="1">空气质量</option>
+								  		<option value="2">空气污染重点企业</option>
+								  		<option value="3">饮用水水质</option>
+								  		<option value="4">污水水质</option>
+								  		<option value="5">水污染重点企业</option>
+								  		<option value="6">主要流域重点断面水质</option>
+									</select></td>
 		</tr>
 		<tr>
-			<td>省(直辖市):</td><td><input name="province" type="text" ng-model="cityTip.province"></td>
+			<td>省(直辖市):</td><td><input name="provice" type="text" ng-model="cityTip.provice"></td>
 		</tr>
 		<tr>
-			<td>城市:</td><td><input name="cityName" type="text" ng-model="cityTip.cityName"></td>
+			<td>城市:</td><td><input name="city" type="text" ng-model="cityTip.city"></td>
 		</tr>
 		<tr>
-			<td>状态:</td><td><input name="status" type="text" ng-model="cityTip.status"></td>
+			<td>状态:</td><td>
+								<select name="status" type="text" ng-model="cityTip.status">
+									<option value=""></option>
+								  	<option value="SITE_NORMAL">正常</option>
+								  	<option value="SITE_DISABLE">停用</option>
+								  	<option value="SITE_ERROR">异常</option>
+								</select></td>
 		</tr>
 		<tr>
-			<td>管理机构:</td><td><input name="managerment" type="text" ng-model="cityTip.managerment"></td>
+			<td>管理机构:</td><td><input name="dep" type="text" ng-model="cityTip.dep"></td>
 		</tr>
 		<tr>
-			<td>责任人:</td><td><input name="realName" type="text" ng-model="cityTip.realName"></td>
+			<td>责任人:</td><td><input name="checkMan" type="text" ng-model="cityTip.checkMan"></td>
 		</tr>
 		<tr>
 			<td ng-click="ctrl.query()" style="cursor: pointer">查询</td>

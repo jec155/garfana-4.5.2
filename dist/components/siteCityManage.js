@@ -49,7 +49,7 @@ System.register([], function (_export, _context) {
                     $scope.citySites = {};
                     this.scope = $scope;
 
-                    $http.get('http://61.164.218.158:8080/AirServer/grafana/availableSites').then(function (response) {
+                    $http.get('http://61.164.218.158:8080/AirServer/grafana/getAvailableDevices').then(function (response) {
                         angular.forEach(response.data.data, function (data, index, array) {
                             //data等价于array[index]
                             //$scope.availableSites.push({id:data.id,siteName:data.siteName});
@@ -59,7 +59,7 @@ System.register([], function (_export, _context) {
                         //$scope.availableSites=response.data.data;
                     });
 
-                    $http.get('http://61.164.218.158:8080/AirServer/grafana/getSitesByCityID?cityid=' + $rootScope.cityModel.id).then(function (response) {
+                    $http.get('http://61.164.218.158:8080/AirServer/grafana/getDevicesBySiteID?cityid=' + $rootScope.cityModel.siteid).then(function (response) {
                         angular.forEach(response.data.data, function (data, index, array) {
                             //data等价于array[index]
                             // $scope.citySites.push({id:data.id,siteName:data.siteName});

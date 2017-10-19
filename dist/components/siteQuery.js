@@ -44,18 +44,18 @@ System.register([], function (_export, _context) {
                         "siteName": '',
                         "siteType": '',
                         "siteMonType": '',
-                        "province": '',
-                        "cityName": '',
+                        "provice": '',
+                        "city": '',
                         "status": '',
-                        "managerment": '',
-                        "realName": '' };
+                        "dep": '',
+                        "checkMan": '' };
                 }
 
                 _createClass(SiteQueryCtrl, [{
                     key: "query",
                     value: function query() {
                         this.root.cityTip = this.scope.cityTip;
-                        this.root.cityListUrl = 'http://61.164.218.158:8080/AirServer/grafana/searchCities';
+                        this.root.cityListUrl = 'http://61.164.218.158:8080/AirServer/grafana/searchSitesByPage';
                         // 'http://127.0.0.1:8080/grafana/searchCities';
                         history.go(-1);
                     }

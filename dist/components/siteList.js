@@ -65,7 +65,8 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                     };
                     $scope.statusMap = {
                         "SITE_NORMAL": "正常",
-                        "SITE_DISABLE": "停用"
+                        "SITE_DISABLE": "停用",
+                        "SITE_ERROR": "异常"
                     };
                 }
 
@@ -203,11 +204,10 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                             ctrl.http.get(url, { params: { "page": scope.myPage.currentPage, "limit": scope.myPage.itemsPerPage,
                                     "siteCode": scope.cityTip.siteCode, "siteName": scope.cityTip.siteName,
                                     "siteType": scope.cityTip.siteType, "siteMonType": scope.cityTip.siteMonType,
-                                    "province": scope.cityTip.province, "cityName": scope.cityTip.cityName,
-                                    "managerment": scope.cityTip.managerment, "realName": scope.cityTip.realName,
-                                    "status": scope.cityTip.status, "siteCreateTime": scope.cityTip.siteCreateTime } }).then(function (response) {
+                                    "provice": scope.cityTip.provice, "city": scope.cityTip.city,
+                                    "dep": scope.cityTip.dep, "checkMan": scope.cityTip.checkMan,
+                                    "status": scope.cityTip.status } }).then(function (response) {
                                 scope.names = response.data.data;
-
                                 scope.myPage.totalItems = response.data.totalItems; //当获取总数据后，修改默认值
                                 scope.myPage.currentPage = parseInt(myPage.pageNub);
                                 // pg.totalItems

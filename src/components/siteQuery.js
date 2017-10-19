@@ -6,21 +6,21 @@ export class SiteQueryCtrl
       this.scope = $scope;
       this.location = $location;
       this.root=$rootScope;
-      $scope.cityTip={"siteCode":'',
+      $scope.cityTip={  "siteCode":'',
                         "siteName":'',
                         "siteType":'',
                         "siteMonType":'',
-                        "province":'',
-                        "cityName":'',
+                        "provice":'',
+                        "city":'',
                         "status":'',
-                        "managerment":'',
-                        "realName":''};
+                        "dep":'',
+                        "checkMan":''};
   }
 
   query()
   {
       this.root.cityTip=this.scope.cityTip;
-      this.root.cityListUrl='http://61.164.218.158:8080/AirServer/grafana/searchCities';
+      this.root.cityListUrl='http://61.164.218.158:8080/AirServer/grafana/searchSitesByPage';
          // 'http://127.0.0.1:8080/grafana/searchCities';
       history.go(-1);
   }
