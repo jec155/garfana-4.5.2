@@ -131,6 +131,24 @@ System.register([], function (_export, _context) {
                         }
                     }
                 }, {
+                    key: 'commit',
+                    value: function commit() {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
+                            //'http://127.0.0.1:8080/grafana/addCity',
+                            data: { id: item.id },
+                            dataType: 'json',
+                            success: function success(da) {
+                                location.reload();
+                                alert('更新成功');
+                            },
+                            error: function error(re) {
+                                console.info(re);
+                            }
+                        });
+                    }
+                }, {
                     key: 'link',
                     value: function link(scope, elem, attrs, ctrl) {}
                 }]);

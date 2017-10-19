@@ -37,7 +37,9 @@
       "defaultNav": true},
     {"type": "dashboard", "name": "Example App Dashboard", "path": "dashboards/example_app_dashboard.json","defaultNav": false},
     {"type": "panel", "name": "Example App Panel"},
-    {"type": "datasource", "name": "Example App Datasource"}
+    {"type": "datasource", "name": "Example App Datasource"},
+    {"type":"page", "name": "SiteList", "component": "SiteListDevice", "role": "Editor","addToNav": true,"defaultNav": true},
+    {"type":"page","name": "SiteQuery", "component": "SiteQueryDevice", "role": "Viewer","addToNav": false}
   ],
 
   "dependencies": {

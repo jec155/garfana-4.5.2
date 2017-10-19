@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./components/cityAdd', './components/cityEdit', './components/cityView', './components/cityList', './components/cityQuery', './components/citySiteManage'], function (_export, _context) {
+System.register(['./components/cityAdd', './components/cityEdit', './components/cityView', './components/cityList', './components/cityQuery', './components/citySiteManage', './components/siteList', './components/siteQuery'], function (_export, _context) {
   "use strict";
 
-  var CityAddCtrl, CityEditCtrl, CityViewCtrl, StreamPageCtrl, CityQueryCtrl, CitySiteManageCtrl;
+  var CityAddCtrl, CityEditCtrl, CityViewCtrl, StreamPageCtrl, CityQueryCtrl, CitySiteManageCtrl, SiteListDevice, SiteQueryDevice;
   return {
     setters: [function (_componentsCityAdd) {
       CityAddCtrl = _componentsCityAdd.CityAddCtrl;
@@ -17,6 +17,10 @@ System.register(['./components/cityAdd', './components/cityEdit', './components/
       CityQueryCtrl = _componentsCityQuery.CityQueryCtrl;
     }, function (_componentsCitySiteManage) {
       CitySiteManageCtrl = _componentsCitySiteManage.CitySiteManageCtrl;
+    }, function (_componentsSiteList) {
+      SiteListDevice = _componentsSiteList.SiteListDevice;
+    }, function (_componentsSiteQuery) {
+      SiteQueryDevice = _componentsSiteQuery.SiteQueryDevice;
     }],
     execute: function () {
       _export('StreamPageCtrl', StreamPageCtrl);
@@ -30,6 +34,10 @@ System.register(['./components/cityAdd', './components/cityEdit', './components/
       _export('CityQueryCtrl', CityQueryCtrl);
 
       _export('CitySiteManageCtrl', CitySiteManageCtrl);
+
+      _export('SiteListDevice', SiteListDevice);
+
+      _export('SiteQueryDevice', SiteQueryDevice);
     }
   };
 });
