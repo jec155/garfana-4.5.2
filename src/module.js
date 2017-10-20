@@ -12,6 +12,9 @@ import {SiteViewCtrl} from './components/siteView';
 import {SiteStreamPageCtrl} from './components/siteList';
 import {SiteQueryCtrl} from './components/siteQuery';
 import {SiteCityManageCtrl} from './components/siteCityManage';
+import {LogStreamPageCtrl} from './components/logList';
+import {LogQueryCtrl} from './components/logQuery';
+import {LogViewCtrl} from './components/logView';
 
 export {
   StreamPageCtrl, //Matches pages.component in plugin.json
@@ -28,4 +31,7 @@ export {
     SiteStreamPageCtrl,
     SiteQueryCtrl,
     SiteCityManageCtrl,
+    LogStreamPageCtrl,
+    LogQueryCtrl,
+    LogViewCtrl
 };

@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./components/cityAdd', './components/cityEdit', './components/cityView', './components/cityList', './components/cityQuery', './components/citySiteManage', './components/deviceList', './components/deviceQuery', './components/siteAdd', './components/siteEdit', './components/siteView', './components/siteList', './components/siteQuery', './components/siteCityManage'], function (_export, _context) {
+System.register(['./components/cityAdd', './components/cityEdit', './components/cityView', './components/cityList', './components/cityQuery', './components/citySiteManage', './components/deviceList', './components/deviceQuery', './components/siteAdd', './components/siteEdit', './components/siteView', './components/siteList', './components/siteQuery', './components/siteCityManage', './components/logList', './components/logQuery', './components/logView'], function (_export, _context) {
   "use strict";
 
-  var CityAddCtrl, CityEditCtrl, CityViewCtrl, StreamPageCtrl, CityQueryCtrl, CitySiteManageCtrl, DeviceStreamPageCtrl, DeviceQueryCtrl, SiteAddCtrl, SiteEditCtrl, SiteViewCtrl, SiteStreamPageCtrl, SiteQueryCtrl, SiteCityManageCtrl;
+  var CityAddCtrl, CityEditCtrl, CityViewCtrl, StreamPageCtrl, CityQueryCtrl, CitySiteManageCtrl, DeviceStreamPageCtrl, DeviceQueryCtrl, SiteAddCtrl, SiteEditCtrl, SiteViewCtrl, SiteStreamPageCtrl, SiteQueryCtrl, SiteCityManageCtrl, LogStreamPageCtrl, LogQueryCtrl, LogViewCtrl;
   return {
     setters: [function (_componentsCityAdd) {
       CityAddCtrl = _componentsCityAdd.CityAddCtrl;
@@ -33,6 +33,12 @@ System.register(['./components/cityAdd', './components/cityEdit', './components/
       SiteQueryCtrl = _componentsSiteQuery.SiteQueryCtrl;
     }, function (_componentsSiteCityManage) {
       SiteCityManageCtrl = _componentsSiteCityManage.SiteCityManageCtrl;
+    }, function (_componentsLogList) {
+      LogStreamPageCtrl = _componentsLogList.LogStreamPageCtrl;
+    }, function (_componentsLogQuery) {
+      LogQueryCtrl = _componentsLogQuery.LogQueryCtrl;
+    }, function (_componentsLogView) {
+      LogViewCtrl = _componentsLogView.LogViewCtrl;
     }],
     execute: function () {
       _export('StreamPageCtrl', StreamPageCtrl);
@@ -62,6 +68,12 @@ System.register(['./components/cityAdd', './components/cityEdit', './components/
       _export('SiteQueryCtrl', SiteQueryCtrl);
 
       _export('SiteCityManageCtrl', SiteCityManageCtrl);
+
+      _export('LogStreamPageCtrl', LogStreamPageCtrl);
+
+      _export('LogQueryCtrl', LogQueryCtrl);
+
+      _export('LogViewCtrl', LogViewCtrl);
     }
   };
 });

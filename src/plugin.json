@@ -47,7 +47,11 @@
     { "type":"page","name": "SiteQuery", "component": "SiteQueryCtrl", "role": "Viewer","addToNav": false},
     { "type":"page","name": "SiteCityManage", "component": "SiteCityManageCtrl", "role": "Viewer","addToNav": false},
     {"type":"page", "name": "SiteList", "component": "SiteStreamPageCtrl", "role": "Editor","addToNav": true,
-      "defaultNav": true}
+      "defaultNav": true},
+    {"type":"page", "name": "LogList", "component": "LogStreamPageCtrl", "role": "Editor","addToNav": true,
+      "defaultNav": true},
+    { "type":"page","name": "LogView", "component": "LogViewCtrl", "role": "Viewer","addToNav": false},
+    { "type":"page","name": "LogQuery", "component": "LogQueryCtrl", "role": "Viewer","addToNav": false}
   ],
 
   "dependencies": {
