@@ -18,8 +18,9 @@ export class DeviceStreamPageCtrl
         this.http=$http;
         this.selall=false;//全选标志
         this.checkedItems=[];
-        $scope.cityListUrl=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/deivceListByPage';
-        $scope.cityTip=$rootScope.cityTip?$rootScope.cityTip:{};
+        $scope.searchDeviceURL=$rootScope.searchDeviceURL?$rootScope.searchDeviceURL
+                        :'http://61.164.218.158:8080/AirServer/grafana/deivceListByPage';
+        $scope.deviceTip=$rootScope.deviceTip?$rootScope.deviceTip:{};
         $scope.siteMap = {
                         'AIR':'空气质量',
                         'WATER':'水环境',
@@ -98,6 +99,7 @@ export class DeviceStreamPageCtrl
 
     link(scope, elem, attrs, ctrl)
     {
+        console.info(scope.deviceTip);
         var myPage={};
         myPage.pageNub=1;
         myPage.getPageNub=function () {
@@ -123,7 +125,7 @@ export class DeviceStreamPageCtrl
                 scope.myPage.currentPage = p;
                 myPage.setPageNub(scope.myPage.currentPage);
             }
-            getPagination(scope.cityListUrl);
+            getPagination(scope.searchDeviceURL);
         };
         scope.prevPage = function(){
             if(scope.myPage.currentPage > 1){
@@ -132,7 +134,7 @@ export class DeviceStreamPageCtrl
                 scope.myPage.currentPage=1;
             }
             myPage.setPageNub(scope.myPage.currentPage);
-            getPagination(scope.cityListUrl);
+            getPagination(scope.searchDeviceURL);
         };
         // nextPage
         scope.nextPage = function(){
@@ -142,7 +144,7 @@ export class DeviceStreamPageCtrl
                 scope.myPage.currentPage=scope.myPage.numberOfPages;
             }
             myPage.setPageNub(scope.myPage.currentPage);
-            getPagination(scope.cityListUrl)
+            getPagination(scope.searchDeviceURL)
         };
 
         // 跳转页
@@ -150,7 +152,7 @@ export class DeviceStreamPageCtrl
             if(scope.myPage.jumpPageNum>0 || scope.myPage.jumpPageNum<=scope.myPage.numberOfPages){
                 scope.myPage.currentPage=scope.myPage.jumpPageNum;
                 myPage.setPageNub(scope.myPage.currentPage);
-                getPagination(scope.cityListUrl);
+                getPagination(scope.searchDeviceURL);
                 //scope.myPage.jumpPageNum='';
             }else {
                 scope.myPage.showError=true;
@@ -158,19 +160,20 @@ export class DeviceStreamPageCtrl
         };
         // 修改每页显示的条数
         scope.changeItemsPerPage = function(){
-            getPagination(scope.cityListUrl);
+            getPagination(scope.searchDeviceURL);
         };
-        getPagination(scope.cityListUrl);
+        getPagination(scope.searchDeviceURL);
 
         function getPagination(url){
             
             ctrl.http.get(url
                 ,{params:{"page":scope.myPage.currentPage,"limit":scope.myPage.itemsPerPage,
-                "name":scope.cityTip.name,"monType":scope.cityTip.monType,
-                "seqno":scope.cityTip.seqno,"firmware":scope.cityTip.firmware,
-                "siteName":scope.cityTip.siteName,"status":scope.cityTip.status,
-                "productDate":scope.cityTip.productDate,"useDate":scope.cityTip.useDate,
-                "lastModifierId":scope.cityTip.lastModifierId,"checkUserName":scope.cityTip.checkUserName}}).then(
+                "name":scope.deviceTip.name,"monType":scope.deviceTip.monType,
+                "seqno":scope.deviceTip.seqno,"firmware":scope.deviceTip.firmware,
+                "siteName":scope.deviceTip.siteName,"status":scope.deviceTip.status,
+                "productDate1":scope.deviceTip.productDate1,"productDate2":scope.deviceTip.productDate2,
+                    "useDate1":scope.deviceTip.useDate1 ,"useDate2":scope.deviceTip.useDate2,
+                "lastCheckDate1":scope.deviceTip.lastCheckDate1,"lastCheckDate2":scope.deviceTip.lastCheckDate2}}).then(
                 function (response)
                 {
     
@@ -240,6 +243,6 @@ export class DeviceStreamPageCtrl
         }
     }
 }
-DeviceStreamPageCtrl.templateUrl = 'components/siteList.html';
+DeviceStreamPageCtrl.templateUrl = 'components/deviceList.html';
 
 

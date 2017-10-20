@@ -9,9 +9,9 @@ export function inputDateDirective() {
     require: 'ngModel',
     link: function ($scope, $elem, attrs, ngModel) {
       var format = 'YYYY-MM-DD HH:mm:ss';
-        console.info(ngModel);
+        //console.info(ngModel);
       var fromUser = function (text) {
-          console.info('ere');
+          //console.info('ere');
         if (text.indexOf('now') !== -1) {
           if (!dateMath.isValid(text)) {
             ngModel.$setValidity("error", false);

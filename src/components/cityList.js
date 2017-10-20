@@ -2,8 +2,6 @@
 import './my-pagination.css!';
 import './cityList.css!';
 import {coreModule, appEvents} from  'app/core/core';
-import angular from 'angular';
-import moment from 'moment';
 export class StreamPageCtrl
 {
     constructor($scope,$http,$location,$rootScope,timeSrv)
@@ -263,7 +261,6 @@ export class StreamPageCtrl
     }
 }
 StreamPageCtrl.templateUrl = 'components/cityList.html';
-import {inputDateDirective} from './input_date';
-angular.module("grafana.directives").directive('inputDatetime', inputDateDirective);
+
 
 
