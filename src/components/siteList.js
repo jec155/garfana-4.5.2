@@ -3,7 +3,7 @@ import './my-pagination.css!';
 import './cityList.css!';
 export class SiteStreamPageCtrl
 {
-    constructor($scope,$http,$location,$rootScope)
+    constructor($scope,$http,$location,$rootScope,contextSrv)
     {
         this.root=$rootScope;
         //分页
@@ -14,6 +14,7 @@ export class SiteStreamPageCtrl
             pagesLength: 15,
             perPageOptions: [10,15,25]//可选择的每页展示多少条数据
         };
+        this.contextSrv=contextSrv;
         this.location=$location;
         this.http=$http;
         this.selall=false;//全选标志
@@ -58,7 +59,7 @@ export class SiteStreamPageCtrl
                 type: 'POST',
                 url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
                 //'http://127.0.0.1:8080/grafana/addCity',
-                data: {id:item.id},
+                data: {id:item.id,"username":this.contextSrv.user.name},
                 dataType:'json',
                 success:function (da)
                 {
@@ -87,7 +88,7 @@ export class SiteStreamPageCtrl
                 traditional: true,
                 url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelCities',
                // 'http://127.0.0.1:8080/grafana/deleteSelCities',
-                data: {ids:ids},
+                data: {ids:ids,"username":this.contextSrv.user.name},
                 success:function (da)
                 {
                     location.reload();
@@ -178,7 +179,7 @@ export class SiteStreamPageCtrl
                 "siteType":scope.cityTip.siteType,"siteMonType":scope.cityTip.siteMonType,
                 "provice":scope.cityTip.provice,"city":scope.cityTip.city,
                 "dep":scope.cityTip.dep,"checkMan":scope.cityTip.checkMan,
-                "status":scope.cityTip.status}}).then(
+                "status":scope.cityTip.status,"username":ctrl.contextSrv.user.name}}).then(
                 function (response)
                 {
                     scope.names=response.data.data;

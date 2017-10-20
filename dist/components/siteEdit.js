@@ -33,14 +33,14 @@ System.register([], function (_export, _context) {
             }();
 
             _export("SiteEditCtrl", SiteEditCtrl = function () {
-                function SiteEditCtrl($scope, $http, $location, $rootScope) {
+                function SiteEditCtrl($scope, $http, $location, $rootScope, contextSrv) {
                     _classCallCheck(this, SiteEditCtrl);
 
                     this.http = $http;
                     this.scope = $scope;
                     this.location = $location;
                     $scope.cityModel = $rootScope.cityModel;
-
+                    this.contextSrv = contextSrv;
                     $scope.siteMonTypeMap = {
                         "1": "空气质量",
                         "2": "空气污染重点企业",
@@ -86,7 +86,9 @@ System.register([], function (_export, _context) {
                             "siteLongitude": this.scope.cityModel.siteLongitude,
                             "autoUpd": cityAuto[this.scope.cityModel.autoUpd],
                             "comment": this.scope.cityModel.comment,
-                            "managerment": this.scope.cityModel.managerment };console.info(cityTip);
+                            "managerment": this.scope.cityModel.managerment,
+                            "username": this.contextSrv.user.name };
+
                         $.ajax({
                             type: 'GET',
                             url: 'http://61.164.218.158:8080/AirServer/grafana/editSite',

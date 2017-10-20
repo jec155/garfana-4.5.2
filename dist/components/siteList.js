@@ -33,7 +33,7 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
             }();
 
             _export('SiteStreamPageCtrl', SiteStreamPageCtrl = function () {
-                function SiteStreamPageCtrl($scope, $http, $location, $rootScope) {
+                function SiteStreamPageCtrl($scope, $http, $location, $rootScope, contextSrv) {
                     _classCallCheck(this, SiteStreamPageCtrl);
 
                     this.root = $rootScope;
@@ -45,6 +45,7 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                         pagesLength: 15,
                         perPageOptions: [10, 15, 25] //可选择的每页展示多少条数据
                     };
+                    this.contextSrv = contextSrv;
                     this.location = $location;
                     this.http = $http;
                     this.selall = false; //全选标志
@@ -91,7 +92,7 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                                 type: 'POST',
                                 url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
                                 //'http://127.0.0.1:8080/grafana/addCity',
-                                data: { id: item.id },
+                                data: { id: item.id, "username": this.contextSrv.user.name },
                                 dataType: 'json',
                                 success: function success(da) {
                                     location.reload();
@@ -117,7 +118,7 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                                 traditional: true,
                                 url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelCities',
                                 // 'http://127.0.0.1:8080/grafana/deleteSelCities',
-                                data: { ids: ids },
+                                data: { ids: ids, "username": this.contextSrv.user.name },
                                 success: function success(da) {
                                     location.reload();
                                     alert('删除成功');
@@ -206,7 +207,7 @@ System.register(['./my-pagination.css!', './cityList.css!'], function (_export, 
                                     "siteType": scope.cityTip.siteType, "siteMonType": scope.cityTip.siteMonType,
                                     "provice": scope.cityTip.provice, "city": scope.cityTip.city,
                                     "dep": scope.cityTip.dep, "checkMan": scope.cityTip.checkMan,
-                                    "status": scope.cityTip.status } }).then(function (response) {
+                                    "status": scope.cityTip.status, "username": ctrl.contextSrv.user.name } }).then(function (response) {
                                 scope.names = response.data.data;
                                 scope.myPage.totalItems = response.data.totalItems; //当获取总数据后，修改默认值
                                 scope.myPage.currentPage = parseInt(myPage.pageNub);

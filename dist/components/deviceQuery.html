@@ -87,7 +87,7 @@
 	<div class="gf-form">
 		<span class="gf-form-label width-10">状态</span>
 		<select type="text" ng-model="deviceTip.status" class="gf-form-input width-10"
-				ng-options="f for f in ['正常', '停用', '异常']"></select>
+				ng-options="f for f in [{id:'NORMAL',name:'正常'}, {id:'STOP'name:'停用',{id:'EXCEPTION',name: '异常'}]"></select>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">生产日期起</span>
