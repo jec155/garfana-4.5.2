@@ -189,8 +189,9 @@ export class LogStreamPageCtrl
         function getPagination(url){
             ctrl.http.get(url
                 ,{params:{"page":scope.myPage.currentPage,"limit":scope.myPage.itemsPerPage,
-                "cityName":scope.cityTip.cityName,"cityPingyin":scope.cityTip.cityPingyin,
-                    "province":scope.cityTip.province,"country":scope.cityTip.country}}).then(
+                    "username":scope.cityTip.username,"ip":scope.cityTip.ip,
+                    "startTime":scope.cityTip.startTime,"endTime":scope.cityTip.endTime,
+                    "operation":scope.cityTip.operation}}).then(
                 function (response)
                 {
                     scope.names=response.data.data;

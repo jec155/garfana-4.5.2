@@ -218,8 +218,9 @@ System.register(['./my-pagination.css!', './cityList.css!', 'app/core/core'], fu
 
                         function getPagination(url) {
                             ctrl.http.get(url, { params: { "page": scope.myPage.currentPage, "limit": scope.myPage.itemsPerPage,
-                                    "cityName": scope.cityTip.cityName, "cityPingyin": scope.cityTip.cityPingyin,
-                                    "province": scope.cityTip.province, "country": scope.cityTip.country } }).then(function (response) {
+                                    "username": scope.cityTip.username, "ip": scope.cityTip.ip,
+                                    "startTime": scope.cityTip.startTime, "endTime": scope.cityTip.endTime,
+                                    "operation": scope.cityTip.operation } }).then(function (response) {
                                 scope.names = response.data.data;
 
                                 scope.myPage.totalItems = response.data.totalItems; //当获取总数据后，修改默认值

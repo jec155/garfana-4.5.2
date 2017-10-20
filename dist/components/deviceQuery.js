@@ -238,7 +238,8 @@ System.register(['angular', 'moment', './input_date'], function (_export, _conte
                         this.scope.deviceTip.lastCheckDate1 = document.getElementById("i5").value;
                         this.scope.deviceTip.lastCheckDate2 = document.getElementById("i6").value;
                         this.root.deviceTip = this.scope.deviceTip;
-                        this.root.searchDeviceURL = 'http://61.164.218.158:8080/AirServer/grafana/searchDevices';
+                        this.root.searchDeviceURL = //'http://61.164.218.158:8080/AirServer/grafana/searchDevices';
+                        'http://127.0.0.1:8080/grafana/searchDevices';
 
                         history.go(-1);
                     }
