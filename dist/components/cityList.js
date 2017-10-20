@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./my-pagination.css!', './cityList.css!', 'app/core/core', 'angular', 'moment', './input_date'], function (_export, _context) {
+System.register(['./my-pagination.css!', './cityList.css!', 'app/core/core'], function (_export, _context) {
     "use strict";
 
-    var coreModule, appEvents, angular, moment, inputDateDirective, _createClass, StreamPageCtrl;
+    var coreModule, appEvents, _createClass, StreamPageCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -15,12 +15,6 @@ System.register(['./my-pagination.css!', './cityList.css!', 'app/core/core', 'an
         setters: [function (_myPaginationCss) {}, function (_cityListCss) {}, function (_appCoreCore) {
             coreModule = _appCoreCore.coreModule;
             appEvents = _appCoreCore.appEvents;
-        }, function (_angular) {
-            angular = _angular.default;
-        }, function (_moment) {
-            moment = _moment.default;
-        }, function (_input_date) {
-            inputDateDirective = _input_date.inputDateDirective;
         }],
         execute: function () {
             _createClass = function () {
@@ -299,8 +293,6 @@ System.register(['./my-pagination.css!', './cityList.css!', 'app/core/core', 'an
             _export('StreamPageCtrl', StreamPageCtrl);
 
             StreamPageCtrl.templateUrl = 'components/cityList.html';
-
-            angular.module("grafana.directives").directive('inputDatetime', inputDateDirective);
         }
     };
 });

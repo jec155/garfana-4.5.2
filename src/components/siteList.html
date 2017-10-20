@@ -32,12 +32,12 @@
 				<td>{{ statusMap[x.status] }}</td>
 				<td>{{ x.siteCreateTime }}</td>
 				<td style="cursor:pointer"><img src="public/plugins/grafana-example-app/components/img/view.png"/>
-					<a href="plugins/grafana-example-app/page/cityview" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 查看</a></td>
+					<a href="plugins/grafana-example-app/page/siteview" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 查看</a></td>
 				<td style="cursor:pointer" ><img src="public/plugins/grafana-example-app/components/img/edit.png"/>
-					<a href="plugins/grafana-example-app/page/cityedit" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 编辑</a></td>
+					<a href="plugins/grafana-example-app/page/siteedit" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 编辑</a></td>
 				<td style="cursor:pointer" ng-click="ctrl.deleteCity(x)"><img src="public/plugins/grafana-example-app/components/img/delete.gif"/>删除</td>
 				<td style="cursor:pointer"><img src="public/plugins/grafana-example-app/components/img/relation.png"/>
-					<a href="plugins/grafana-example-app/page/citysitemanage" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 管理城市站点</a></td>
+					<a href="plugins/grafana-example-app/page/sitecitymanage" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 管理站内设备</a></td>
 			</tr>
 		</table>
 	</div>

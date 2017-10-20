@@ -12,9 +12,9 @@ System.register(['moment', 'app/core/utils/datemath'], function (_export, _conte
       require: 'ngModel',
       link: function link($scope, $elem, attrs, ngModel) {
         var format = 'YYYY-MM-DD HH:mm:ss';
-        console.info(ngModel);
+        //console.info(ngModel);
         var fromUser = function fromUser(text) {
-          console.info('ere');
+          //console.info('ere');
           if (text.indexOf('now') !== -1) {
             if (!dateMath.isValid(text)) {
               ngModel.$setValidity("error", false);
