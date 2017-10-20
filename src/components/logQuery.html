@@ -1,27 +1,48 @@
 <h3 class="page-heading">
-	查看城市
+	操作日志查询
 </h3>
-
-<div name="form" novalidate>
-	<table>
-		<tr>
-			<td>城市名称:</td><td><input name="cityName" required type="text" ng-model="cityTip.cityName"></td>
-
-		</tr>
-		<tr>
-			<td>拼音:</td><td><input name="cityPingyin"  required type="text" ng-model="cityTip.cityPingyin"></td>
-
-		</tr>
-		<tr>
-			<td>省份:</td><td><input name="province" type="text" ng-model="cityTip.province"></td>
-
-		</tr>
-		<tr>
-			<td>国家:</td><td><input required type="text" ng-model="cityTip.country"></td>
-		</tr>
-		<tr>
-			<td ng-click="ctrl.query()" style="cursor: pointer">查询</td>
-		</tr>
-	</table>
-
-</div>
+<form  class="gf-form-group">
+	<div class="gf-form">
+		<span class="gf-form-label width-10">用户</span>
+		<input type="text" ng-model="cityTip.username"
+			   class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">用户IP</span>
+		<input type="text" ng-model="cityTip.ip"
+			   class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">操作</span>
+		<input type="text" ng-model="cityTip.operation"
+			   class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">操作对象</span>
+		<input type="text" ng-model="cityTip.operateModelName"
+			   class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">开始时间</span>
+		<input type="text" ng-model="startTime" ng-focus="productDate1=!productDate1"
+			   class="gf-form-input max-width-20" input-datetime >
+	</div>
+	<div class="gf-form" ng-if="productDate1">
+		<datepicker ng-model="startTime2" class="gf-timepicker-component"
+					show-weeks="false"  ng-change="ctrl.deviceTipDate1(startTime2)">
+		</datepicker>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">结束时间</span>
+		<input type="text" ng-model="endTime" ng-focus="productDate2=!productDate2"
+			   class="gf-form-input max-width-20" input-datetime >
+	</div>
+	<div class="gf-form" ng-if="productDate2">
+		<datepicker ng-model="endTime2" class="gf-timepicker-component"
+					show-weeks="false" ng-change="ctrl.deviceTipDate2(endTime2)">
+		</datepicker>
+	</div>
+	<div class="gf-form-button-row">
+		<button type="submit" class="btn btn-success" ng-click="ctrl.query()">查询</button>
+	</div>
+</form>
