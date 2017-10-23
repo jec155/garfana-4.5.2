@@ -3,7 +3,7 @@
 System.register([], function (_export, _context) {
     "use strict";
 
-    var _createClass, SiteEditCtrl;
+    var _createClass, SiteAddCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -32,9 +32,9 @@ System.register([], function (_export, _context) {
                 };
             }();
 
-            _export("SiteEditCtrl", SiteEditCtrl = function () {
-                function SiteEditCtrl($scope, $http, $location, $rootScope) {
-                    _classCallCheck(this, SiteEditCtrl);
+            _export("SiteAddCtrl", SiteAddCtrl = function () {
+                function SiteAddCtrl($scope, $http, $location, $rootScope) {
+                    _classCallCheck(this, SiteAddCtrl);
 
                     this.http = $http;
                     this.scope = $scope;
@@ -67,29 +67,29 @@ System.register([], function (_export, _context) {
                     };
                 }
 
-                _createClass(SiteEditCtrl, [{
-                    key: "update",
-                    value: function update() {
+                _createClass(SiteAddCtrl, [{
+                    key: "save",
+                    value: function save() {
                         var cityAuto = {
                             true: 1,
                             false: 0
                         };
                         var loc = this.location;
-                        var cityTip = { "siteid": this.scope.cityModel.id,
+                        var cityTip = {
                             "siteCode": this.scope.cityModel.siteCode,
                             "siteName": this.scope.cityModel.siteName,
                             "siteType": this.scope.cityModel.siteType,
                             "siteMontype": this.scope.cityModel.siteMonType,
-                            "cityId": this.scope.cityModel.cityId,
+                            "cityId": -1,
                             "createTime": this.scope.cityModel.siteCreateTime,
                             "siteLatitude": this.scope.cityModel.siteLatitude,
                             "siteLongitude": this.scope.cityModel.siteLongitude,
                             "autoUpd": cityAuto[this.scope.cityModel.autoUpd],
                             "comment": this.scope.cityModel.comment,
-                            "managerment": this.scope.cityModel.managerment };console.info(cityTip);
+                            "managerment": this.scope.cityModel.managerment };
                         $.ajax({
                             type: 'GET',
-                            url: 'http://61.164.218.158:8080/AirServer/grafana/editSite',
+                            url: 'http://61.164.218.158:8080/AirServer/grafana/addSite',
                             //'http://127.0.0.1:8080/grafana/editCity',
                             data: cityTip,
                             dataType: 'json',
@@ -108,13 +108,13 @@ System.register([], function (_export, _context) {
                     }
                 }]);
 
-                return SiteEditCtrl;
+                return SiteAddCtrl;
             }());
 
-            _export("SiteEditCtrl", SiteEditCtrl);
+            _export("SiteAddCtrl", SiteAddCtrl);
 
-            SiteEditCtrl.templateUrl = 'public/plugins/grafana-management/components/siteEdit.html';
+            SiteAddCtrl.templateUrl = 'public/plugins/grafana-management/components/siteAdd.html';
         }
     };
 });
-//# sourceMappingURL=siteEdit.js.map
+//# sourceMappingURL=siteAdd.js.map

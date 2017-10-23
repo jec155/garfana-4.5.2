@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
 System.register([], function (_export, _context) {
     "use strict";
 
-    var _createClass, SiteStreamPageCtrl;
+    var _createClass, CityListCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -32,53 +32,43 @@ System.register([], function (_export, _context) {
                 };
             }();
 
-            _export("SiteStreamPageCtrl", SiteStreamPageCtrl = function () {
-                function SiteStreamPageCtrl($scope, $http, $location, $rootScope) {
-                    _classCallCheck(this, SiteStreamPageCtrl);
+            _export('CityListCtrl', CityListCtrl = function () {
+                function CityListCtrl($scope, $http, $location, $rootScope) {
+                    _classCallCheck(this, CityListCtrl);
 
                     this.root = $rootScope;
-
                     this.location = $location;
                     this.http = $http;
                     $scope.http = $http;
                     this.selall = false; //全选标志
                     this.checkedItems = [];
-                    $scope.URL = $rootScope.cityListUrl ? $rootScope.cityListUrl : 'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
-                    $scope.pageParams = $rootScope.siteTip ? $rootScope.siteTip : {};
-                    $scope.siteMonTypeMap = {
-                        "1": "空气质量",
-                        "2": "空气污染重点企业",
-                        "3": "饮用水水质",
-                        "4": "污水水质",
-                        "5": "水污染重点企业",
-                        "6": "主要流域重点断面水质"
-                    };
-                    $scope.siteTypeMap = {
-                        "PUBLIC": "公有站点",
-                        "PRIVATE": "私有站点"
-                    };
-                    $scope.statusMap = {
-                        "SITE_NORMAL": "正常",
-                        "SITE_DISABLE": "停用",
-                        "SITE_ERROR": "异常"
+                    $scope.URL = $rootScope.cityListUrl ? $rootScope.cityListUrl : 'http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+                    $scope.pageParams = $rootScope.cityTip ? $rootScope.cityTip : {
+                        cityName: '', cityPingyin: '',
+                        province: '', country: ''
                     };
                 }
 
-                _createClass(SiteStreamPageCtrl, [{
-                    key: "selectAll",
+                _createClass(CityListCtrl, [{
+                    key: 'selectAll',
                     value: function selectAll(all, names) {
                         all ? Object.assign(this.checkedItems, names) : this.checkedItems.splice(0, this.checkedItems.length);
                         //console.info(this.checkedItems);
                     }
                 }, {
-                    key: "updateSelection",
+                    key: 'updateSelection',
                     value: function updateSelection(event, x, ctrl) {
                         var item = event.target;
 
                         item.checked ? ctrl.checkedItems.push(x) : ctrl.checkedItems.splice(x, 1);
                     }
                 }, {
-                    key: "deleteCity",
+                    key: 'absoluteFromChanged',
+                    value: function absoluteFromChanged() {
+                        this.from = moment().utc(this.absolute.fromJs);
+                    }
+                }, {
+                    key: 'deleteCity',
                     value: function deleteCity(item) {
                         if (confirm('确定删除此项?')) {
                             $.ajax({
@@ -98,7 +88,7 @@ System.register([], function (_export, _context) {
                         }
                     }
                 }, {
-                    key: "deleteSelCities",
+                    key: 'deleteSelCities',
                     value: function deleteSelCities() {
                         if (confirm('确定删除选中项目?')) {
                             var ids = [];
@@ -123,22 +113,22 @@ System.register([], function (_export, _context) {
                         }
                     }
                 }, {
-                    key: "setModel",
+                    key: 'setModel',
                     value: function setModel(item) {
                         this.root.cityModel = item;
                     }
                 }, {
-                    key: "link",
+                    key: 'link',
                     value: function link(scope, elem, attrs, ctrl) {}
                 }]);
 
-                return SiteStreamPageCtrl;
+                return CityListCtrl;
             }());
 
-            _export("SiteStreamPageCtrl", SiteStreamPageCtrl);
+            _export('CityListCtrl', CityListCtrl);
 
-            SiteStreamPageCtrl.templateUrl = 'components/siteList.html';
+            CityListCtrl.templateUrl = 'components/cityList.html';
         }
     };
 });
-//# sourceMappingURL=siteList.js.map
+//# sourceMappingURL=cityList.js.map
