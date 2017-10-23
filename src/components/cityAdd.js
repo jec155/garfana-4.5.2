@@ -24,7 +24,6 @@ export class CityAddCtrl
       $.ajax({
           type: 'POST',
           url: 'http://61.164.218.158:8080/AirServer/grafana/addCity',
-              //'http://127.0.0.1:8080/grafana/addCity',
           data: this.scope.cityModel,
           dataType:'json',
           success:function (da)
@@ -36,11 +35,8 @@ export class CityAddCtrl
               console.info(re);
           }
       });
-      /*this.http.post('http://127.0.0.1:8080/grafana/addCity',this.scope.cityModel).then(function (response) {
-          console.info(response);
-      });*/
   }
 }
-CityAddCtrl.templateUrl = 'public/plugins/grafana-example-app/components/cityAdd.html';
+CityAddCtrl.templateUrl = 'public/plugins/grafana-management/components/cityAdd.html';
 
 

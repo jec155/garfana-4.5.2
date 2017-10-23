@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="my-page">
+    <div class="page">
+        <span class="page-list" ng-class="{disabled: pageParams.currentPage == 1}" ng-click="prevPage()">&#171;</span>
+        <span class="page-list" ng-class="{active:item==pageParams.currentPage,borderNone:item=='...'}" ng-click="changeCurrentPage(item)" ng-repeat="item in pageList track by $index">{{item}}</span>
+        <span class="page-list" ng-class="{disabled: pageParams.currentPage == myPage.numberOfPages}" ng-click="nextPage()">&#187;</span>
+    </div>
+    <div class="goPage">
+        <span>第<input type="number" ng-model="myPage.jumpPageNum" ng-value="pageParams.currentPage" ng-keypress="($event.which===13)?jumpToPage():0"/>页</span>
+        <span>每页<select name="" id="" ng-model="pageParams.itemsPerPage" ng-options="option for option in [10,15,25] " ng-change="changeItemsPerPage()"></select>条</span>
+        <span>&nbsp&nbsp&nbsp&nbsp共{{myPage.totalItems}}条</span>
+    </div>
+    <div ng-if="pg.showError">请输入正确页码</div>
+</div>

@@ -3,8 +3,6 @@ export class CitySiteManageCtrl
 {
   constructor($scope,$http,$location,$rootScope) {
       this.root=$rootScope;
-      //this.root.cityModel=$rootScope.cityModel;
-      //console.info(this.root.cityModel);
       this.http = $http;
       this.location = $location;
       $scope.availableSiteID=[];
@@ -15,19 +13,13 @@ export class CitySiteManageCtrl
 
       $http.get('http://61.164.218.158:8080/AirServer/grafana/availableSites').then(function (response) {
           angular.forEach(response.data.data, function(data,index,array){
-            //data等价于array[index]
-              //$scope.availableSites.push({id:data.id,siteName:data.siteName});
               $scope.availableSites[data.id]=data.siteName;
 
           });
-            //console.info($scope.availableSites);
-          //$scope.availableSites=response.data.data;
       });
 
       $http.get('http://61.164.218.158:8080/AirServer/grafana/getSitesByCityID?cityid='+$rootScope.cityModel.id).then(function (response) {
           angular.forEach(response.data.data, function(data,index,array){
-              //data等价于array[index]
-             // $scope.citySites.push({id:data.id,siteName:data.siteName});
               $scope.citySites[data.id]=data.siteName;
           });
           //$scope.citySites=response.data.data;
@@ -102,14 +94,10 @@ export class CitySiteManageCtrl
             this.scope.citySiteID.push(id);
 
         }
-        //if(this.scope.citySiteID.length<=0)
-            //this.scope.citySiteID.push('-1');
-        //console.info(this.root.cityModel.id);
         $.ajax({
             type: 'POST',
             traditional:true,
             url: 'http://61.164.218.158:8080/AirServer/grafana/updateCitySites',
-            //'http://127.0.0.1:8080/grafana/updateCitySites',
             data: {cityid: this.root.cityModel.id,ids:this.scope.citySiteID},
             dataType:'json',
             success:function (da)
@@ -126,6 +114,6 @@ export class CitySiteManageCtrl
     {
     }
 }
-CitySiteManageCtrl.templateUrl = 'public/plugins/grafana-example-app/components/citySiteManage.html';
+CitySiteManageCtrl.templateUrl = 'public/plugins/grafana-management/components/citySiteManage.html';
 
 

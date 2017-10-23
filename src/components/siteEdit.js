@@ -1,13 +1,13 @@
 
-export class SiteAddCtrl
+export class SiteEditCtrl
 {
-  constructor($scope,$http,$location,$rootScope)
+  constructor($scope,$http,$location,$rootScope,contextSrv)
   {
       this.http=$http;
       this.scope=$scope;
       this.location=$location;
       $scope.cityModel=$rootScope.cityModel;
-
+      this.contextSrv=contextSrv;
       $scope.siteMonTypeMap = {
             "1" : "空气质量",
             "2" : "空气污染重点企业",
@@ -34,28 +34,30 @@ export class SiteAddCtrl
         }
 
   }
-  save()
+  update()
   {   
       let cityAuto={
         true : 1,
         false : 0
       }
       var loc=this.location;
-      let cityTip={
+      let cityTip={     "siteid":this.scope.cityModel.id,
                         "siteCode":this.scope.cityModel.siteCode,
                         "siteName":this.scope.cityModel.siteName,
                         "siteType":this.scope.cityModel.siteType,
                         "siteMontype":this.scope.cityModel.siteMonType,
-                        "cityId":-1,
+                        "cityId":this.scope.cityModel.cityId,
                         "createTime":this.scope.cityModel.siteCreateTime,
                         "siteLatitude":this.scope.cityModel.siteLatitude,
                         "siteLongitude":this.scope.cityModel.siteLongitude,
                         "autoUpd":cityAuto[this.scope.cityModel.autoUpd],
                         "comment":this.scope.cityModel.comment,
-                        "managerment":this.scope.cityModel.managerment};
+                        "managerment":this.scope.cityModel.managerment,
+                        "username":this.contextSrv.user.name};
+                        
       $.ajax({
           type: 'GET',
-          url: 'http://61.164.218.158:8080/AirServer/grafana/addSite',
+          url: 'http://61.164.218.158:8080/AirServer/grafana/editSite',
               //'http://127.0.0.1:8080/grafana/editCity',
           data: cityTip,
           dataType:'json',
@@ -74,6 +76,6 @@ export class SiteAddCtrl
       });*/
   }
 }
-SiteAddCtrl.templateUrl = 'public/plugins/grafana-management/components/siteAdd.html';
+SiteEditCtrl.templateUrl = 'public/plugins/grafana-example-app/components/siteEdit.html';
 
 

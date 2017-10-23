@@ -20,7 +20,7 @@
 		</div>
 		<div class="gf-form-inline">
 			<div class="gf-form"><input class="gf-form-input width-20"></div>
-			<div class="gf-form"><img src="public/plugins/grafana-management/components/img/search.png" ></div>
+			<div class="gf-form"><img src="public/plugins/grafana-example-app/components/img/search.png" ></div>
 		</div>
 		<table >
 			<tr>
@@ -50,7 +50,19 @@
 				<td>{{ x.siteCreateTime }}</td>
 			</tr>
 		</table>
-		<pager></pager>
+		<div class="my-page">
+			<div class="page">
+				<span class="page-list" ng-class="{disabled: myPage.currentPage == 1}" ng-click="prevPage()">&#171;</span>
+				<span class="page-list" ng-class="{active:item==myPage.currentPage,borderNone:item=='...'}" ng-click="changeCurrentPage(item)" ng-repeat="item in pageList track by $index">{{item}}</span>
+				<span class="page-list" ng-class="{disabled: myPage.currentPage == myPage.numberOfPages}" ng-click="nextPage()">&#187;</span>
+			</div>
+			<div class="goPage">
+				<span>第<input type="number" ng-model="myPage.jumpPageNum" ng-value="myPage.currentPage" ng-keypress="($event.which===13)?jumpToPage():0"/>页</span>
+				<span>每页<select name="" id="" ng-model="myPage.itemsPerPage" ng-options="option for option in myPage.perPageOptions " ng-change="changeItemsPerPage()"></select>条</span>
+				<span>&nbsp&nbsp&nbsp&nbsp共{{myPage.totalItems}}条</span>
+			</div>
+			<div ng-if="pg.showError">请输入正确页码</div>
+		</div>
 	</div>
 
 
@@ -61,10 +73,8 @@
 
 	<div class="gf-form">
 		<span class="gf-form-label width-10">设备监测类型</span>
-		<select type="text" ng-model="deviceTip.monTypeModel" class="gf-form-input width-10"
-				ng-options="f.name for f in [{id:'MULTI',name:'多功能'},{id:'AIR',name: '空气质量'},{id:'SOUND',name: '噪声'},{id:'WATER',name: '水环境'}]">
-
-		</select>
+		<select type="text" ng-model="deviceTip.monType" class="gf-form-input width-10"
+				ng-options="f for f in ['多功能', '空气质量', '噪声', '水环境']"></select>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">序列号</span>
@@ -76,8 +86,8 @@
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">状态</span>
-		<select type="text" ng-model="deviceTip.statusModel" class="gf-form-input width-10"
-				ng-options="f.name for f in [{id:'NORMAL',name:'正常'}, {id:'STOP',name:'停用'},{id:'EXCEPTION',name: '异常'}]"></select>
+		<select type="text" ng-model="deviceTip.status" class="gf-form-input width-10"
+				ng-options="f for f in [{id:'NORMAL',name:'正常'}, {id:'STOP'name:'停用',{id:'EXCEPTION',name: '异常'}]"></select>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">生产日期起</span>

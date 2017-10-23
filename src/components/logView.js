@@ -8,6 +8,6 @@ export class LogViewCtrl
       $scope.cityModel = $rootScope.cityModel;
   }
 }
-LogViewCtrl.templateUrl = 'public/plugins/grafana-example-app/components/logView.html';
+LogViewCtrl.templateUrl = 'public/plugins/grafana-management/components/logView.html';
 
 

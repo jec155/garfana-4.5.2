@@ -134,6 +134,6 @@ export class SiteCityManageCtrl
 
     }
 }
-SiteCityManageCtrl.templateUrl = 'public/plugins/grafana-example-app/components/siteCityManage.html';
+SiteCityManageCtrl.templateUrl = 'public/plugins/grafana-management/components/siteCityManage.html';
 
 

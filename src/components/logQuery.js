@@ -1,4 +1,4 @@
-import angular from 'angular';
+
 import moment from 'moment';
 export class LogQueryCtrl
 {
@@ -25,12 +25,10 @@ export class LogQueryCtrl
   {   
       this.root.cityTip=this.scope.cityTip;
       this.root.cityListUrl='http://61.164.218.158:8080/AirServer/grafanalogs/searchLogs';
-         // 'http://127.0.0.1:8080/grafana/searchCities';
       history.go(-1);
   }
 }
-LogQueryCtrl.templateUrl = 'public/plugins/grafana-example-app/components/logQuery.html';
-import {inputDateDirective} from './input_date';
-angular.module("grafana.directives").directive('inputDatetime', inputDateDirective);
+LogQueryCtrl.templateUrl = 'public/plugins/grafana-management/components/logQuery.html';
+
 
 

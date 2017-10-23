@@ -32,6 +32,6 @@ export class SiteViewCtrl
         }
   }
 }
-SiteViewCtrl.templateUrl = 'public/plugins/grafana-example-app/components/siteView.html';
+SiteViewCtrl.templateUrl = 'public/plugins/grafana-management/components/siteView.html';
 
 

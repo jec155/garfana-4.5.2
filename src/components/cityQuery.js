@@ -16,10 +16,10 @@ export class CityQueryCtrl
   {
       this.root.cityTip=this.scope.cityTip;
       this.root.cityListUrl='http://61.164.218.158:8080/AirServer/grafana/searchCities';
-         // 'http://127.0.0.1:8080/grafana/searchCities';
+          //'http://127.0.0.1/grafana/searchCities';
       history.go(-1);
   }
 }
-CityQueryCtrl.templateUrl = 'public/plugins/grafana-example-app/components/cityQuery.html';
+CityQueryCtrl.templateUrl = 'public/plugins/grafana-management/components/cityQuery.html';
 
 
