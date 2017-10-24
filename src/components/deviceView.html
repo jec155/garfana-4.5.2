@@ -1,0 +1,180 @@
+<h3 class="page-heading">
+	查询设备
+</h3>
+<form  class="gf-form-group">
+	<div class="gf-form">
+		<span class="gf-form-label width-10">所属站点</span>
+		<input type="text" required ng-model="deviceTip.siteName" ng-focus="siteShow=!siteShow"
+			   class="gf-form-input max-width-20" >
+	</div>
+
+	<div ng-if="siteShow"  name="sitelist" style="border: solid;border-width: 1px; border-color: #333;width: 55%;height:250px;
+		overflow-x: scroll;overflow-y: scroll;padding: 10px">
+		<div class="modal-header">
+			<h2 class="modal-header-title">
+				<span class="p-l-1">选择站点</span>
+			</h2>
+			<a class="modal-header-close" ng-click="dismiss()">
+				<i class="fa fa-remove"></i>
+			</a>
+		</div>
+		<div class="gf-form-inline">
+			<div class="gf-form"><input class="gf-form-input width-20"></div>
+			<div class="gf-form"><img src="public/plugins/grafana-management/components/img/search.png" ></div>
+		</div>
+		<table >
+			<tr>
+				<th  class="pointer" data-stat="min">代码</th>
+				<th  class="pointer" data-stat="max">名称</th>
+				<th  class="pointer" data-stat="max">类型</th>
+				<th  class="pointer" data-stat="max">站点监测类型</th>
+				<th  class="pointer" data-stat="max">省(直辖市)</th>
+				<th  class="pointer" data-stat="max">城市</th>
+				<th  class="pointer" data-stat="max">管理机构</th>
+				<th  class="pointer" data-stat="max">责任人</th>
+				<th  class="pointer" data-stat="max">状态</th>
+				<th  class="pointer" data-stat="max">设立时间</th>
+			</tr>
+			<tr ng-repeat="x in names" style="cursor: pointer;" ng-click="choose(x)" onmouseover="this.style.color='#999'"
+				onmouseout="this.style.color='#333'">
+				<td>{{ $index + 1 }}</td>
+				<td>{{ x.siteCode }}</td>
+				<td>{{ x.siteName }}</td>
+				<td>{{ siteTypeMap[x.siteType] }}</td>
+				<td>{{ siteMonTypeMap[x.siteMonType] }}</td>
+				<td>{{ x.province }}</td>
+				<td>{{ x.cityName }}</td>
+				<td>{{ x.managerment }}</td>
+				<td>{{ x.realName }}</td>
+				<td>{{ statusMap[x.status] }}</td>
+				<td>{{ x.siteCreateTime }}</td>
+			</tr>
+		</table>
+		<pager></pager>
+	</div>
+
+
+	<div class="gf-form">
+		<span class="gf-form-label width-10">名称</span>
+		<input type="text" ng-model="deviceTip.name" class="gf-form-input max-width-20" >
+	</div>
+
+	<div class="gf-form">
+		<span class="gf-form-label width-10">设备监测类型</span>
+		<select type="text" ng-model="deviceTip.monTypeModel" class="gf-form-input width-10"
+				ng-options="f.name for f in [{id:'MULTI',name:'多功能'},{id:'AIR',name: '空气质量'},{id:'SOUND',name: '噪声'},{id:'WATER',name: '水环境'}]">
+
+		</select>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">序列号</span>
+		<input type="text" required ng-model="deviceTip.seqno" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">固件版本</span>
+		<input type="text" required ng-model="deviceTip.firmware" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">状态</span>
+		<select type="text" ng-model="deviceTip.statusModel" class="gf-form-input width-10"
+				ng-options="f.name for f in [{id:'NORMAL',name:'正常'}, {id:'STOP',name:'停用'},{id:'EXCEPTION',name: '异常'}]"></select>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">生产日期起</span>
+		<input id="i1"  type="text" required ng-model="deviceTip.productDate1"
+			   ng-focus="productDate1=!productDate1" class="gf-form-input max-width-20" input-datetime>
+	</div>
+	<div class="gf-form" ng-if="productDate1">
+		<datepicker ng-model="deviceTip.productDate1" class="gf-timepicker-component"
+					show-weeks="false"  ng-change="absoluteFromChangedproductDate1(deviceTip.productDate1)">
+		</datepicker>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">生产日期止</span>
+		<input id="i2"  type="text" required ng-model="deviceTip.productDate2"
+			   ng-focus="productDate2=!productDate2" class="gf-form-input max-width-20" input-datetime>
+	</div>
+	<div class="gf-form" ng-if="productDate2">
+		<datepicker ng-model="deviceTip.productDate2" class="gf-timepicker-component"
+					show-weeks="false" starting-day="ctrl.firstDayOfWeek"
+					ng-change="absoluteFromChangedproductDate2(deviceTip.productDate2)">
+		</datepicker>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">启用日期起</span>
+		<input id="i3"  type="text" required ng-model="deviceTip.useDate1"
+			   ng-focus="useDate1=!useDate1" class="gf-form-input max-width-20" input-datetime>
+	</div>
+	<div class="gf-form" ng-if="useDate1">
+		<datepicker ng-model="deviceTip.useDate1" class="gf-timepicker-component"
+					show-weeks="false" starting-day="ctrl.firstDayOfWeek"
+					ng-change="absoluteFromChangeduseDate1(deviceTip.useDate1)">
+		</datepicker>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">启用日期止</span>
+		<input id="i4"  type="text" required ng-model="deviceTip.useDate2"
+			   ng-focus="useDate2=!useDate2" class="gf-form-input max-width-20" input-datetime>
+	</div>
+	<div class="gf-form" ng-if="useDate2">
+		<datepicker ng-model="deviceTip.useDate2" class="gf-timepicker-component"
+					show-weeks="false" starting-day="ctrl.firstDayOfWeek"
+					ng-change="absoluteFromChangeduseDate2(deviceTip.useDat2)">
+		</datepicker>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">上次检测时间起</span>
+		<input id="i5"  type="text" required ng-model="deviceTip.lastCheckDate1"
+			   ng-focus="lastCheckDate1=!lastCheckDate1" class="gf-form-input max-width-20" input-datetime>
+	</div>
+	<div class="gf-form" ng-if="lastCheckDate1">
+		<datepicker ng-model="deviceTip.lastCheckDate1" class="gf-timepicker-component"
+					show-weeks="false" starting-day="ctrl.firstDayOfWeek"
+					ng-change="absoluteFromChangedlastCheckDate1(deviceTip.lastCheckDate1)">
+		</datepicker>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">上次检测时间止</span>
+		<input id="i6"  type="text" required ng-model="deviceTip.lastCheckDate2"
+			   ng-focus="lastCheckDate2=!lastCheckDate2" class="gf-form-input max-width-20" input-datetime>
+	</div>
+	<div class="gf-form" ng-if="lastCheckDate2">
+		<datepicker ng-model="deviceTip.lastCheckDate2" class="gf-timepicker-component"
+					show-weeks="false" starting-day="ctrl.firstDayOfWeek"
+					ng-change="absoluteFromChangedlastCheckDate2(deviceTip.lastCheckDate2)">
+		</datepicker>
+	</div>
+
+	<div class="gf-form-button-row">
+		<button type="submit" class="btn btn-success" ng-click="ctrl.query()">查询</button>
+	</div>
+</form>
+
+	<!--<table >
+
+		<tr>
+			<td>～:</td><td><input required type="text" ng-model="cityTip.productDate"></td>
+		</tr>
+		<tr>
+			<td>启用日期:</td><td><input required type="text" ng-model="cityTip.useDate"></td>
+		</tr>
+		<tr>
+			<td>～:</td><td><input required type="text" ng-model="cityTip.useDate"></td>
+		</tr>
+		<tr>
+			<td>上次检测时间:</td><td><input required type="text" ng-model="cityTip.lastModifierId"></td>
+		</tr>
+		<tr>
+			<td>～:</td><td><input required type="text" ng-model="cityTip.lastModifierId"></td>
+		</tr>
+		<tr>
+			<td>责任人:</td><td><input required type="text" ng-model="cityTip.checkUserName"></td>
+		</tr>
+		<tr>
+			<td ng-click="ctrl.query()" style="cursor: pointer">查询</td>
+		</tr>
+	</table>-->
+
+
+
+

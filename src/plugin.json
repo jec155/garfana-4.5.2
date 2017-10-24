@@ -42,6 +42,8 @@
     {"type":"page", "name": "设备管理", "component": "DeviceStreamPageCtrl", "role": "Editor","addToNav": true,"defaultNav": true},
     { "type":"page","name": "DeviceAdd", "component": "DeviceAddCtrl", "role": "Viewer","addToNav": false},
     {"type":"page","name": "DeviceQuery", "component": "DeviceQueryCtrl", "role": "Viewer","addToNav": false},
+    { "type":"page","name": "DeviceView", "component": "DeviceAddCtrl", "role": "Viewer","addToNav": false},
+    {"type":"page","name": "DeviceEdit", "component": "DeviceQueryCtrl", "role": "Viewer","addToNav": false},
     {"type":"page", "name": "日志管理", "component": "LogStreamPageCtrl", "role": "Editor","addToNav": true, "defaultNav": true},
     { "type":"page","name": "LogView", "component": "LogViewCtrl", "role": "Viewer","addToNav": false},
     { "type":"page","name": "LogQuery", "component": "LogQueryCtrl", "role": "Viewer","addToNav": false},
