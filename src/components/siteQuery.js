@@ -6,7 +6,7 @@ export class SiteQueryCtrl
       this.scope = $scope;
       this.location = $location;
       this.root=$rootScope;
-      $scope.cityTip={  "siteCode":'',
+      $scope.siteTip={  "siteCode":'',
                         "siteName":'',
                         "siteType":'',
                         "siteMonType":'',
@@ -19,12 +19,12 @@ export class SiteQueryCtrl
 
   query()
   {
-      this.root.cityTip=this.scope.cityTip;
+      this.root.siteTip=this.scope.siteTip;
       this.root.cityListUrl='http://61.164.218.158:8080/AirServer/grafana/searchSitesByPage';
          // 'http://127.0.0.1:8080/grafana/searchCities';
       history.go(-1);
   }
 }
-SiteQueryCtrl.templateUrl = 'public/plugins/grafana-example-app/components/siteQuery.html';
+SiteQueryCtrl.templateUrl = 'components/siteQuery.html';
 
 

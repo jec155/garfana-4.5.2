@@ -7,6 +7,7 @@ import {CitySiteManageCtrl} from './components/citySiteManage';
 import {DeviceStreamPageCtrl} from './components/deviceList';
 import {DeviceAddCtrl} from './components/deviceAdd';
 import {DeviceQueryCtrl} from './components/deviceQuery';
+import {DeviceViewCtrl} from './components/deviceView';
 import {SiteAddCtrl} from './components/siteAdd';
 import {SiteEditCtrl} from './components/siteEdit';
 import {SiteViewCtrl} from './components/siteView';
@@ -43,5 +44,6 @@ export {
     LogStreamPageCtrl,
     LogQueryCtrl,
     LogViewCtrl,
-    DeviceAddCtrl
+    DeviceAddCtrl,
+    DeviceViewCtrl
 };

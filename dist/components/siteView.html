@@ -1,62 +1,68 @@
 <h3 class="page-heading">
 	查看站点
 </h3>
-
-<div name="form" novalidate>
-	<table>
-		<tr>
-			<td>代码:</td><td><input name="siteCode"  required type="text" ng-model="cityModel.siteCode"></td>
-
-		</tr>
-		<tr>
-			<td>名称:</td><td><input name="siteName"  required type="text" ng-model="cityModel.siteName"></td>
-
-		</tr>
-		<tr>
-			<td>类型:</td><td><input name="siteType" type="text" ng-model="siteTypeMap[cityModel.siteType]"></td>
-
-		</tr>
-		<tr>
-			<td>站点监测类型:</td><td><input type="text" ng-model="siteMonTypeMap[cityModel.siteMonType]"></td>
-		</tr>
-		<tr>
-			<td>省(直辖市):</td><td><input name="province" type="text" ng-model="cityModel.province"></td>
-
-		</tr>
-		<tr>
-			<td>城市:</td><td><input name="cityName" type="text" ng-model="cityModel.cityName"></td>
-
-		</tr>
-		<tr>
-			<td>地区类别:</td><td><input name="areaType" type="text" ng-model="areaTypeMap[cityModel.areaType]"></td>
-		</tr>
-		<tr>
-			<td>站点经度:</td><td><input name="siteLongitude" type="text" ng-model="cityModel.siteLongitude"></td>
-		</tr>
-		<tr>
-			<td>站点纬度:</td><td><input type="siteLatitude" ng-model="cityModel.siteLatitude"></td>
-		</tr>
-		<tr>
-			<td>自动更新位置:</td><td><input type="text" ng-model="autoUpdMap[cityModel.autoUpd]"></td>
-		</tr>
-		<tr>
-			<td>状态:</td><td><input type="text" ng-model="statusMap[cityModel.status]"></td>
-		</tr>
-		<tr>
-			<td>设立时间:</td><td><input type="text" ng-model="cityModel.siteCreateTime"></td>
-		</tr>
-		<tr>
-			<td>管理机构:</td><td><input type="text" ng-model="cityModel.managerment"></td>
-		</tr>
-		<tr>
-			<td>责任人:</td><td><input type="text" ng-model="cityModel.realName"></td>
-		</tr>
-		<tr>
-			<td>备注:</td><td><textarea ng-model="cityModel.comment"/></td>
-		</tr>
-		<tr>
-			<td><a href="plugins/grafana-management/page/siteedit" style="cursor: pointer">编辑</a> </td>
-		</tr>
-	</table>
-
-</div>
+<form nam="form" class="gf-form-group" novalidate>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">代码</span>
+		<input name="siteCode" type="text" ng-model="cityModel.siteCode" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">名称</span>
+		<input name="siteName" type="text" ng-model="cityModel.siteName" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">类型</span>
+		<input name="siteType" type="text" ng-model="cityModel.siteType" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">站点监测类型</span>
+		<input name="siteMonType" type="text" ng-model="siteMonTypeMap[cityModel.siteMonType]" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">省(直辖市)</span>
+		<input name="province" type="text" ng-model="cityModel.province" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">城市</span>
+		<input name="cityName" type="text" ng-model="cityModel.cityName" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">地区类别</span>
+		<input name="areaType" type="text" ng-model="areaTypeMap[cityModel.areaType]" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">站点经度</span>
+		<input name="siteLongitude" type="text" ng-model="cityModel.siteLongitude" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">站点纬度</span>
+		<input name="siteLatitude" type="text" ng-model="cityModel.siteLatitude" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">自动更新位置</span>
+		<input name="autoUpd" type="text" ng-model="autoUpdMap[cityModel.autoUpd]" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">状态</span>
+		<input name="status" type="text" ng-model="statusMap[cityModel.status]" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">设立时间</span>
+		<input name="siteCreateTime" type="text" ng-model="cityModel.siteCreateTime" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">管理机构</span>
+		<input name="managerment" type="text" ng-model="cityModel.managerment" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">责任人</span>
+		<input name="realName" type="text" ng-model="cityModel.realName" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">备注</span>
+		<input name="comment" type="text" ng-model="cityModel.comment" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form-button-row">
+		<a href="plugins/grafana-management/page/siteedit" class="btn btn-success" style="cursor: pointer">编辑</a>
+	</div>
+</form>

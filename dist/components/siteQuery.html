@@ -1,29 +1,27 @@
 <h3 class="page-heading">
 	查询站点
 </h3>
+<form  class="gf-form-group">
+	<div class="gf-form">
+		<span class="gf-form-label width-10">代码</span>
+		<input type="text" ng-model="siteTip.siteCode" class="gf-form-input max-width-20" >
+	</div>
 
-<div name="form" novalidate>
-	<table>
-		<tr>
-			<td>代码:</td><td><input name="siteCode" required type="text" ng-model="cityTip.siteCode"></td>
-
-		</tr>
-		<tr>
-			<td>名称:</td><td><input name="siteName"  required type="text" ng-model="cityTip.siteName"></td>
-
-		</tr>
-		<tr>
-			<td>类型:</td><td>
-							  <select name="siteType" type="text" ng-model="cityTip.siteType">
+	<div class="gf-form">
+		<span class="gf-form-label width-10">名称</span>
+		<input type="text" ng-model="siteTip.siteName" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">类型</span>
+		<select type="text" ng-model="siteTip.siteType">
 								  <option value=""></option>
 								  <option value="PUBLIC">公有站点</option>
 								  <option value="PRIVATE">私有站点</option>
 							  </select></td>
-
-		</tr>
-		<tr>
-			<td>站点监测类型:</td><td>
-									<select name="siteMonType" type="text" ng-model="cityTip.siteMonType">
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">站点监测类型</span>
+		<select type="text" ng-model="siteTip.siteMonType">
 										<option value=""></option>
 								  		<option value="1">空气质量</option>
 								  		<option value="2">空气污染重点企业</option>
@@ -32,31 +30,33 @@
 								  		<option value="5">水污染重点企业</option>
 								  		<option value="6">主要流域重点断面水质</option>
 									</select></td>
-		</tr>
-		<tr>
-			<td>省(直辖市):</td><td><input name="provice" type="text" ng-model="cityTip.provice"></td>
-		</tr>
-		<tr>
-			<td>城市:</td><td><input name="city" type="text" ng-model="cityTip.city"></td>
-		</tr>
-		<tr>
-			<td>状态:</td><td>
-								<select name="status" type="text" ng-model="cityTip.status">
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">省(直辖市)</span>
+		<input type="text" ng-model="siteTip.provice" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">城市</span>
+		<input type="text" ng-model="siteTip.city" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">状态</span>
+		<select type="text" ng-model="siteTip.status">
 									<option value=""></option>
 								  	<option value="SITE_NORMAL">正常</option>
 								  	<option value="SITE_DISABLE">停用</option>
 								  	<option value="SITE_ERROR">异常</option>
-								</select></td>
-		</tr>
-		<tr>
-			<td>管理机构:</td><td><input name="dep" type="text" ng-model="cityTip.dep"></td>
-		</tr>
-		<tr>
-			<td>责任人:</td><td><input name="checkMan" type="text" ng-model="cityTip.checkMan"></td>
-		</tr>
-		<tr>
-			<td ng-click="ctrl.query()" style="cursor: pointer">查询</td>
-		</tr>
-	</table>
-
-</div>
+								</select>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">管理机构</span>
+		<input type="text" ng-model="siteTip.dep" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">责任人</span>
+		<input type="text" ng-model="siteTip.checkMan" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form-button-row">
+		<button type="submit" class="btn btn-success" ng-click="ctrl.query()">查询</button>
+	</div>
+</form>

@@ -1,49 +1,58 @@
 <div class="page-header">
 	<h1>新增城市</h1>
 </div>
-
-<form name="form" novalidate>
-	<table>
-		<tr>
-			<td>城市名称*:</td><td><input name="cityName" required type="text" ng-model="cityModel.cityName"></td>
-			<td ng-show=" form.cityName.$invalid" style="background-color: red">城市名必填</td>
-		</tr>
-		<tr>
-			<td>拼音*:</td><td><input name="cityPingyin"  required type="text" ng-model="cityModel.cityPingyin"></td>
-			<td ng-show=" form.cityPingyin.$invalid" style="background-color: red">拼音必填</td>
-		</tr>
-		<tr>
-			<td>省份:</td><td><input name="province" type="text" ng-model="cityModel.province"></td>
-			<td ng-show=" form.province.$invalid" style="background-color: red">省份必填</td>
-		</tr>
-		<tr>
-			<td>国家:</td><td><input required type="text" ng-model="cityModel.country"></td>
-		</tr>
-		<tr>
-			<td>经度*:</td><td><input required name="longitude" type="number" ng-model="cityModel.longitude"></td>
-			<td ng-show=" form.longitude.$invalid" style="background-color: red">经度必填</td>
-		</tr>
-		<tr>
-			<td>纬度*:</td><td><input required name="latitude" type="number" ng-model="cityModel.latitude"></td>
-			<td ng-show=" form.latitude.$invalid" style="background-color: red">纬度必填</td>
-		</tr>
-		<tr>
-			<td>东(城市区域):</td><td><input type="number" ng-model="cityModel.east"></td>
-		</tr>
-		<tr>
-			<td>南(城市区域):</td><td><input type="number" ng-model="cityModel.south"></td>
-		</tr>
-		<tr>
-			<td>西(城市区域):</td><td><input type="number" ng-model="cityModel.west"></td>
-		</tr>
-		<tr>
-			<td>北(城市区域):</td><td><input type="number" ng-model="cityModel.north"></td>
-		</tr>
-		<tr>
-			<td>备注:</td><td><textarea ng-model="cityModel.comment"/></td>
-		</tr>
-	</table>
-	<input type="submit" ng-disabled="form.cityName.$invalid||form.cityPingyin.$invalid||form.province.$invalid
-				||form.longitude.$invalid||form.latitude.$invalid"
-		   ng-click="ctrl.save()">
+<form nam="form" class="gf-form-group" novalidate>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">城市名称*</span>
+		<input name="cityName" type="text" ng-model="cityModel.cityName" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !cityModel.cityName" style="color: red">城市名称必填</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">拼音*</span>
+		<input name="cityPingyin" type="text" ng-model="cityModel.cityPingyin" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !cityModel.cityPingyin" style="color: red">拼音必填</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">省份*</span>
+		<input name="province" type="text" ng-model="cityModel.province" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !cityModel.province" style="color: red">省份必填</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">国家</span>
+		<input name="country" type="text" ng-model="cityModel.country" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">经度*</span>
+		<input name="longitude" type="text" ng-model="cityModel.longitude" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !cityModel.longitude" style="color: red">经度必填</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">纬度*</span>
+		<input name="latitude" type="text" ng-model="cityModel.latitude" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !cityModel.latitude" style="color: red">纬度必填</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">东(城市区域)</span>
+		<input name="east" type="text" ng-model="cityModel.east" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">南(城市区域)</span>
+		<input name="south" type="text" ng-model="cityModel.south" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">西(城市区域)</span>
+		<input name="west" type="text" ng-model="cityModel.west" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">北(城市区域)</span>
+		<input name="north" type="text" ng-model="cityModel.north" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">备注</span>
+		<input name="comment" type="text" ng-model="cityModel.comment" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form-button-row">
+		<button type="submit" class="btn btn-success" ng-disabled="!cityModel.cityName||!cityModel.cityPingyin||!cityModel.province
+				||!cityModel.longitude||!cityModel.latitude" ng-click="ctrl.save()">添加</button>
+	</div>
 </form>

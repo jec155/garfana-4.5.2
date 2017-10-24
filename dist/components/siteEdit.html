@@ -1,67 +1,68 @@
 <h3 class="page-heading">
 	编辑站点
 </h3>
-
-<form name="form" novalidate>
-	<table>
-		<tr>
-			<td>代码:</td><td><input name="siteCode" type="text" ng-model="cityModel.siteCode"></td>
-		</tr>
-		<tr>
-			<td>名称*:</td><td><input name="siteName"  required type="text" ng-model="cityModel.siteName"></td>
-			<td ng-show=" form.siteName.$invalid" style="background-color: red">名称必填</td>
-		</tr>
-		<tr>
-			<td>类型*:</td><td>
-							  <select name="siteType" type="text" ng-model="cityModel.siteType">
+<form nam="form" class="gf-form-group" novalidate>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">代码</span>
+		<input name="siteCode" type="text" ng-model="cityModel.siteCode" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">名称*</span>
+		<input name="siteName" type="text" ng-model="cityModel.siteName" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !cityModel.siteName" style="color: red">名称必填</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">类型*</span>
+		<select name="siteType" type="text" ng-model="cityModel.siteType">
 								  <option value="PUBLIC">公有站点</option>
 								  <option value="PRIVATE">私有站点</option>
-							  </select></td>
-			<td ng-show=" form.siteType.$invalid" style="background-color: red">类型必填</td>
-		</tr>
-		<tr>
-			<td>站点监测类型:</td><td>
-									<select name="siteMonType" type="text" ng-model="cityModel.siteMonType">
+							  </select>
+		<span class="gf-form-label width-10" ng-show="!cityModel.siteType" style="color: red">类型必选</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">站点监测类型</span>
+		<select name="siteMonType" type="text" ng-model="cityModel.siteMonType">
 								  		<option value="1">空气质量</option>
 								  		<option value="2">空气污染重点企业</option>
 								  		<option value="3">饮用水水质</option>
 								  		<option value="4">污水水质</option>
 								  		<option value="5">水污染重点企业</option>
 								  		<option value="6">主要流域重点断面水质</option>
-									</select></td>
-		</tr>
-		<tr>
-			<td>所属城市:</td><td><input name="cityName" type="text" ng-model="cityModel.cityName"></td>
-		</tr>
-		<tr>
-			<td>站点经度*:</td><td><input required name="siteLongitude" type="text" ng-model="cityModel.siteLongitude"></td>
-			<td ng-show=" form.siteLongitude.$invalid" style="background-color: red">站点经度必填</td>
-		</tr>
-		<tr>
-			<td>站点纬度*:</td><td><input required name="siteLatitude" type="text" ng-model="cityModel.siteLatitude"></td>
-			<td ng-show=" form.siteLatitude.$invalid" style="background-color: red">站点纬度必填</td>
-		</tr>
-		<tr>
-			<td>自动更新状态:</td><td><input required name="autoUpd" type="text" ng-model="autoUpdMap[cityModel.autoUpd]"></td>
-		</tr>
-		<tr>
-			<td>状态:</td><td>
-							  <select name="status" type="text" ng-model="cityModel.status">
-								  <option value="SITE_NORMAL">正常</option>
-								  <option value="SITE_DISABLE">停用</option>
-							  </select></td>
-		</tr>
-		<tr>
-			<td>管理机构:</td><td><input name="managerment" type="text" ng-model="cityModel.managerment"></td>
-		</tr>
-		<tr>
-			<td>责任人:</td><td><input name="realName" type="text" ng-model="cityModel.realName"></td>
-		</tr>
-		<tr>
-			<td>备注:</td><td><textarea name="comment" ng-model="cityModel.comment"/></td>
-		</tr>
-	</table>
-	<input type="submit" ng-disabled="form.siteName.$invalid||form.siteType.$invalid||form.siteLongitude.$invalid
-				||form.siteLatitude.$invalid"
-		   ng-click="ctrl.update()">
+									</select>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">所属城市</span>
+		<input name="cityName" type="text" ng-model="cityModel.cityName" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">站点经度*</span>
+		<input name="siteLongitude" type="text" ng-model="cityModel.siteLongitude" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !cityModel.siteLongitude" style="color: red">经度必填</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">站点纬度*</span>
+		<input name="siteLatitude" type="text" ng-model="cityModel.siteLatitude" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !cityModel.siteLatitude" style="color: red">纬度必填</span>
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">自动更新状态*</span>
+		<input name="autoUpd" type="text" ng-model="autoUpdMap[cityModel.autoUpd]" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show="!cityModel.autoUpd" style="color: red">自动更新必选</span>
+	</div>
+
+	<div class="gf-form">
+		<span class="gf-form-label width-10">管理机构</span>
+		<input name="managerment" type="text" ng-model="cityModel.managerment" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form" ng-if="productDate1">
+		<span class="gf-form-label width-10">责任人</span>
+		<input name="realName" type="text" ng-model="cityModel.realName" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form">
+		<span class="gf-form-label width-10">备注</span>
+		<input name="comment" type="text" ng-model="cityModel.comment" class="gf-form-input max-width-20" >
+	</div>
+	<div class="gf-form-button-row">
+		<button type="submit" class="btn btn-success" ng-disabled="!cityModel.siteName||!cityModel.siteType||!cityModel.siteLongitude||!cityModel.siteLatitude||!cityModel.autoUpd" ng-click="ctrl.update()">确定</button>
+	</div>
 </form>

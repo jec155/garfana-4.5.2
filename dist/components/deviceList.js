@@ -45,7 +45,7 @@ System.register([], function (_export, _context) {
                     this.checkedItems = [];
                     $scope.URL = $rootScope.searchDeviceURL ? $rootScope.searchDeviceURL : 'http://61.164.218.158:8080/AirServer/grafana/deivceListByPage';
                     $scope.pageParams = $rootScope.deviceTip ? $rootScope.deviceTip : {};
-                    $scope.siteMap = {
+                    $scope.monTypeMap = {
                         'AIR': '空气质量',
                         'WATER': '水环境',
                         'MULTI': '多功能'

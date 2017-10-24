@@ -2,6 +2,7 @@
 export class CityViewCtrl
 {
   constructor($scope,$http,$location,$rootScope) {
+  	
       this.http = $http;
       this.scope = $scope;
       this.location = $location;

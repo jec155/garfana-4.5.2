@@ -15,7 +15,7 @@ export class DeviceStreamPageCtrl
         $scope.pageParams=$rootScope.deviceTip?$rootScope.deviceTip:{
 
         };
-        $scope.siteMap = {
+        $scope.monTypeMap = {
                         'AIR':'空气质量',
                         'WATER':'水环境',
                         'MULTI':'多功能'
