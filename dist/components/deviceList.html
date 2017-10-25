@@ -26,15 +26,15 @@
 				<td>{{ x.seqno }}</td>
 				<td>{{ x.firmware }}</td>
 				<td>{{ x.siteName }}</td>
-				<td>{{ x.status }}</td>
+				<td>{{statusMap[ x.status] }}</td>
 				<td>{{ x.productDate }}</td>
 				<td>{{ x.useDate }}</td>
-				<td>{{ x.lastModifierId }}</td>
+				<td>{{ x.lastCheckDate }}</td>
 				<td>{{ x.checkUserName }}</td>
 				<td style="cursor:pointer"><img src="public/plugins/grafana-management/components/img/view.png"/>
 					<a href="plugins/grafana-management/page/deviceview" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 查看</a></td>
 				<td style="cursor:pointer" ><img src="public/plugins/grafana-management/components/img/edit.png"/>
-					<a href="plugins/grafana-management/page/cityedit" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 编辑</a></td>
+					<a href="plugins/grafana-management/page/deviceedit" style="cursor: pointer" ng-click="ctrl.setModel(x)"> 编辑</a></td>
 				<td style="cursor:pointer" ng-click="ctrl.deleteDevice(x)"><img src="public/plugins/grafana-management/components/img/delete.gif"/>删除</td>
 
 			</tr>

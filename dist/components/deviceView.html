@@ -5,54 +5,55 @@
 <form nam="form" class="gf-form-group" novalidate>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">名称</span>
-		<input name="name" type="text" ng-model="cityModel.name" class="gf-form-input max-width-20" >
+		<input name="name" type="text" ng-model="deviceTip.name" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">设备监测类型</span>
-		<input name="monType" type="text" ng-model="monTypeMap[cityModel.monType]" class="gf-form-input max-width-20" >
+		<input name="monType" type="text" ng-model="monTypeMap[deviceTip.monType]" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">状态</span>
-		<input name="status" type="text" ng-model="cityModel.status" class="gf-form-input max-width-20" >
+		<select name="status" type="text" ng-model="deviceTip.status" class="gf-form-input max-width-20" disabled
+					ng-options="f.id as f.name for f in [{id:'NORMAL',name:'正常'}, {id:'STOP',name:'停用'},{id:'EXCEPTION',name: '异常'}]"/>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">经度</span>
-		<input name="longitude" type="text" ng-model="cityModel.longitude" class="gf-form-input max-width-20" >
+		<input name="longitude" type="text" ng-model="deviceTip.longitude" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">纬度</span>
-		<input name="latitude" type="text" ng-model="cityModel.latitude" class="gf-form-input max-width-20" >
+		<input name="latitude" type="text" ng-model="deviceTip.latitude" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">所属站点</span>
-		<input name="siteName" type="text" ng-model="cityModel.siteName" class="gf-form-input max-width-20" >
+		<input name="siteName" type="text" ng-model="deviceTip.siteName" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">序列号</span>
-		<input type="text" ng-model="cityModel.seqno" class="gf-form-input max-width-20" >
+		<input type="text" ng-model="deviceTip.seqno" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">固件版本</span>
-		<input type="text" required ng-model="cityModel.firmware" class="gf-form-input max-width-20" >
+		<input type="text" required ng-model="deviceTip.firmware" class="gf-form-input max-width-20" disabled>
 	</div>
 
 	<div class="gf-form">
 		<span class="gf-form-label width-10">生产日期</span>
-		<input name="productDate" type="text" ng-model="cityModel.productDate" class="gf-form-input max-width-20" >
+		<input name="productDate" type="text" ng-model="deviceTip.productDate1" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">启用日期</span>
-		<input name="useDate" type="text" ng-model="cityModel.useDate" class="gf-form-input max-width-20" >
+		<input name="useDate" type="text" ng-model="deviceTip.useDate1" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">上次检测时间</span>
-		<input name="lastModifierId" type="text" ng-model="cityModel.lastModifierId" class="gf-form-input max-width-20" >
+		<input name="lastModifierId" type="text" ng-model="deviceTip.lastCheckDate1" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">责任人</span>
-		<input name="checkUserName" type="text" ng-model="cityModel.checkUserName" class="gf-form-input max-width-20" >
+		<input name="checkUserName" type="text" ng-model="deviceTip.checkUserName" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form-button-row">
-		<a href="plugins/grafana-management/page/deviceedit" class="btn btn-success" style="cursor: pointer">编辑</a>
+		<a href="" ng-click="toEdit()" class="btn btn-success" style="cursor: pointer">编辑</a>
 	</div>
 </form>

@@ -65,6 +65,20 @@ System.register([], function (_export, _context) {
                         true: "是",
                         false: "否"
                     };
+
+                    $scope.pageParams = {};
+                    $scope.http = $http;
+                    $scope.URL = 'http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+
+                    $scope.dismiss = function () {
+                        $scope.showCityList = !$scope.showCityList;
+                    };
+                    $scope.choose = function (item) {
+                        //console.info(item);
+                        $scope.deviceTip.siteId = item.id;
+                        $scope.deviceTip.siteName = item.siteName;
+                        $scope.showCityList = !$scope.showCityList;
+                    };
                 }
 
                 _createClass(SiteAddCtrl, [{

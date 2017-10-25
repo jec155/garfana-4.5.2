@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./components/cityList', './components/cityView', './components/cityAdd', './components/cityEdit', './components/cityQuery', './components/citySiteManage', './components/deviceList', './components/deviceAdd', './components/deviceQuery', './components/deviceView', './components/siteAdd', './components/siteEdit', './components/siteView', './components/siteList', './components/siteQuery', './components/siteCityManage', './components/logList', './components/logQuery', './components/logView', './components/common/custom.css!', 'angular', './components/common/pager', './components/common/input_date'], function (_export, _context) {
+System.register(['./components/cityList', './components/cityView', './components/cityAdd', './components/cityEdit', './components/cityQuery', './components/citySiteManage', './components/deviceList', './components/deviceAdd', './components/deviceQuery', './components/deviceEdit', './components/deviceView', './components/siteAdd', './components/siteEdit', './components/siteView', './components/siteList', './components/siteQuery', './components/siteCityManage', './components/logList', './components/logQuery', './components/logView', './components/common/custom.css!', 'angular', './components/common/pager', './components/common/input_date'], function (_export, _context) {
     "use strict";
 
-    var CityListCtrl, CityViewCtrl, CityAddCtrl, CityEditCtrl, CityQueryCtrl, CitySiteManageCtrl, DeviceStreamPageCtrl, DeviceAddCtrl, DeviceQueryCtrl, DeviceViewCtrl, SiteAddCtrl, SiteEditCtrl, SiteViewCtrl, SiteStreamPageCtrl, SiteQueryCtrl, SiteCityManageCtrl, LogStreamPageCtrl, LogQueryCtrl, LogViewCtrl, angular, pageDirective, inputDateDirective;
+    var CityListCtrl, CityViewCtrl, CityAddCtrl, CityEditCtrl, CityQueryCtrl, CitySiteManageCtrl, DeviceStreamPageCtrl, DeviceAddCtrl, DeviceQueryCtrl, DeviceEditCtrl, DeviceViewCtrl, SiteAddCtrl, SiteEditCtrl, SiteViewCtrl, SiteStreamPageCtrl, SiteQueryCtrl, SiteCityManageCtrl, LogStreamPageCtrl, LogQueryCtrl, LogViewCtrl, angular, pageDirective, inputDateDirective;
     return {
         setters: [function (_componentsCityList) {
             CityListCtrl = _componentsCityList.CityListCtrl;
@@ -23,6 +23,8 @@ System.register(['./components/cityList', './components/cityView', './components
             DeviceAddCtrl = _componentsDeviceAdd.DeviceAddCtrl;
         }, function (_componentsDeviceQuery) {
             DeviceQueryCtrl = _componentsDeviceQuery.DeviceQueryCtrl;
+        }, function (_componentsDeviceEdit) {
+            DeviceEditCtrl = _componentsDeviceEdit.DeviceEditCtrl;
         }, function (_componentsDeviceView) {
             DeviceViewCtrl = _componentsDeviceView.DeviceViewCtrl;
         }, function (_componentsSiteAdd) {
@@ -70,6 +72,8 @@ System.register(['./components/cityList', './components/cityView', './components
             _export('DeviceStreamPageCtrl', DeviceStreamPageCtrl);
 
             _export('DeviceQueryCtrl', DeviceQueryCtrl);
+
+            _export('DeviceEditCtrl', DeviceEditCtrl);
 
             _export('SiteAddCtrl', SiteAddCtrl);
 

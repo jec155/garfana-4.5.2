@@ -35,7 +35,7 @@ System.register(['moment'], function (_export, _context) {
             }();
 
             _export('DeviceEditCtrl', DeviceEditCtrl = function () {
-                function DeviceEditCtrl($scope, $http, $location) {
+                function DeviceEditCtrl($scope, $http, $rootScope) {
                     _classCallCheck(this, DeviceEditCtrl);
 
                     this.scope = $scope;
@@ -43,6 +43,7 @@ System.register(['moment'], function (_export, _context) {
                         siteName: '', siteId: '-1', name: '', monType: '', seqno: '', firmware: '', status: '', statusModel: {}, productDate1: '', productDate2: '',
                         useDate1: '', useDate2: '', lastCheckDate1: '', lastCheckDate2: '', monTypeModel: {}, comment: ''
                     }; //提交的参数
+                    this.scope.deviceTip = $rootScope.deviceTip;
 
                     $scope.http = $http;
                     $scope.URL = 'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
@@ -78,14 +79,12 @@ System.register(['moment'], function (_export, _context) {
                         this.scope.deviceTip.productDate1 = document.getElementById("i1").value;
                         this.scope.deviceTip.useDate1 = document.getElementById("i3").value;
                         this.scope.deviceTip.lastCheckDate1 = document.getElementById("i5").value;
-                        this.scope.deviceTip.status = this.scope.deviceTip.statusModel.id ? this.scope.deviceTip.statusModel.id : '';
-                        this.scope.deviceTip.monType = this.scope.deviceTip.monTypeModel.id ? this.scope.deviceTip.monTypeModel.id : '';
 
                         console.info(this.scope.deviceTip);
                         $.ajax({
                             type: 'POST',
-                            url: //'http://61.164.218.158:8080/AirServer/grafana/addDevice',
-                            'http://127.0.0.1:8080/grafana/addDevice',
+                            url: 'http://61.164.218.158:8080/AirServer/grafana/editDevice',
+                            //'http://127.0.0.1:8080/grafana/editDevice',
                             data: this.scope.deviceTip,
                             dataType: 'json',
                             success: function success(da) {
@@ -93,7 +92,7 @@ System.register(['moment'], function (_export, _context) {
                                 alert('添加成功');
                             },
                             error: function error(re) {
-                                console.info(re);
+                                console.info(re.responseText);
                             }
                         });
                     }
@@ -104,7 +103,7 @@ System.register(['moment'], function (_export, _context) {
 
             _export('DeviceEditCtrl', DeviceEditCtrl);
 
-            DeviceEditCtrl.templateUrl = 'public/plugins/grafana-management/components/deviceEditCtrl.html';
+            DeviceEditCtrl.templateUrl = 'public/plugins/grafana-management/components/deviceEdit.html';
         }
     };
 });

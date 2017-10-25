@@ -20,11 +20,15 @@ System.register([], function (_export, _context) {
                 this.http = $http;
                 this.scope = $scope;
                 this.location = $location;
-                $scope.cityModel = $rootScope.cityModel;
+                $scope.deviceTip = $rootScope.deviceTip;
                 $scope.monTypeMap = {
                     'AIR': '空气质量',
                     'WATER': '水环境',
                     'MULTI': '多功能'
+
+                    //console.info($scope.deviceTip);
+                };$scope.toEdit = function () {
+                    $location.path('plugins/grafana-management/page/deviceedit').replace();
                 };
             });
 

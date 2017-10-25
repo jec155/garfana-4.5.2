@@ -37,18 +37,23 @@ System.register([], function (_export, _context) {
                     _classCallCheck(this, DeviceStreamPageCtrl);
 
                     this.root = $rootScope;
-
                     this.location = $location;
                     this.http = $http;
                     $scope.http = $http;
                     this.selall = false; //全选标志
                     this.checkedItems = [];
-                    $scope.URL = $rootScope.searchDeviceURL ? $rootScope.searchDeviceURL : 'http://61.164.218.158:8080/AirServer/grafana/deivceListByPage';
+                    $scope.URL = $rootScope.searchDeviceURL ? $rootScope.searchDeviceURL : 'http://61.164.218.158:8080/AirServer/grafana/deviceListByPage';
+                    //'http://127.0.0.1:8080/grafana/deviceListByPage';
                     $scope.pageParams = $rootScope.deviceTip ? $rootScope.deviceTip : {};
                     $scope.monTypeMap = {
                         'AIR': '空气质量',
                         'WATER': '水环境',
                         'MULTI': '多功能'
+                    };
+                    $scope.statusMap = {
+                        'NORMAL': '正常',
+                        'STOP': '停用',
+                        'EXCEPTION': '异常'
                     };
                 }
 
@@ -115,7 +120,10 @@ System.register([], function (_export, _context) {
                 }, {
                     key: 'setModel',
                     value: function setModel(item) {
-                        this.root.cityModel = item;
+                        this.root.deviceTip = item;
+                        this.root.deviceTip.useDate1 = item.useDate;
+                        this.root.deviceTip.productDate1 = item.productDate;
+                        this.root.deviceTip.lastCheckDate1 = item.lastCheckDate;
                     }
                 }, {
                     key: 'link',

@@ -1,6 +1,6 @@
 
 <div class="page-header">
-	<h1>添加设备</h1>
+	<h1>编辑设备</h1>
 </div>
 <form nam="form" class="gf-form-group" novalidate>
 	<div class="gf-form">
@@ -10,17 +10,17 @@
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">设备监测类型*</span>
-		<select type="text" ng-model="deviceTip.monTypeModel" class="gf-form-input width-10"
-				ng-options="f.name for f in [{id:'MULTI',name:'多功能'},{id:'AIR',name: '空气质量'},{id:'SOUND',name: '噪声'},{id:'WATER',name: '水环境'}]">
+		<select id="monType" type="text" ng-model="deviceTip.monType" class="gf-form-input width-10"
+				ng-options="f.id as f.name for f in [{id:'MULTI',name:'多功能'},{id:'AIR',name: '空气质量'},{id:'SOUND',name: '噪声'},{id:'WATER',name: '水环境'}]">
 
 		</select>
-		<span class="gf-form-label width-10" ng-show=" !deviceTip.monTypeModel" style="color: red">类型必选</span>
+		<span class="gf-form-label width-10" ng-show=" !deviceTip.monType" style="color: red">类型必选</span>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">状态*</span>
-		<select type="text" ng-model="deviceTip.statusModel" class="gf-form-input width-10"
-				ng-options="f.name for f in [{id:'NORMAL',name:'正常'}, {id:'STOP',name:'停用'},{id:'EXCEPTION',name: '异常'}]"></select>
-		<span class="gf-form-label width-10" ng-show=" !deviceTip.statusModel" style="color: red">状态必选</span>
+		<select type="text" ng-model="deviceTip.status" class="gf-form-input width-10"
+				ng-options="f.id as f.name for f in [{id:'NORMAL',name:'正常'}, {id:'STOP',name:'停用'},{id:'EXCEPTION',name: '异常'}]"></select>
+		<span class="gf-form-label width-10" ng-show=" !deviceTip.status" style="color: red">状态必选</span>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">经度*</span>
@@ -129,8 +129,8 @@
 		<input   type="text" required ng-model="deviceTip.comment"  class="gf-form-input max-width-20" >
 	</div>
 	<div class="gf-form-button-row">
-		<button type="submit" class="btn btn-success" ng-disabled="!deviceTip.name||!deviceTip.monTypeModel||!deviceTip.statusModel
-		||!deviceTip.longitude||!deviceTip.latitude" ng-click="ctrl.save()">添加</button>
+		<button type="submit" class="btn btn-success" ng-disabled="!deviceTip.name||!deviceTip.monType||!deviceTip.status
+		||!deviceTip.longitude||!deviceTip.latitude" ng-click="ctrl.save()">提交</button>
 	</div>
 </form>
 

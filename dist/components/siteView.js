@@ -45,6 +45,9 @@ System.register([], function (_export, _context) {
                     true: "是",
                     false: "否"
                 };
+                $scope.toEdit = function () {
+                    $location.path('plugins/grafana-management/page/siteedit').replace();
+                };
             });
 
             _export("SiteViewCtrl", SiteViewCtrl);
