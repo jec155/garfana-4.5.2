@@ -1,6 +1,6 @@
-<h3 class="page-heading">
-	新增站点
-</h3>
+<div class="page-header">
+	<h1>新增站点</h1>
+</div>
 <form nam="form" class="gf-form-group" novalidate>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">代码</span>
@@ -32,7 +32,51 @@
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">所属城市</span>
-		<input name="cityName" type="text" ng-model="cityModel.cityName" class="gf-form-input max-width-20" >
+		<input name="cityName" type="text" ng-model="cityModel.cityName" class="gf-form-input max-width-20"
+			   ng-click="showCityList=!showCityList">
+	</div>
+	<div  ng-if="showCityList" style="border: solid;border-width: 1px; border-color: #333;width: 55%;height:250px;
+		overflow-x: scroll;overflow-y: scroll;padding: 10px">
+		<div class="modal-header">
+			<h2 class="modal-header-title">
+				<span class="p-l-1">选择站点</span>
+			</h2>
+			<a class="modal-header-close" ng-click="dismiss()">
+				<i class="fa fa-remove"></i>
+			</a>
+		</div>
+		<table >
+			<tr>
+				<th  class="pointer" data-stat="min"></th>
+				<th  class="pointer" data-stat="min">名称</th>
+				<th  class="pointer" data-stat="max">拼音</th>
+				<th  class="pointer" data-stat="max">省份</th>
+				<th  class="pointer" data-stat="max">国家</th>
+				<th  class="pointer" data-stat="max">经度</th>
+				<th  class="pointer" data-stat="max">纬度</th>
+				<th  class="pointer" data-stat="max">东(城市区域)</th>
+				<th  class="pointer" data-stat="max">南(城市区域)</th>
+				<th  class="pointer" data-stat="max">西(城市区域)</th>
+				<th  class="pointer" data-stat="max">北(城市区域)</th>
+				<th  class="pointer" data-stat="max">备注</th>
+			</tr>
+			<tr ng-repeat="x in names" style="cursor: pointer" onmouseover="this.style.color='#999'"
+				onmouseout="this.style.color='#333'" ng-click="choose()">
+				<td>{{ $index + 1 }}</td>
+				<td>{{ x.cityName }}</td>
+				<td>{{ x.cityPingyin }}</td>
+				<td>{{ x.province }}</td>
+				<td>{{ x.country }}</td>
+				<td>{{ x.longitude }}</td>
+				<td>{{ x.latitude }}</td>
+				<td>{{ x.east }}</td>
+				<td>{{ x.south }}</td>
+				<td>{{ x.west }}</td>
+				<td>{{ x.north }}</td>
+				<td>{{ x.comment }}</td>
+			</tr>
+		</table>
+		<pager></pager>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">站点经度*</span>

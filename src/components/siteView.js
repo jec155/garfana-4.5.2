@@ -29,7 +29,10 @@ export class SiteViewCtrl
         $scope.autoUpdMap = {
             true : "是",
             false : "否"
-        }
+        };
+      $scope.toEdit=function () {
+          $location.path('plugins/grafana-management/page/siteedit').replace();
+      }
   }
 }
 SiteViewCtrl.templateUrl = 'public/plugins/grafana-management/components/siteView.html';
