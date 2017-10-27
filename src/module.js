@@ -18,6 +18,7 @@ import {SiteCityManageCtrl} from './components/siteCityManage';
 import {LogStreamPageCtrl} from './components/logList';
 import {LogQueryCtrl} from './components/logQuery';
 import {LogViewCtrl} from './components/logView';
+import {ManagementAppConfigCtrl} from './components/config/config';
 
 import './components/common/custom.css!';
 import angular from 'angular';
@@ -47,5 +48,6 @@ export {
     LogQueryCtrl,
     LogViewCtrl,
     DeviceAddCtrl,
-    DeviceViewCtrl
+    DeviceViewCtrl,
+    ManagementAppConfigCtrl as ConfigCtrl
 };
