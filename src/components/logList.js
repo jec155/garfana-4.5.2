@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 import {coreModule, appEvents} from  'app/core/core';
 export class LogStreamPageCtrl
 {
@@ -39,7 +39,7 @@ export class LogStreamPageCtrl
         {
             $.ajax({
                 type: 'POST',
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
+                url: baseURL+'deleteCityByID',
                 //'http://127.0.0.1:8080/grafana/addCity',
                 data: {id:item.id},
                 dataType:'json',
@@ -68,8 +68,7 @@ export class LogStreamPageCtrl
             $.ajax({
                 type: 'POST',
                 traditional: true,
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelCities',
-               // 'http://127.0.0.1:8080/grafana/deleteSelCities',
+                url: baseURL+'deleteSelCities',
                 data: {ids:ids},
                 success:function (da)
                 {

@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['moment'], function (_export, _context) {
+System.register(['moment', './common/constVal'], function (_export, _context) {
     "use strict";
 
-    var moment, _createClass, DeviceAddCtrl;
+    var moment, baseURL, _createClass, DeviceAddCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -14,6 +14,8 @@ System.register(['moment'], function (_export, _context) {
     return {
         setters: [function (_moment) {
             moment = _moment.default;
+        }, function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
         }],
         execute: function () {
             _createClass = function () {
@@ -45,7 +47,7 @@ System.register(['moment'], function (_export, _context) {
                     }; //提交的参数
 
                     $scope.http = $http;
-                    $scope.URL = 'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
+                    $scope.URL = baseURL + 'siteListByPage';
                     $scope.pageParams = {};
 
                     $scope.dismiss = function () {
@@ -81,11 +83,9 @@ System.register(['moment'], function (_export, _context) {
                         this.scope.deviceTip.status = this.scope.deviceTip.statusModel.id ? this.scope.deviceTip.statusModel.id : '';
                         this.scope.deviceTip.monType = this.scope.deviceTip.monTypeModel.id ? this.scope.deviceTip.monTypeModel.id : '';
 
-                        console.info(this.scope.deviceTip);
                         $.ajax({
                             type: 'POST',
-                            url: //'http://61.164.218.158:8080/AirServer/grafana/addDevice',
-                            'http://127.0.0.1:8080/grafana/addDevice',
+                            url: baseURL + 'addDevice',
                             data: this.scope.deviceTip,
                             dataType: 'json',
                             success: function success(da) {

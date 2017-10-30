@@ -1,3 +1,4 @@
+import {baseURL} from "./common/constVal";
 
 export class CityAddCtrl
 {
@@ -23,7 +24,7 @@ export class CityAddCtrl
       var loc=this.location;
       $.ajax({
           type: 'POST',
-          url: 'http://61.164.218.158:8080/AirServer/grafana/addCity',
+          url: baseURL+'addCity',
           data: this.scope.cityModel,
           dataType:'json',
           success:function (da)

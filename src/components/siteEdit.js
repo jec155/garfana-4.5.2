@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 export class SiteEditCtrl
 {
   constructor($scope,$http,$location,$rootScope)
@@ -6,8 +6,9 @@ export class SiteEditCtrl
       this.http=$http;
       this.scope=$scope;
       this.location=$location;
-      $scope.cityModel=$rootScope.cityModel;
-
+      $scope.siteModel=$rootScope.cityModel;
+      //$scope.siteModel.autoUpd=0;
+      //console.info($scope.siteModel);
       $scope.siteMonTypeMap = {
             "1" : "空气质量",
             "2" : "空气污染重点企业",
@@ -28,36 +29,31 @@ export class SiteEditCtrl
         $scope.areaTypeMap = {
             "TWO" : "适用于居住、商业、工业混杂区"
         }
-        $scope.autoUpdMap = {
-            true : "是",
-            false : "否"
-        }
+
+      $scope.pageParams={};
+      $scope.http=$http;
+      $scope.URL='http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+
+      $scope.dismiss=function () {
+          $scope.showCityList=!$scope.showCityList;
+
+      };
+      $scope.choose=function (item) {
+          //console.info(item);
+          $scope.siteModel.cityId=item.id;
+          $scope.siteModel.cityName=item.cityName;
+          $scope.showCityList=!$scope.showCityList;
+      };
 
   }
   update()
-  {   
-      let cityAuto={
-        true : 1,
-        false : 0
-      }
-      var loc=this.location;
-      let cityTip={     "siteid":this.scope.cityModel.id,
-                        "siteCode":this.scope.cityModel.siteCode,
-                        "siteName":this.scope.cityModel.siteName,
-                        "siteType":this.scope.cityModel.siteType,
-                        "siteMontype":this.scope.cityModel.siteMonType,
-                        "cityId":this.scope.cityModel.cityId,
-                        "createTime":this.scope.cityModel.siteCreateTime,
-                        "siteLatitude":this.scope.cityModel.siteLatitude,
-                        "siteLongitude":this.scope.cityModel.siteLongitude,
-                        "autoUpd":cityAuto[this.scope.cityModel.autoUpd],
-                        "comment":this.scope.cityModel.comment,
-                        "managerment":this.scope.cityModel.managerment};console.info(cityTip);
+  {
+      //console.info(this.scope.siteModel)
       $.ajax({
           type: 'GET',
-          url: 'http://61.164.218.158:8080/AirServer/grafana/editSite',
+          url: baseURL+'editSite',
               //'http://127.0.0.1:8080/grafana/editCity',
-          data: cityTip,
+          data: this.scope.siteModel,
           dataType:'json',
           success:function (da)
           {
@@ -69,9 +65,6 @@ export class SiteEditCtrl
               console.info(re);
           }
       });
-      /*this.http.post('http://127.0.0.1:8080/grafana/addCity',this.scope.cityModel).then(function (response) {
-          console.info(response);
-      });*/
   }
 }
 SiteEditCtrl.templateUrl = 'public/plugins/grafana-management/components/siteEdit.html';

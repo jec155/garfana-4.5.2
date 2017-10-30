@@ -38,7 +38,7 @@
     { "type":"page","name": "SiteView", "component": "SiteViewCtrl", "role": "Viewer","addToNav": false},
     { "type":"page","name": "SiteEdit", "component": "SiteEditCtrl", "role": "Viewer","addToNav": false},
     { "type":"page","name": "SiteQuery", "component": "SiteQueryCtrl", "role": "Viewer","addToNav": false},
-    { "type":"page","name": "SiteCityManage", "component": "SiteCityManageCtrl", "role": "Viewer","addToNav": false},
+    { "type":"page","name": "SiteDeviceManage", "component": "SiteDeviceManageCtrl", "role": "Viewer","addToNav": false},
     {"type":"page", "name": "设备管理", "component": "DeviceStreamPageCtrl", "role": "Editor","addToNav": true},
     { "type":"page","name": "DeviceAdd", "component": "DeviceAddCtrl", "role": "Viewer","addToNav": false},
     {"type":"page","name": "DeviceQuery", "component": "DeviceQueryCtrl", "role": "Viewer","addToNav": false},

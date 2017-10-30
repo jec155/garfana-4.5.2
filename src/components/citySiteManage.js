@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 export class CitySiteManageCtrl
 {
   constructor($scope,$http,$location,$rootScope) {
@@ -11,14 +11,14 @@ export class CitySiteManageCtrl
       $scope.citySites={};
       this.scope=$scope;
 
-      $http.get('http://61.164.218.158:8080/AirServer/grafana/availableSites').then(function (response) {
+      $http.get(baseURL+'availableSites').then(function (response) {
           angular.forEach(response.data.data, function(data,index,array){
               $scope.availableSites[data.id]=data.siteName;
 
           });
       });
 
-      $http.get('http://61.164.218.158:8080/AirServer/grafana/getSitesByCityID?cityid='+$rootScope.cityModel.id).then(function (response) {
+      $http.get(baseURL+'getSitesByCityID?cityid='+$rootScope.cityModel.id).then(function (response) {
           angular.forEach(response.data.data, function(data,index,array){
               $scope.citySites[data.id]=data.siteName;
           });
@@ -97,7 +97,7 @@ export class CitySiteManageCtrl
         $.ajax({
             type: 'POST',
             traditional:true,
-            url: 'http://61.164.218.158:8080/AirServer/grafana/updateCitySites',
+            url: baseURL+'updateCitySites',
             data: {cityid: this.root.cityModel.id,ids:this.scope.citySiteID},
             dataType:'json',
             success:function (da)

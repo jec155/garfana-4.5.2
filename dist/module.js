@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./components/cityList', './components/cityView', './components/cityAdd', './components/cityEdit', './components/cityQuery', './components/citySiteManage', './components/deviceList', './components/deviceAdd', './components/deviceQuery', './components/deviceEdit', './components/deviceView', './components/siteAdd', './components/siteEdit', './components/siteView', './components/siteList', './components/siteQuery', './components/siteCityManage', './components/logList', './components/logQuery', './components/logView', './components/config/config', './components/common/custom.css!', 'angular', './components/common/pager', './components/common/input_date'], function (_export, _context) {
+System.register(['./components/cityList', './components/cityView', './components/cityAdd', './components/cityEdit', './components/cityQuery', './components/citySiteManage', './components/deviceList', './components/deviceAdd', './components/deviceQuery', './components/deviceEdit', './components/deviceView', './components/siteAdd', './components/siteEdit', './components/siteView', './components/siteList', './components/siteQuery', './components/siteDeviceManage', './components/logList', './components/logQuery', './components/logView', './components/config/config', './components/common/custom.css!', 'angular', './components/common/pager', './components/common/input_date', './components/common/constVal'], function (_export, _context) {
     "use strict";
 
-    var CityListCtrl, CityViewCtrl, CityAddCtrl, CityEditCtrl, CityQueryCtrl, CitySiteManageCtrl, DeviceStreamPageCtrl, DeviceAddCtrl, DeviceQueryCtrl, DeviceEditCtrl, DeviceViewCtrl, SiteAddCtrl, SiteEditCtrl, SiteViewCtrl, SiteStreamPageCtrl, SiteQueryCtrl, SiteCityManageCtrl, LogStreamPageCtrl, LogQueryCtrl, LogViewCtrl, ManagementAppConfigCtrl, angular, pageDirective, inputDateDirective;
+    var CityListCtrl, CityViewCtrl, CityAddCtrl, CityEditCtrl, CityQueryCtrl, CitySiteManageCtrl, DeviceStreamPageCtrl, DeviceAddCtrl, DeviceQueryCtrl, DeviceEditCtrl, DeviceViewCtrl, SiteAddCtrl, SiteEditCtrl, SiteViewCtrl, SiteStreamPageCtrl, SiteQueryCtrl, SiteDeviceManageCtrl, LogStreamPageCtrl, LogQueryCtrl, LogViewCtrl, ManagementAppConfigCtrl, angular, pageDirective, inputDateDirective, baseURL;
     return {
         setters: [function (_componentsCityList) {
             CityListCtrl = _componentsCityList.CityListCtrl;
@@ -37,8 +37,8 @@ System.register(['./components/cityList', './components/cityView', './components
             SiteStreamPageCtrl = _componentsSiteList.SiteStreamPageCtrl;
         }, function (_componentsSiteQuery) {
             SiteQueryCtrl = _componentsSiteQuery.SiteQueryCtrl;
-        }, function (_componentsSiteCityManage) {
-            SiteCityManageCtrl = _componentsSiteCityManage.SiteCityManageCtrl;
+        }, function (_componentsSiteDeviceManage) {
+            SiteDeviceManageCtrl = _componentsSiteDeviceManage.SiteDeviceManageCtrl;
         }, function (_componentsLogList) {
             LogStreamPageCtrl = _componentsLogList.LogStreamPageCtrl;
         }, function (_componentsLogQuery) {
@@ -53,6 +53,8 @@ System.register(['./components/cityList', './components/cityView', './components
             pageDirective = _componentsCommonPager.pageDirective;
         }, function (_componentsCommonInput_date) {
             inputDateDirective = _componentsCommonInput_date.inputDateDirective;
+        }, function (_componentsCommonConstVal) {
+            baseURL = _componentsCommonConstVal.baseURL;
         }],
         execute: function () {
 
@@ -87,7 +89,7 @@ System.register(['./components/cityList', './components/cityView', './components
 
             _export('SiteQueryCtrl', SiteQueryCtrl);
 
-            _export('SiteCityManageCtrl', SiteCityManageCtrl);
+            _export('SiteDeviceManageCtrl', SiteDeviceManageCtrl);
 
             _export('LogStreamPageCtrl', LogStreamPageCtrl);
 
@@ -100,6 +102,8 @@ System.register(['./components/cityList', './components/cityView', './components
             _export('DeviceViewCtrl', DeviceViewCtrl);
 
             _export('ConfigCtrl', ManagementAppConfigCtrl);
+
+            _export('baseURL', baseURL);
         }
     };
 });

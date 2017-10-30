@@ -1,9 +1,9 @@
 "use strict";
 
-System.register([], function (_export, _context) {
+System.register(["./common/constVal"], function (_export, _context) {
     "use strict";
 
-    var _createClass, SiteStreamPageCtrl;
+    var baseURL, _createClass, SiteStreamPageCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
     }
 
     return {
-        setters: [],
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }],
         execute: function () {
             _createClass = function () {
                 function defineProperties(target, props) {
@@ -43,7 +45,7 @@ System.register([], function (_export, _context) {
                     $scope.http = $http;
                     this.selall = false; //全选标志
                     this.checkedItems = [];
-                    $scope.URL = $rootScope.cityListUrl ? $rootScope.cityListUrl : 'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
+                    $scope.URL = $rootScope.cityListUrl ? $rootScope.cityListUrl : baseURL + 'siteListByPage';
                     $scope.pageParams = $rootScope.siteTip ? $rootScope.siteTip : {};
                     $scope.siteMonTypeMap = {
                         "1": "空气质量",
@@ -82,10 +84,9 @@ System.register([], function (_export, _context) {
                     value: function deleteCity(item) {
                         if (confirm('确定删除此项?')) {
                             $.ajax({
-                                type: 'POST',
-                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
-                                //'http://127.0.0.1:8080/grafana/addCity',
-                                data: { id: item.id },
+                                type: 'GET',
+                                url: baseURL + 'deleteSiteByID',
+                                data: { siteid: item.id },
                                 dataType: 'json',
                                 success: function success(da) {
                                     location.reload();

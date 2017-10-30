@@ -14,7 +14,7 @@ import {SiteEditCtrl} from './components/siteEdit';
 import {SiteViewCtrl} from './components/siteView';
 import {SiteStreamPageCtrl} from './components/siteList';
 import {SiteQueryCtrl} from './components/siteQuery';
-import {SiteCityManageCtrl} from './components/siteCityManage';
+import {SiteDeviceManageCtrl} from './components/siteDeviceManage';
 import {LogStreamPageCtrl} from './components/logList';
 import {LogQueryCtrl} from './components/logQuery';
 import {LogViewCtrl} from './components/logView';
@@ -24,6 +24,7 @@ import './components/common/custom.css!';
 import angular from 'angular';
 import {pageDirective} from './components/common/pager';
 import {inputDateDirective} from './components/common/input_date';
+import {baseURL} from "./components/common/constVal";
 
 angular.module("grafana.directives").directive('inputDatetime', inputDateDirective);
 angular.module('grafana.directives').directive('pager', pageDirective);
@@ -43,11 +44,12 @@ export {
     SiteViewCtrl,
     SiteStreamPageCtrl,
     SiteQueryCtrl,
-    SiteCityManageCtrl,
+    SiteDeviceManageCtrl,
     LogStreamPageCtrl,
     LogQueryCtrl,
     LogViewCtrl,
     DeviceAddCtrl,
     DeviceViewCtrl,
-    ManagementAppConfigCtrl as ConfigCtrl
+    ManagementAppConfigCtrl as ConfigCtrl,
+    baseURL
 };

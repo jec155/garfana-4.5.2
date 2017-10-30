@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 import moment from 'moment';
 export class DeviceQueryCtrl
 {
@@ -71,7 +71,7 @@ export class DeviceQueryCtrl
       this.root.deviceTip=this.scope.deviceTip;
       this.root.deviceTip.status=this.scope.deviceTip.statusModel.id?this.scope.deviceTip.statusModel.id:'';
       this.root.deviceTip.monType=this.scope.deviceTip.monTypeModel.id?this.scope.deviceTip.monTypeModel.id:'';
-      this.root.searchDeviceURL='http://61.164.218.158:8080/AirServer/grafana/searchDevices';
+      this.root.searchDeviceURL=baseURL+'searchDevices';
           //'http://127.0.0.1:8080/grafana/searchDevices';
 
       history.go(-1);

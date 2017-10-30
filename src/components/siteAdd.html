@@ -4,24 +4,24 @@
 <form nam="form" class="gf-form-group" novalidate>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">代码</span>
-		<input name="siteCode" type="text" ng-model="cityModel.siteCode" class="gf-form-input max-width-20" >
+		<input name="siteCode" type="text" ng-model="siteModel.siteCode" class="gf-form-input max-width-20" >
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">名称*</span>
-		<input name="siteName" type="text" ng-model="cityModel.siteName" class="gf-form-input max-width-20" >
-		<span class="gf-form-label width-10" ng-show=" !cityModel.siteName" style="color: red">名称必填</span>
+		<input name="siteName" type="text" ng-model="siteModel.siteName" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !siteModel.siteName" style="color: red">名称必填</span>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">类型*</span>
-		<select name="siteType" type="text" ng-model="cityModel.siteType">
+		<select name="siteType" type="text" ng-model="siteModel.siteType">
 								  <option value="PUBLIC">公有站点</option>
 								  <option value="PRIVATE">私有站点</option>
 							  </select>
-		<span class="gf-form-label width-10" ng-show="!cityModel.siteType" style="color: red">类型必选</span>
+		<span class="gf-form-label width-10" ng-show="!siteModel.siteType" style="color: red">类型必选</span>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">站点监测类型</span>
-		<select name="siteMonType" type="text" ng-model="cityModel.siteMonType">
+		<select name="siteMonType" type="text" ng-model="siteModel.siteMonType">
 								  		<option value="1">空气质量</option>
 								  		<option value="2">空气污染重点企业</option>
 								  		<option value="3">饮用水水质</option>
@@ -32,14 +32,14 @@
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">所属城市</span>
-		<input name="cityName" type="text" ng-model="cityModel.cityName" class="gf-form-input max-width-20"
+		<input name="cityName" type="text" ng-model="siteModel.cityName" class="gf-form-input max-width-20"
 			   ng-click="showCityList=!showCityList">
 	</div>
 	<div  ng-if="showCityList" style="border: solid;border-width: 1px; border-color: #333;width: 55%;height:250px;
 		overflow-x: scroll;overflow-y: scroll;padding: 10px">
 		<div class="modal-header">
 			<h2 class="modal-header-title">
-				<span class="p-l-1">选择站点</span>
+				<span class="p-l-1">选择城市</span>
 			</h2>
 			<a class="modal-header-close" ng-click="dismiss()">
 				<i class="fa fa-remove"></i>
@@ -61,7 +61,7 @@
 				<th  class="pointer" data-stat="max">备注</th>
 			</tr>
 			<tr ng-repeat="x in names" style="cursor: pointer" onmouseover="this.style.color='#999'"
-				onmouseout="this.style.color='#333'" ng-click="choose()">
+				onmouseout="this.style.color='#333'" ng-click="choose(x)">
 				<td>{{ $index + 1 }}</td>
 				<td>{{ x.cityName }}</td>
 				<td>{{ x.cityPingyin }}</td>
@@ -80,36 +80,36 @@
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">站点经度*</span>
-		<input name="siteLongitude" type="text" ng-model="cityModel.siteLongitude" class="gf-form-input max-width-20" >
-		<span class="gf-form-label width-10" ng-show=" !cityModel.siteLongitude" style="color: red">经度必填</span>
+		<input name="siteLongitude" type="number" ng-model="siteModel.siteLongitude"
+			    class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !siteModel.siteLongitude" style="color: red">经度必填</span>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">站点纬度*</span>
-		<input name="siteLatitude" type="text" ng-model="cityModel.siteLatitude" class="gf-form-input max-width-20" >
-		<span class="gf-form-label width-10" ng-show=" !cityModel.siteLatitude" style="color: red">纬度必填</span>
+		<input name="siteLatitude" type="number" ng-model="siteModel.siteLatitude" class="gf-form-input max-width-20" >
+		<span class="gf-form-label width-10" ng-show=" !siteModel.siteLatitude" style="color: red">纬度必填</span>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">自动更新状态*</span>
-		<select name="autoUpd" type="text" ng-model="cityModel.autoUpd">
-								  <option value="true">是</option>
-								  <option value="false">否</option>
+		<select name="autoUpd" type="text" ng-model="siteModel.autoUpd">
+								  <option value="1">是</option>
+								  <option value="0">否</option>
 							  </select>
-		<span class="gf-form-label width-10" ng-show="!cityModel.autoUpd" style="color: red">自动更新必选</span>
+		<span class="gf-form-label width-10" ng-show="!siteModel.autoUpd" style="color: red">自动更新必选</span>
 	</div>
 
 	<div class="gf-form">
 		<span class="gf-form-label width-10">管理机构</span>
-		<input name="managerment" type="text" ng-model="cityModel.managerment" class="gf-form-input max-width-20" >
-	</div>
-	<div class="gf-form" ng-if="productDate1">
-		<span class="gf-form-label width-10">责任人</span>
-		<input name="realName" type="text" ng-model="cityModel.realName" class="gf-form-input max-width-20" >
+		<input name="managerment" type="text" ng-model="siteModel.managerment" class="gf-form-input max-width-20" >
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">备注</span>
-		<input name="comment" type="text" ng-model="cityModel.comment" class="gf-form-input max-width-20" >
+		<input name="comment" type="text" ng-model="siteModel.comment" class="gf-form-input max-width-20" >
 	</div>
 	<div class="gf-form-button-row">
-		<button type="submit" class="btn btn-success" ng-disabled="!cityModel.siteName||!cityModel.siteType||!cityModel.siteLongitude||!cityModel.siteLatitude||!cityModel.autoUpd" ng-click="ctrl.save()">添加</button>
+		<button type="submit" class="btn btn-success"
+				ng-disabled="!siteModel.siteName||!siteModel.siteType||!siteModel.siteLongitude
+				||!siteModel.siteLatitude||!siteModel.autoUpd"
+				ng-click="ctrl.save()">添加</button>
 	</div>
 </form>

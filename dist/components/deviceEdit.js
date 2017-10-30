@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['moment'], function (_export, _context) {
+System.register(['moment', './common/constVal'], function (_export, _context) {
     "use strict";
 
-    var moment, _createClass, DeviceEditCtrl;
+    var moment, baseURL, _createClass, DeviceEditCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -14,6 +14,8 @@ System.register(['moment'], function (_export, _context) {
     return {
         setters: [function (_moment) {
             moment = _moment.default;
+        }, function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
         }],
         execute: function () {
             _createClass = function () {
@@ -46,7 +48,7 @@ System.register(['moment'], function (_export, _context) {
                     this.scope.deviceTip = $rootScope.deviceTip;
 
                     $scope.http = $http;
-                    $scope.URL = 'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
+                    $scope.URL = baseURL + 'siteListByPage';
                     $scope.pageParams = {};
 
                     $scope.dismiss = function () {
@@ -83,7 +85,7 @@ System.register(['moment'], function (_export, _context) {
                         console.info(this.scope.deviceTip);
                         $.ajax({
                             type: 'POST',
-                            url: 'http://61.164.218.158:8080/AirServer/grafana/editDevice',
+                            url: baseURL + 'editDevice',
                             //'http://127.0.0.1:8080/grafana/editDevice',
                             data: this.scope.deviceTip,
                             dataType: 'json',

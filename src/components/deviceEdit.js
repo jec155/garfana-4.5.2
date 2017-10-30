@@ -1,4 +1,5 @@
 import moment from 'moment';
+import {baseURL} from "./common/constVal";
 export class DeviceEditCtrl
 {
   constructor($scope,$http,$rootScope)
@@ -11,7 +12,7 @@ export class DeviceEditCtrl
       this.scope.deviceTip=$rootScope.deviceTip;
 
       $scope.http=$http;
-      $scope.URL='http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
+      $scope.URL=baseURL+'siteListByPage';
       $scope.pageParams={};
 
       $scope.dismiss=function () {
@@ -50,7 +51,7 @@ export class DeviceEditCtrl
       console.info(this.scope.deviceTip);
       $.ajax({
           type: 'POST',
-          url: 'http://61.164.218.158:8080/AirServer/grafana/editDevice',
+          url: baseURL+'editDevice',
               //'http://127.0.0.1:8080/grafana/editDevice',
           data: this.scope.deviceTip,
           dataType:'json',

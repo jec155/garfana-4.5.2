@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 export class CityListCtrl
 {
     constructor($scope,$http,$location,$rootScope)
@@ -9,7 +9,7 @@ export class CityListCtrl
         $scope.http=$http;
         this.selall=false;//全选标志
         this.checkedItems=[];
-        $scope.URL=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+        $scope.URL=$rootScope.cityListUrl?$rootScope.cityListUrl:baseURL+'cityListByPage';
         $scope.pageParams=$rootScope.cityTip?$rootScope.cityTip:{
             cityName:'',cityPingyin:'',
             province:'',country:''
@@ -38,7 +38,7 @@ export class CityListCtrl
         {
             $.ajax({
                 type: 'POST',
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
+                url: baseURL+'deleteCityByID',
                 //'http://127.0.0.1:8080/grafana/addCity',
                 data: {id:item.id},
                 dataType:'json',
@@ -67,7 +67,7 @@ export class CityListCtrl
             $.ajax({
                 type: 'POST',
                 traditional: true,
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelCities',
+                url: baseURL+'deleteSelCities',
                // 'http://127.0.0.1:8080/grafana/deleteSelCities',
                 data: {ids:ids},
                 success:function (da)

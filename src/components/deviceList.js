@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 export class DeviceStreamPageCtrl
 {
     constructor($scope,$http,$location,$rootScope)
@@ -10,7 +10,7 @@ export class DeviceStreamPageCtrl
         this.selall=false;//全选标志
         this.checkedItems=[];
         $scope.URL=$rootScope.searchDeviceURL?$rootScope.searchDeviceURL
-                        :'http://61.164.218.158:8080/AirServer/grafana/deviceListByPage';
+                        :baseURL+'deviceListByPage';
                             //'http://127.0.0.1:8080/grafana/deviceListByPage';
         $scope.pageParams=$rootScope.deviceTip?$rootScope.deviceTip:{
 
@@ -45,7 +45,7 @@ export class DeviceStreamPageCtrl
         {
             $.ajax({
                 type: 'POST',
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteDeviceByID',
+                url: baseURL+'deleteDeviceByID',
                 //'http://127.0.0.1:8080/grafana/addCity',
                 data: {id:item.id},
                 
@@ -74,7 +74,7 @@ export class DeviceStreamPageCtrl
             $.ajax({
                 type: 'POST',
                 traditional: true,
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelDevices',
+                url: baseURL+'deleteSelDevices',
                // 'http://127.0.0.1:8080/grafana/deleteSelCities',
                 data: {ids:ids},
                 success:function (da)

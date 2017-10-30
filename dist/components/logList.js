@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['app/core/core'], function (_export, _context) {
+System.register(['./common/constVal', 'app/core/core'], function (_export, _context) {
     "use strict";
 
-    var coreModule, appEvents, _createClass, LogStreamPageCtrl;
+    var baseURL, coreModule, appEvents, _createClass, LogStreamPageCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register(['app/core/core'], function (_export, _context) {
     }
 
     return {
-        setters: [function (_appCoreCore) {
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }, function (_appCoreCore) {
             coreModule = _appCoreCore.coreModule;
             appEvents = _appCoreCore.appEvents;
         }],
@@ -76,7 +78,7 @@ System.register(['app/core/core'], function (_export, _context) {
                         if (confirm('确定删除此项?')) {
                             $.ajax({
                                 type: 'POST',
-                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
+                                url: baseURL + 'deleteCityByID',
                                 //'http://127.0.0.1:8080/grafana/addCity',
                                 data: { id: item.id },
                                 dataType: 'json',
@@ -102,8 +104,7 @@ System.register(['app/core/core'], function (_export, _context) {
                             $.ajax({
                                 type: 'POST',
                                 traditional: true,
-                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelCities',
-                                // 'http://127.0.0.1:8080/grafana/deleteSelCities',
+                                url: baseURL + 'deleteSelCities',
                                 data: { ids: ids },
                                 success: function success(da) {
                                     location.reload();

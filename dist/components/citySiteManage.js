@@ -1,9 +1,9 @@
 'use strict';
 
-System.register([], function (_export, _context) {
+System.register(['./common/constVal'], function (_export, _context) {
     "use strict";
 
-    var _createClass, CitySiteManageCtrl;
+    var baseURL, _createClass, CitySiteManageCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
     }
 
     return {
-        setters: [],
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }],
         execute: function () {
             _createClass = function () {
                 function defineProperties(target, props) {
@@ -45,13 +47,13 @@ System.register([], function (_export, _context) {
                     $scope.citySites = {};
                     this.scope = $scope;
 
-                    $http.get('http://61.164.218.158:8080/AirServer/grafana/availableSites').then(function (response) {
+                    $http.get(baseURL + 'availableSites').then(function (response) {
                         angular.forEach(response.data.data, function (data, index, array) {
                             $scope.availableSites[data.id] = data.siteName;
                         });
                     });
 
-                    $http.get('http://61.164.218.158:8080/AirServer/grafana/getSitesByCityID?cityid=' + $rootScope.cityModel.id).then(function (response) {
+                    $http.get(baseURL + 'getSitesByCityID?cityid=' + $rootScope.cityModel.id).then(function (response) {
                         angular.forEach(response.data.data, function (data, index, array) {
                             $scope.citySites[data.id] = data.siteName;
                         });
@@ -128,7 +130,7 @@ System.register([], function (_export, _context) {
                         $.ajax({
                             type: 'POST',
                             traditional: true,
-                            url: 'http://61.164.218.158:8080/AirServer/grafana/updateCitySites',
+                            url: baseURL + 'updateCitySites',
                             data: { cityid: this.root.cityModel.id, ids: this.scope.citySiteID },
                             dataType: 'json',
                             success: function success(da) {

@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 export class SiteStreamPageCtrl
 {
     constructor($scope,$http,$location,$rootScope)
@@ -10,7 +10,7 @@ export class SiteStreamPageCtrl
         $scope.http=$http;
         this.selall=false;//全选标志
         this.checkedItems=[];
-        $scope.URL=$rootScope.cityListUrl?$rootScope.cityListUrl:'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
+        $scope.URL=$rootScope.cityListUrl?$rootScope.cityListUrl:baseURL+'siteListByPage';
         $scope.pageParams=$rootScope.siteTip?$rootScope.siteTip:{
 
         };
@@ -49,10 +49,9 @@ export class SiteStreamPageCtrl
         if(confirm('确定删除此项?'))
         {
             $.ajax({
-                type: 'POST',
-                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteCityByID',
-                //'http://127.0.0.1:8080/grafana/addCity',
-                data: {id:item.id},
+                type: 'GET',
+                url: baseURL+'deleteSiteByID',
+                data: {siteid:item.id},
                 dataType:'json',
                 success:function (da)
                 {

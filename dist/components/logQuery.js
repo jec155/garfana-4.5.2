@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-System.register(['moment'], function (_export, _context) {
+System.register(["./common/constVal", "moment"], function (_export, _context) {
   "use strict";
 
-  var moment, _createClass, LogQueryCtrl;
+  var baseURL, moment, _createClass, LogQueryCtrl;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register(['moment'], function (_export, _context) {
   }
 
   return {
-    setters: [function (_moment) {
+    setters: [function (_commonConstVal) {
+      baseURL = _commonConstVal.baseURL;
+    }, function (_moment) {
       moment = _moment.default;
     }],
     execute: function () {
@@ -34,7 +36,7 @@ System.register(['moment'], function (_export, _context) {
         };
       }();
 
-      _export('LogQueryCtrl', LogQueryCtrl = function () {
+      _export("LogQueryCtrl", LogQueryCtrl = function () {
         function LogQueryCtrl($scope, $http, $location, $rootScope, contextSrv) {
           _classCallCheck(this, LogQueryCtrl);
 
@@ -50,20 +52,20 @@ System.register(['moment'], function (_export, _context) {
         }
 
         _createClass(LogQueryCtrl, [{
-          key: 'deviceTipDate1',
+          key: "deviceTipDate1",
           value: function deviceTipDate1(data) {
             this.scope.startTime = moment(data);
           }
         }, {
-          key: 'deviceTipDate2',
+          key: "deviceTipDate2",
           value: function deviceTipDate2(data) {
             this.scope.endTime = moment(data);
           }
         }, {
-          key: 'query',
+          key: "query",
           value: function query() {
             this.root.cityTip = this.scope.cityTip;
-            this.root.cityListUrl = 'http://61.164.218.158:8080/AirServer/grafanalogs/searchLogs';
+            this.root.cityListUrl = baseURL + 'searchLogs';
             history.go(-1);
           }
         }]);
@@ -71,7 +73,7 @@ System.register(['moment'], function (_export, _context) {
         return LogQueryCtrl;
       }());
 
-      _export('LogQueryCtrl', LogQueryCtrl);
+      _export("LogQueryCtrl", LogQueryCtrl);
 
       LogQueryCtrl.templateUrl = 'public/plugins/grafana-management/components/logQuery.html';
     }

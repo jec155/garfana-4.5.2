@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 export class CityQueryCtrl
 {
   constructor($scope,$http,$location,$rootScope) {
@@ -15,7 +15,7 @@ export class CityQueryCtrl
   query()
   {
       this.root.cityTip=this.scope.cityTip;
-      this.root.cityListUrl='http://61.164.218.158:8080/AirServer/grafana/searchCities';
+      this.root.cityListUrl=baseURL+'searchCities';
           //'http://127.0.0.1/grafana/searchCities';
       history.go(-1);
   }

@@ -1,4 +1,4 @@
-
+import {baseURL} from "./common/constVal";
 import moment from 'moment';
 export class LogQueryCtrl
 {
@@ -24,7 +24,7 @@ export class LogQueryCtrl
   query()
   {   
       this.root.cityTip=this.scope.cityTip;
-      this.root.cityListUrl='http://61.164.218.158:8080/AirServer/grafanalogs/searchLogs';
+      this.root.cityListUrl=baseURL+'searchLogs';
       history.go(-1);
   }
 }

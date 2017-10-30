@@ -1,9 +1,9 @@
 'use strict';
 
-System.register([], function (_export, _context) {
+System.register(['./common/constVal'], function (_export, _context) {
     "use strict";
 
-    var _createClass, SiteCityManageCtrl;
+    var baseURL, _createClass, SiteDeviceManageCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
     }
 
     return {
-        setters: [],
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }],
         execute: function () {
             _createClass = function () {
                 function defineProperties(target, props) {
@@ -32,9 +34,9 @@ System.register([], function (_export, _context) {
                 };
             }();
 
-            _export('SiteCityManageCtrl', SiteCityManageCtrl = function () {
-                function SiteCityManageCtrl($scope, $http, $location, $rootScope) {
-                    _classCallCheck(this, SiteCityManageCtrl);
+            _export('SiteDeviceManageCtrl', SiteDeviceManageCtrl = function () {
+                function SiteDeviceManageCtrl($scope, $http, $location, $rootScope) {
+                    _classCallCheck(this, SiteDeviceManageCtrl);
 
                     this.root = $rootScope;
                     //this.root.cityModel=$rootScope.cityModel;
@@ -53,7 +55,7 @@ System.register([], function (_export, _context) {
                         'WATER': '水环境',
                         'MULTI': '多功能'
                     };
-                    $http.get('http://61.164.218.158:8080/AirServer/grafana/getAvailableDevices').then(function (response) {
+                    $http.get(baseURL + 'getAvailableDevices').then(function (response) {
                         angular.forEach(response.data.data, function (data, index, array) {
                             //data等价于array[index]
                             //$scope.availableSites.push({id:data.id,siteName:data.siteName});
@@ -62,7 +64,7 @@ System.register([], function (_export, _context) {
                         //console.info($scope.availableSites);
                         //$scope.availableSites=response.data.data;
                     });
-                    $http.get('http://61.164.218.158:8080/AirServer/grafana/getDevicesBySiteID?siteid=' + $rootScope.cityModel.id).then(function (response) {
+                    $http.get(baseURL + 'getDevicesBySiteID?siteid=' + $rootScope.cityModel.id).then(function (response) {
                         angular.forEach(response.data.data, function (data, index, array) {
 
                             //data等价于array[index]
@@ -73,10 +75,9 @@ System.register([], function (_export, _context) {
                     });
                 }
 
-                _createClass(SiteCityManageCtrl, [{
+                _createClass(SiteDeviceManageCtrl, [{
                     key: 'getSelectedA',
                     value: function getSelectedA() {
-                        console.info('fffff');
                         var toAdd = {};
                         var select = document.getElementById("A");
                         for (var i = 0; i < select.length; i++) {
@@ -146,7 +147,7 @@ System.register([], function (_export, _context) {
                         $.ajax({
                             type: 'POST',
                             traditional: true,
-                            url: 'http://61.164.218.158:8080/AirServer/grafana/updateSiteDevice',
+                            url: baseURL + 'updateSiteDevice',
                             //'http://127.0.0.1:8080/grafana/updateCitySites',
                             data: { siteid: this.root.cityModel.id, ids: this.scope.citySiteID },
                             dataType: 'json',
@@ -164,13 +165,13 @@ System.register([], function (_export, _context) {
                     value: function link(scope, elem, attrs, ctrl) {}
                 }]);
 
-                return SiteCityManageCtrl;
+                return SiteDeviceManageCtrl;
             }());
 
-            _export('SiteCityManageCtrl', SiteCityManageCtrl);
+            _export('SiteDeviceManageCtrl', SiteDeviceManageCtrl);
 
-            SiteCityManageCtrl.templateUrl = 'public/plugins/grafana-management/components/siteCityManage.html';
+            SiteDeviceManageCtrl.templateUrl = 'public/plugins/grafana-management/components/SiteDeviceManageCtrl.html';
         }
     };
 });
-//# sourceMappingURL=siteCityManage.js.map
+//# sourceMappingURL=siteDeviceManage.js.map

@@ -1,9 +1,9 @@
 'use strict';
 
-System.register([], function (_export, _context) {
+System.register(['./common/constVal'], function (_export, _context) {
     "use strict";
 
-    var _createClass, CityAddCtrl;
+    var baseURL, _createClass, CityAddCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
     }
 
     return {
-        setters: [],
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }],
         execute: function () {
             _createClass = function () {
                 function defineProperties(target, props) {
@@ -58,7 +60,7 @@ System.register([], function (_export, _context) {
                         var loc = this.location;
                         $.ajax({
                             type: 'POST',
-                            url: 'http://61.164.218.158:8080/AirServer/grafana/addCity',
+                            url: baseURL + 'addCity',
                             data: this.scope.cityModel,
                             dataType: 'json',
                             success: function success(da) {

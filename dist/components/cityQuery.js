@@ -1,9 +1,9 @@
 "use strict";
 
-System.register([], function (_export, _context) {
+System.register(["./common/constVal"], function (_export, _context) {
     "use strict";
 
-    var _createClass, CityQueryCtrl;
+    var baseURL, _createClass, CityQueryCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
     }
 
     return {
-        setters: [],
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }],
         execute: function () {
             _createClass = function () {
                 function defineProperties(target, props) {
@@ -50,7 +52,7 @@ System.register([], function (_export, _context) {
                     key: "query",
                     value: function query() {
                         this.root.cityTip = this.scope.cityTip;
-                        this.root.cityListUrl = 'http://61.164.218.158:8080/AirServer/grafana/searchCities';
+                        this.root.cityListUrl = baseURL + 'searchCities';
                         //'http://127.0.0.1/grafana/searchCities';
                         history.go(-1);
                     }

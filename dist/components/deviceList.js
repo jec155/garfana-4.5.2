@@ -1,9 +1,9 @@
 'use strict';
 
-System.register([], function (_export, _context) {
+System.register(['./common/constVal'], function (_export, _context) {
     "use strict";
 
-    var _createClass, DeviceStreamPageCtrl;
+    var baseURL, _createClass, DeviceStreamPageCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
     }
 
     return {
-        setters: [],
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }],
         execute: function () {
             _createClass = function () {
                 function defineProperties(target, props) {
@@ -42,7 +44,7 @@ System.register([], function (_export, _context) {
                     $scope.http = $http;
                     this.selall = false; //全选标志
                     this.checkedItems = [];
-                    $scope.URL = $rootScope.searchDeviceURL ? $rootScope.searchDeviceURL : 'http://61.164.218.158:8080/AirServer/grafana/deviceListByPage';
+                    $scope.URL = $rootScope.searchDeviceURL ? $rootScope.searchDeviceURL : baseURL + 'deviceListByPage';
                     //'http://127.0.0.1:8080/grafana/deviceListByPage';
                     $scope.pageParams = $rootScope.deviceTip ? $rootScope.deviceTip : {};
                     $scope.monTypeMap = {
@@ -77,7 +79,7 @@ System.register([], function (_export, _context) {
                         if (confirm('确定删除此项?')) {
                             $.ajax({
                                 type: 'POST',
-                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteDeviceByID',
+                                url: baseURL + 'deleteDeviceByID',
                                 //'http://127.0.0.1:8080/grafana/addCity',
                                 data: { id: item.id },
 
@@ -104,7 +106,7 @@ System.register([], function (_export, _context) {
                             $.ajax({
                                 type: 'POST',
                                 traditional: true,
-                                url: 'http://61.164.218.158:8080/AirServer/grafana/deleteSelDevices',
+                                url: baseURL + 'deleteSelDevices',
                                 // 'http://127.0.0.1:8080/grafana/deleteSelCities',
                                 data: { ids: ids },
                                 success: function success(da) {

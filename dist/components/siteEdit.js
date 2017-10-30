@@ -1,9 +1,9 @@
 "use strict";
 
-System.register([], function (_export, _context) {
+System.register(["./common/constVal"], function (_export, _context) {
     "use strict";
 
-    var _createClass, SiteEditCtrl;
+    var baseURL, _createClass, SiteEditCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
     }
 
     return {
-        setters: [],
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }],
         execute: function () {
             _createClass = function () {
                 function defineProperties(target, props) {
@@ -39,8 +41,9 @@ System.register([], function (_export, _context) {
                     this.http = $http;
                     this.scope = $scope;
                     this.location = $location;
-                    $scope.cityModel = $rootScope.cityModel;
-
+                    $scope.siteModel = $rootScope.cityModel;
+                    //$scope.siteModel.autoUpd=0;
+                    //console.info($scope.siteModel);
                     $scope.siteMonTypeMap = {
                         "1": "空气质量",
                         "2": "空气污染重点企业",
@@ -61,37 +64,31 @@ System.register([], function (_export, _context) {
                     $scope.areaTypeMap = {
                         "TWO": "适用于居住、商业、工业混杂区"
                     };
-                    $scope.autoUpdMap = {
-                        true: "是",
-                        false: "否"
+
+                    $scope.pageParams = {};
+                    $scope.http = $http;
+                    $scope.URL = 'http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
+
+                    $scope.dismiss = function () {
+                        $scope.showCityList = !$scope.showCityList;
+                    };
+                    $scope.choose = function (item) {
+                        //console.info(item);
+                        $scope.siteModel.cityId = item.id;
+                        $scope.siteModel.cityName = item.cityName;
+                        $scope.showCityList = !$scope.showCityList;
                     };
                 }
 
                 _createClass(SiteEditCtrl, [{
                     key: "update",
                     value: function update() {
-                        var cityAuto = {
-                            true: 1,
-                            false: 0
-                        };
-                        var loc = this.location;
-                        var cityTip = { "siteid": this.scope.cityModel.id,
-                            "siteCode": this.scope.cityModel.siteCode,
-                            "siteName": this.scope.cityModel.siteName,
-                            "siteType": this.scope.cityModel.siteType,
-                            "siteMontype": this.scope.cityModel.siteMonType,
-                            "cityId": this.scope.cityModel.cityId,
-                            "createTime": this.scope.cityModel.siteCreateTime,
-                            "siteLatitude": this.scope.cityModel.siteLatitude,
-                            "siteLongitude": this.scope.cityModel.siteLongitude,
-                            "autoUpd": cityAuto[this.scope.cityModel.autoUpd],
-                            "comment": this.scope.cityModel.comment,
-                            "managerment": this.scope.cityModel.managerment };console.info(cityTip);
+                        //console.info(this.scope.siteModel)
                         $.ajax({
                             type: 'GET',
-                            url: 'http://61.164.218.158:8080/AirServer/grafana/editSite',
+                            url: baseURL + 'editSite',
                             //'http://127.0.0.1:8080/grafana/editCity',
-                            data: cityTip,
+                            data: this.scope.siteModel,
                             dataType: 'json',
                             success: function success(da) {
                                 //loc.path('plugins/grafana-example-app/page/live-stream');
@@ -102,9 +99,6 @@ System.register([], function (_export, _context) {
                                 console.info(re);
                             }
                         });
-                        /*this.http.post('http://127.0.0.1:8080/grafana/addCity',this.scope.cityModel).then(function (response) {
-                            console.info(response);
-                        });*/
                     }
                 }]);
 

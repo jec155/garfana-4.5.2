@@ -1,5 +1,5 @@
-
-export class SiteCityManageCtrl
+import {baseURL} from "./common/constVal";
+export class SiteDeviceManageCtrl
 {
   constructor($scope,$http,$location,$rootScope) {
       this.root=$rootScope;
@@ -19,7 +19,7 @@ export class SiteCityManageCtrl
                         'WATER':'水环境',
                         'MULTI':'多功能'
                     }
-      $http.get('http://61.164.218.158:8080/AirServer/grafana/getAvailableDevices').then(function (response) {
+      $http.get(baseURL+'getAvailableDevices').then(function (response) {
           angular.forEach(response.data.data, function(data,index,array){
             //data等价于array[index]
               //$scope.availableSites.push({id:data.id,siteName:data.siteName});
@@ -29,7 +29,7 @@ export class SiteCityManageCtrl
             //console.info($scope.availableSites);
           //$scope.availableSites=response.data.data;
       });
-      $http.get('http://61.164.218.158:8080/AirServer/grafana/getDevicesBySiteID?siteid='+$rootScope.cityModel.id).then(function (response) {
+      $http.get(baseURL+'getDevicesBySiteID?siteid='+$rootScope.cityModel.id).then(function (response) {
           angular.forEach(response.data.data, function(data,index,array){
 
               //data等价于array[index]
@@ -42,7 +42,6 @@ export class SiteCityManageCtrl
 
     getSelectedA()
     {
-        console.info('fffff');
         let toAdd={};
         let select = document.getElementById("A");
         for(let i=0;i<select.length;i++){
@@ -115,7 +114,7 @@ export class SiteCityManageCtrl
         $.ajax({
             type: 'POST',
             traditional:true,
-            url: 'http://61.164.218.158:8080/AirServer/grafana/updateSiteDevice',
+            url: baseURL+'updateSiteDevice',
             //'http://127.0.0.1:8080/grafana/updateCitySites',
             data: {siteid: this.root.cityModel.id,ids:this.scope.citySiteID},
             dataType:'json',
@@ -134,6 +133,6 @@ export class SiteCityManageCtrl
 
     }
 }
-SiteCityManageCtrl.templateUrl = 'public/plugins/grafana-management/components/siteCityManage.html';
+SiteDeviceManageCtrl.templateUrl = 'public/plugins/grafana-management/components/SiteDeviceManageCtrl.html';
 
 

@@ -1,12 +1,11 @@
+import {baseURL} from "./common/constVal";
 
 export class SiteAddCtrl
 {
   constructor($scope,$http,$location,$rootScope)
   {
-      this.http=$http;
       this.scope=$scope;
       this.location=$location;
-      $scope.cityModel=$rootScope.cityModel;
 
       $scope.siteMonTypeMap = {
             "1" : "空气质量",
@@ -28,51 +27,42 @@ export class SiteAddCtrl
         $scope.areaTypeMap = {
             "TWO" : "适用于居住、商业、工业混杂区"
         }
-        $scope.autoUpdMap = {
-            true : "是",
-            false : "否"
-        };
 
       $scope.pageParams={};
       $scope.http=$http;
       $scope.URL='http://61.164.218.158:8080/AirServer/grafana/cityListByPage';
-
+      $scope.siteModel={};
       $scope.dismiss=function () {
           $scope.showCityList=!$scope.showCityList;
 
       };
       $scope.choose=function (item) {
           //console.info(item);
-          $scope.deviceTip.siteId=item.id;
-          $scope.deviceTip.siteName=item.siteName;
+          $scope.siteModel.cityId=item.id;
+          $scope.siteModel.cityName=item.cityName;
           $scope.showCityList=!$scope.showCityList;
       };
+      /*$scope.clearNoNum = function(attr) {
+//先把非数字的都替换掉，除了数字和.
+          attr = attr.replace(/[^\d.]/g, "");
+//必须保证第一个为数字而不是.
+          attr =attr.replace(/^\./g, "");
+//保证只有出现一个.而没有多个.
+          attr = attr.replace(/\.{2,}/g, "");
+//保证.只出现一次，而不能出现两次以上
+          attr = attr.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+      }*/
 
   }
   save()
-  {   
-      let cityAuto={
-        true : 1,
-        false : 0
-      }
-      var loc=this.location;
-      let cityTip={
-                        "siteCode":this.scope.cityModel.siteCode,
-                        "siteName":this.scope.cityModel.siteName,
-                        "siteType":this.scope.cityModel.siteType,
-                        "siteMontype":this.scope.cityModel.siteMonType,
-                        "cityId":-1,
-                        "createTime":this.scope.cityModel.siteCreateTime,
-                        "siteLatitude":this.scope.cityModel.siteLatitude,
-                        "siteLongitude":this.scope.cityModel.siteLongitude,
-                        "autoUpd":cityAuto[this.scope.cityModel.autoUpd],
-                        "comment":this.scope.cityModel.comment,
-                        "managerment":this.scope.cityModel.managerment};
+  {
+      console.info(this.scope.siteModel);
+
       $.ajax({
           type: 'GET',
-          url: 'http://61.164.218.158:8080/AirServer/grafana/addSite',
+          url: baseURL+'addSite',
               //'http://127.0.0.1:8080/grafana/editCity',
-          data: cityTip,
+          data: this.scope.siteModel,
           dataType:'json',
           success:function (da)
           {
@@ -84,9 +74,6 @@ export class SiteAddCtrl
               console.info(re);
           }
       });
-      /*this.http.post('http://127.0.0.1:8080/grafana/addCity',this.scope.cityModel).then(function (response) {
-          console.info(response);
-      });*/
   }
 }
 SiteAddCtrl.templateUrl = 'public/plugins/grafana-management/components/siteAdd.html';

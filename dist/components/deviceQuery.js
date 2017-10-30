@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['moment'], function (_export, _context) {
+System.register(['./common/constVal', 'moment'], function (_export, _context) {
     "use strict";
 
-    var moment, _createClass, DeviceQueryCtrl;
+    var baseURL, moment, _createClass, DeviceQueryCtrl;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register(['moment'], function (_export, _context) {
     }
 
     return {
-        setters: [function (_moment) {
+        setters: [function (_commonConstVal) {
+            baseURL = _commonConstVal.baseURL;
+        }, function (_moment) {
             moment = _moment.default;
         }],
         execute: function () {
@@ -99,7 +101,7 @@ System.register(['moment'], function (_export, _context) {
                         this.root.deviceTip = this.scope.deviceTip;
                         this.root.deviceTip.status = this.scope.deviceTip.statusModel.id ? this.scope.deviceTip.statusModel.id : '';
                         this.root.deviceTip.monType = this.scope.deviceTip.monTypeModel.id ? this.scope.deviceTip.monTypeModel.id : '';
-                        this.root.searchDeviceURL = 'http://61.164.218.158:8080/AirServer/grafana/searchDevices';
+                        this.root.searchDeviceURL = baseURL + 'searchDevices';
                         //'http://127.0.0.1:8080/grafana/searchDevices';
 
                         history.go(-1);

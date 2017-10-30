@@ -1,4 +1,5 @@
 import moment from 'moment';
+import {baseURL} from "./common/constVal";
 export class DeviceAddCtrl
 {
   constructor($scope,$http,$location)
@@ -10,7 +11,7 @@ export class DeviceAddCtrl
       };//提交的参数
 
       $scope.http=$http;
-      $scope.URL='http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
+      $scope.URL=baseURL+'siteListByPage';
       $scope.pageParams={};
 
       $scope.dismiss=function () {
@@ -48,11 +49,10 @@ export class DeviceAddCtrl
       this.scope.deviceTip.status=this.scope.deviceTip.statusModel.id?this.scope.deviceTip.statusModel.id:'';
       this.scope.deviceTip.monType=this.scope.deviceTip.monTypeModel.id?this.scope.deviceTip.monTypeModel.id:'';
 
-      console.info(this.scope.deviceTip);
       $.ajax({
           type: 'POST',
-          url: //'http://61.164.218.158:8080/AirServer/grafana/addDevice',
-              'http://127.0.0.1:8080/grafana/addDevice',
+          url: baseURL+
+              'addDevice',
           data: this.scope.deviceTip,
           dataType:'json',
           success:function (da)
