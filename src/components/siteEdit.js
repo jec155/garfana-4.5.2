@@ -8,7 +8,7 @@ export class SiteEditCtrl
       this.location=$location;
       $scope.siteModel=$rootScope.cityModel;
       //$scope.siteModel.autoUpd=0;
-      //console.info($scope.siteModel);
+      console.info($scope.siteModel);
       $scope.siteMonTypeMap = {
             "1" : "空气质量",
             "2" : "空气污染重点企业",
