@@ -39,39 +39,30 @@ System.register(['./common/constVal'], function (_export, _context) {
                     _classCallCheck(this, SiteDeviceManageCtrl);
 
                     this.root = $rootScope;
-                    //this.root.cityModel=$rootScope.cityModel;
-                    //console.info($rootScope.cityModel);
+                    //console.info($rootScope.cityModel)
                     this.http = $http;
 
                     this.location = $location;
 
-                    $scope.availableSiteID = [];
-                    $scope.citySiteID = [];
-                    $scope.availableSites = {};
-                    $scope.citySites = {};
+                    $scope.deviceID = [];
+                    $scope.availableDevices = {};
+                    $scope.siteDevices = {};
                     this.scope = $scope;
                     $scope.siteMap = {
                         'AIR': '空气质量',
                         'WATER': '水环境',
                         'MULTI': '多功能'
                     };
+
                     $http.get(baseURL + 'getAvailableDevices').then(function (response) {
                         angular.forEach(response.data.data, function (data, index, array) {
-                            //data等价于array[index]
-                            //$scope.availableSites.push({id:data.id,siteName:data.siteName});
-                            $scope.availableSites[data.id] = data.name + "(" + $scope.siteMap[data.monType] + ")";
+                            $scope.availableDevices[data.id] = data.name + "(" + $scope.siteMap[data.monType] + ")";
                         });
-                        //console.info($scope.availableSites);
-                        //$scope.availableSites=response.data.data;
                     });
                     $http.get(baseURL + 'getDevicesBySiteID?siteid=' + $rootScope.cityModel.id).then(function (response) {
                         angular.forEach(response.data.data, function (data, index, array) {
-
-                            //data等价于array[index]
-                            // $scope.citySites.push({id:data.id,siteName:data.siteName});
-                            $scope.citySites[data.id] = data.name + "(" + $scope.siteMap[data.monType] + ")";
+                            $scope.siteDevices[data.id] = data.name + "(" + $scope.siteMap[data.monType] + ")";
                         });
-                        //$scope.citySites=response.data.data;
                     });
                 }
 
@@ -86,9 +77,10 @@ System.register(['./common/constVal'], function (_export, _context) {
                             }
                         }
 
-                        for (var a in toAdd) {
-                            this.scope.citySites[a] = toAdd[a];
-                            delete this.scope.availableSites[a];
+                        for (var a in toAdd) //索引ID
+                        {
+                            this.scope.siteDevices[a] = toAdd[a];
+                            delete this.scope.availableDevices[a];
                         }
                     }
                 }, {
@@ -101,8 +93,8 @@ System.register(['./common/constVal'], function (_export, _context) {
                         }
 
                         for (var a in toAdd) {
-                            this.scope.citySites[a] = toAdd[a];
-                            delete this.scope.availableSites[a];
+                            this.scope.siteDevices[a] = toAdd[a];
+                            delete this.scope.availableDevices[a];
                         }
                     }
                 }, {
@@ -117,8 +109,8 @@ System.register(['./common/constVal'], function (_export, _context) {
                         }
 
                         for (var a in toAdd) {
-                            this.scope.availableSites[a] = toAdd[a];
-                            delete this.scope.citySites[a];
+                            this.scope.availableDevices[a] = toAdd[a];
+                            delete this.scope.siteDevices[a];
                         }
                     }
                 }, {
@@ -131,25 +123,23 @@ System.register(['./common/constVal'], function (_export, _context) {
                         }
 
                         for (var a in toAdd) {
-                            this.scope.availableSites[a] = toAdd[a];
-                            delete this.scope.citySites[a];
+                            this.scope.availableDevices[a] = toAdd[a];
+                            delete this.scope.siteDevices[a];
                         }
                     }
                 }, {
                     key: 'commit',
                     value: function commit() {
-                        for (var id in this.scope.citySites) {
-                            this.scope.citySiteID.push(id);
+                        for (var id in this.scope.siteDevices) {
+                            this.scope.deviceID.push(id);
                         }
-                        //if(this.scope.citySiteID.length<=0)
-                        //this.scope.citySiteID.push('-1');
-                        //console.info(this.root.cityModel.id);
+
                         $.ajax({
-                            type: 'POST',
+                            type: 'GET',
                             traditional: true,
                             url: baseURL + 'updateSiteDevice',
                             //'http://127.0.0.1:8080/grafana/updateCitySites',
-                            data: { siteid: this.root.cityModel.id, ids: this.scope.citySiteID },
+                            data: { siteid: this.root.cityModel.id, ids: this.scope.deviceID },
                             dataType: 'json',
                             success: function success(da) {
                                 history.go(-1);
@@ -170,7 +160,7 @@ System.register(['./common/constVal'], function (_export, _context) {
 
             _export('SiteDeviceManageCtrl', SiteDeviceManageCtrl);
 
-            SiteDeviceManageCtrl.templateUrl = 'public/plugins/grafana-management/components/SiteDeviceManageCtrl.html';
+            SiteDeviceManageCtrl.templateUrl = 'public/plugins/grafana-management/components/SiteDeviceManage.html';
         }
     };
 });

@@ -3,7 +3,7 @@
 </div>
 <div>
 	<select name="availableSites" id="A" multiple="multiple" size="12" style="width: 200px;float:left" >
-		<option name="option" ng-repeat="(x,y) in availableSites" value="{{x}}">{{y}}</option>
+		<option name="option" ng-repeat="(x,y) in availableDevices" value="{{x}}">{{y}}</option>
 	</select>
 	<div style="float:left">
 	<input type="button" name="addone" value="->" ng-click="ctrl.getSelectedA()"><br>
@@ -12,10 +12,10 @@
 	<input type="button" name="removeall" value="<<-" ng-click="ctrl.getSelectedRAll()">
 	</div>
 	<select name="citySites" id="B" multiple="multiple" size="12" style="width: 200px;">
-		<option name="option" ng-repeat="(x,y) in citySites" value="{{x}}">{{y}}</option>
+		<option name="option" ng-repeat="(x,y) in siteDevices" value="{{x}}">{{y}}</option>
 	</select>
 	<br>
-	<button style="display: block" ng-click="ctrl.commit()">提交</button>
+	<button class="btn btn-success" ng-click="ctrl.commit()">提交</button>
 </div>
 
 
