@@ -160,7 +160,7 @@ System.register(['./common/constVal'], function (_export, _context) {
 
             _export('SiteDeviceManageCtrl', SiteDeviceManageCtrl);
 
-            SiteDeviceManageCtrl.templateUrl = 'public/plugins/grafana-management/components/SiteDeviceManage.html';
+            SiteDeviceManageCtrl.templateUrl = 'public/plugins/grafana-management/components/siteDeviceManage.html';
         }
     };
 });

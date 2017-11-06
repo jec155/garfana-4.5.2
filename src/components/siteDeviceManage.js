@@ -122,6 +122,6 @@ export class SiteDeviceManageCtrl
 
     }
 }
-SiteDeviceManageCtrl.templateUrl = 'public/plugins/grafana-management/components/SiteDeviceManage.html';
+SiteDeviceManageCtrl.templateUrl = 'public/plugins/grafana-management/components/siteDeviceManage.html';
 
 
