@@ -20,7 +20,7 @@ System.register([], function (_export, _context) {
                 this.http = $http;
                 this.scope = $scope;
                 this.location = $location;
-                $scope.cityModel = $rootScope.cityModel;
+                $scope.logModel = $rootScope.logModel;
             });
 
             _export('LogViewCtrl', LogViewCtrl);

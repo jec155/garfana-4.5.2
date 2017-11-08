@@ -94,7 +94,7 @@ export class SiteStreamPageCtrl
     }
     setModel(item)
     {
-        this.root.cityModel=item;
+        this.root.siteModel=item;
     }
 
     link(scope, elem, attrs, ctrl)

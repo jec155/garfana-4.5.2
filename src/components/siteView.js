@@ -5,7 +5,7 @@ export class SiteViewCtrl
       this.http = $http;
       this.scope = $scope;
       this.location = $location;
-      $scope.cityModel = $rootScope.cityModel;
+      $scope.siteModel = $rootScope.siteModel;
       $scope.siteMonTypeMap = {
             "1" : "空气质量",
             "2" : "空气污染重点企业",

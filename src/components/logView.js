@@ -5,7 +5,7 @@ export class LogViewCtrl
       this.http = $http;
       this.scope = $scope;
       this.location = $location;
-      $scope.cityModel = $rootScope.cityModel;
+      $scope.logModel = $rootScope.logModel;
   }
 }
 LogViewCtrl.templateUrl = 'public/plugins/grafana-management/components/logView.html';

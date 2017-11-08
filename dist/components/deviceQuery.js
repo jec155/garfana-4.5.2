@@ -106,6 +106,11 @@ System.register(['./common/constVal', 'moment'], function (_export, _context) {
 
                         history.go(-1);
                     }
+                }, {
+                    key: 'querybyname',
+                    value: function querybyname() {
+                        var val = window.$("#qn").val();
+                    }
                 }]);
 
                 return DeviceQueryCtrl;

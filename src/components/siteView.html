@@ -4,63 +4,63 @@
 <form nam="form" class="gf-form-group" novalidate>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">代码</span>
-		<input name="siteCode" type="text" ng-model="cityModel.siteCode" class="gf-form-input max-width-20" disabled>
+		<input name="siteCode" type="text" ng-model="siteModel.siteCode" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">名称</span>
-		<input name="siteName" type="text" ng-model="cityModel.siteName" class="gf-form-input max-width-20" disabled>
+		<input name="siteName" type="text" ng-model="siteModel.siteName" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">类型</span>
-		<input name="siteType" type="text" ng-model="cityModel.siteType" class="gf-form-input max-width-20" disabled>
+		<input name="siteType" type="text" ng-model="siteModel.siteType" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">站点监测类型</span>
-		<input name="siteMonType" type="text" ng-model="siteMonTypeMap[cityModel.siteMonType]" class="gf-form-input max-width-20" disabled>
+		<input name="siteMonType" type="text" ng-model="siteMonTypeMap[siteModel.siteMonType]" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">省(直辖市)</span>
-		<input name="province" type="text" ng-model="cityModel.province" class="gf-form-input max-width-20" disabled>
+		<input name="province" type="text" ng-model="siteModel.province" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">城市</span>
-		<input name="cityName" type="text" ng-model="cityModel.cityName" class="gf-form-input max-width-20" disabled>
+		<input name="cityName" type="text" ng-model="siteModel.cityName" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">地区类别</span>
-		<input name="areaType" type="text" ng-model="areaTypeMap[cityModel.areaType]" class="gf-form-input max-width-20" disabled>
+		<input name="areaType" type="text" ng-model="areaTypeMap[siteModel.areaType]" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">站点经度</span>
-		<input name="siteLongitude" type="text" ng-model="cityModel.siteLongitude" class="gf-form-input max-width-20" disabled>
+		<input name="siteLongitude" type="text" ng-model="siteModel.siteLongitude" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">站点纬度</span>
-		<input name="siteLatitude" type="text" ng-model="cityModel.siteLatitude" class="gf-form-input max-width-20" disabled>
+		<input name="siteLatitude" type="text" ng-model="siteModel.siteLatitude" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">自动更新位置</span>
-		<input name="autoUpd" type="text" ng-model="autoUpdMap[cityModel.autoUpd]" class="gf-form-input max-width-20" disabled>
+		<input name="autoUpd" type="text" ng-model="autoUpdMap[siteModel.autoUpd]" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">状态</span>
-		<input name="status" type="text" ng-model="statusMap[cityModel.status]" class="gf-form-input max-width-20" disabled>
+		<input name="status" type="text" ng-model="statusMap[siteModel.status]" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">设立时间</span>
-		<input name="siteCreateTime" type="text" ng-model="cityModel.siteCreateTime" class="gf-form-input max-width-20" disabled>
+		<input name="siteCreateTime" type="text" ng-model="siteModel.siteCreateTime" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">管理机构</span>
-		<input name="managerment" type="text" ng-model="cityModel.managerment" class="gf-form-input max-width-20" disabled>
+		<input name="managerment" type="text" ng-model="siteModel.managerment" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">责任人</span>
-		<input name="realName" type="text" ng-model="cityModel.realName" class="gf-form-input max-width-20" disabled>
+		<input name="realName" type="text" ng-model="siteModel.realName" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form">
 		<span class="gf-form-label width-10">备注</span>
-		<input name="comment" type="text" ng-model="cityModel.comment" class="gf-form-input max-width-20" disabled>
+		<input name="comment" type="text" ng-model="siteModel.comment" class="gf-form-input max-width-20" disabled>
 	</div>
 	<div class="gf-form-button-row">
 		<a href="#" class="btn btn-success" ng-click="toEdit()" style="cursor: pointer">编辑</a>

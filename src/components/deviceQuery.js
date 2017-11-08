@@ -76,6 +76,12 @@ export class DeviceQueryCtrl
 
       history.go(-1);
   }
+
+  querybyname()
+  {
+    var val = window.$("#qn").val();
+    
+  }
 }
 DeviceQueryCtrl.templateUrl = 'public/plugins/grafana-management/components/deviceQuery.html';
 

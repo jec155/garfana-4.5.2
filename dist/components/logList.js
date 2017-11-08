@@ -119,7 +119,7 @@ System.register(['./common/constVal', 'app/core/core'], function (_export, _cont
                 }, {
                     key: 'setModel',
                     value: function setModel(item) {
-                        this.root.cityModel = item;
+                        this.root.logModel = item;
                     }
                 }, {
                     key: 'link',

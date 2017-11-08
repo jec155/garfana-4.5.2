@@ -83,7 +83,7 @@ export class LogStreamPageCtrl
     }
     setModel(item)
     {
-        this.root.cityModel=item;
+        this.root.logModel=item;
 
     }
 

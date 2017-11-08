@@ -46,7 +46,6 @@ System.register(['moment', './common/constVal'], function (_export, _context) {
                         useDate1: '', useDate2: '', lastCheckDate1: '', lastCheckDate2: '', monTypeModel: {}, comment: ''
                     }; //提交的参数
                     this.scope.deviceTip = $rootScope.deviceTip;
-
                     $scope.http = $http;
                     $scope.URL = baseURL + 'siteListByPage';
                     $scope.pageParams = {};
