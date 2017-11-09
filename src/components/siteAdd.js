@@ -68,7 +68,7 @@ export class SiteAddCtrl
           {
               //loc.path('plugins/grafana-example-app/page/live-stream');
               history.go(-1);
-              alert('编辑成功');
+              alert('添加成功');
           },
           error:function (re) {
               console.info(re);

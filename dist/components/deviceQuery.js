@@ -48,6 +48,9 @@ System.register(['./common/constVal', 'moment'], function (_export, _context) {
                         siteName: '', siteId: '', name: '', monType: '', seqno: '', firmware: '', status: '', statusModel: {}, productDate1: '', productDate2: '',
                         useDate1: '', useDate2: '', lastCheckDate1: '', lastCheckDate2: '', monTypeModel: {}
                     }; //参数
+                    $scope.searchSitesBySiteNameTip = {
+                        siteName: ''
+                    };
                     //选择站点
                     $scope.dismiss = function () {
                         $scope.siteShow = !$scope.siteShow;
@@ -109,7 +112,9 @@ System.register(['./common/constVal', 'moment'], function (_export, _context) {
                 }, {
                     key: 'querybyname',
                     value: function querybyname() {
-                        var val = window.$("#qn").val();
+                        this.scope.searchSitesBySiteNameTip.siteName = window.$("#qn").val();
+                        this.root.deviceTip = this.scope.searchSitesBySiteNameTip;
+                        this.root.searchDeviceURL = baseURL + 'searchSitesBySiteName';
                     }
                 }]);
 

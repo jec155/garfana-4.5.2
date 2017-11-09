@@ -101,7 +101,7 @@ System.register(["./common/constVal"], function (_export, _context) {
                             success: function success(da) {
                                 //loc.path('plugins/grafana-example-app/page/live-stream');
                                 history.go(-1);
-                                alert('编辑成功');
+                                alert('添加成功');
                             },
                             error: function error(re) {
                                 console.info(re);
