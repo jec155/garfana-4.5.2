@@ -8,7 +8,7 @@
 			   class="gf-form-input max-width-20" >
 	</div>
 
-	<div ng-if="siteShow"  name="sitelist" style="border: solid;border-width: 1px; border-color: #333;width: 55%;height:250px;
+	<div ng-if="siteShow"  name="sitelist" id="sitelistdiv" style="border: solid;border-width: 1px; border-color: #333;width: 55%;height:250px;
 		overflow-x: scroll;overflow-y: scroll;padding: 10px">
 		<div class="modal-header">
 			<h2 class="modal-header-title">
@@ -20,7 +20,7 @@
 		</div>
 		<div class="gf-form-inline">
 			<div class="gf-form"><input id="qn" class="gf-form-input width-20"></div>
-			<div class="gf-form"><button type="submit" class="btn btn-success" ng-click="ctrl.querybyname()">查询</button></div>
+			<div class="gf-form"><input type="button" class="btn btn-success" ng-click="querybyname()" value="查询"/></div>
 		</div>
 		<table >
 			<tr>

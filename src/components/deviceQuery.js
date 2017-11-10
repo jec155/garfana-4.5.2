@@ -13,7 +13,7 @@ export class DeviceQueryCtrl
           useDate1:'',useDate2:'',lastCheckDate1:'',lastCheckDate2:'',monTypeModel:{}
       };//参数
       $scope.searchSitesBySiteNameTip={
-          siteName:''
+          siteName:'',currentPage:'1',itemsPerPage:'10'
       };
       //选择站点
       $scope.dismiss=function () {
@@ -57,10 +57,29 @@ export class DeviceQueryCtrl
           $scope.deviceTip.lastCheckDate2=moment(time);
           $scope.lastCheckDate2=!$scope.lastCheckDate2;
       }
-
+      
       $scope.http=$http;
       $scope.URL='http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
       $scope.pageParams={};
+      $scope.querybyname = function(){
+          $scope.searchSitesBySiteNameTip.siteName = window.$("#qn").val();
+          $scope.URL = baseURL+'searchSitesBySiteName';
+          $scope.pageParams=$scope.searchSitesBySiteNameTip;
+          $.ajax({
+            type: 'GET',
+            url: baseURL+
+            'searchSitesBySiteName',
+            data: $scope.searchSitesBySiteNameTip,
+            dataType:'json',
+            success:function (da)
+            {
+              alert("!!!");
+            },
+            error:function (re) {
+              console.info(re);
+            }
+        });
+      }
   }
 
   query()
@@ -78,13 +97,6 @@ export class DeviceQueryCtrl
           //'http://127.0.0.1:8080/grafana/searchDevices';
 
       history.go(-1);
-  }
-
-  querybyname()
-  {
-    this.scope.searchSitesBySiteNameTip.siteName = window.$("#qn").val();
-    this.root.deviceTip=this.scope.searchSitesBySiteNameTip;
-    this.root.searchDeviceURL=baseURL+'searchSitesBySiteName';
   }
 }
 DeviceQueryCtrl.templateUrl = 'public/plugins/grafana-management/components/deviceQuery.html';

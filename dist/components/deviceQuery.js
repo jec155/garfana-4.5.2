@@ -49,7 +49,7 @@ System.register(['./common/constVal', 'moment'], function (_export, _context) {
                         useDate1: '', useDate2: '', lastCheckDate1: '', lastCheckDate2: '', monTypeModel: {}
                     }; //参数
                     $scope.searchSitesBySiteNameTip = {
-                        siteName: ''
+                        siteName: '', currentPage: '1', itemsPerPage: '10'
                     };
                     //选择站点
                     $scope.dismiss = function () {
@@ -90,6 +90,23 @@ System.register(['./common/constVal', 'moment'], function (_export, _context) {
                     $scope.http = $http;
                     $scope.URL = 'http://61.164.218.158:8080/AirServer/grafana/siteListByPage';
                     $scope.pageParams = {};
+                    $scope.querybyname = function () {
+                        $scope.searchSitesBySiteNameTip.siteName = window.$("#qn").val();
+                        $scope.URL = baseURL + 'searchSitesBySiteName';
+                        $scope.pageParams = $scope.searchSitesBySiteNameTip;
+                        $.ajax({
+                            type: 'GET',
+                            url: baseURL + 'searchSitesBySiteName',
+                            data: $scope.searchSitesBySiteNameTip,
+                            dataType: 'json',
+                            success: function success(da) {
+                                alert("!!!");
+                            },
+                            error: function error(re) {
+                                console.info(re);
+                            }
+                        });
+                    };
                 }
 
                 _createClass(DeviceQueryCtrl, [{
@@ -108,13 +125,6 @@ System.register(['./common/constVal', 'moment'], function (_export, _context) {
                         //'http://127.0.0.1:8080/grafana/searchDevices';
 
                         history.go(-1);
-                    }
-                }, {
-                    key: 'querybyname',
-                    value: function querybyname() {
-                        this.scope.searchSitesBySiteNameTip.siteName = window.$("#qn").val();
-                        this.root.deviceTip = this.scope.searchSitesBySiteNameTip;
-                        this.root.searchDeviceURL = baseURL + 'searchSitesBySiteName';
                     }
                 }]);
 
