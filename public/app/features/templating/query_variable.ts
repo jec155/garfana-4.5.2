@@ -45,9 +45,35 @@ export class QueryVariable implements Variable {
   };
 
   /** @ngInject **/
-  constructor(private model, private datasourceSrv, private templateSrv, private variableSrv, private timeSrv)  {
+  constructor(private model, private datasourceSrv, private templateSrv, private variableSrv,
+              private  backendSrv,private timeSrv)
+  {
     // copy model properties to this instance
     assignModelProperties(this, model, this.defaults);
+    var instance=this;
+    window.$.ajax({
+      url : 'http://61.164.218.158:8080/DataCenter/manager/manager_device_listall.action',
+      //'http://192.168.3.65:8080/DataCenter/manager/manager_device_listall.action',
+      type : "post",
+      dataType : "jsonp",
+      crossDomain: true,
+      /*data:{'callback':5},*/
+      jsonp: "callback",
+      jsonpCallback:"message",
+      data:{'callback':'message'},
+      success : function(data)
+      {
+          instance.cnData=data;
+      }
+    });
+
+    var res=backendSrv.get('http://61.164.218.158:8080/AirServer/site/findAllSites')
+      .then(function (resp) {
+        console.info(resp);
+      },function (resp) {
+        console.info(resp);
+      });
+    console.info('startaaa11');
   }
 
   getSaveModel() {
@@ -113,7 +139,9 @@ export class QueryVariable implements Variable {
 
   updateOptionsFromMetricFindQuery(datasource) {
     return this.metricFindQuery(datasource, this.query).then(results => {
+      //console.info(results);
       this.options = this.metricNamesToVariableValues(results);
+      //console.info(this.options);
       if (this.includeAll) {
         this.addAllOption();
       }
@@ -135,10 +163,11 @@ export class QueryVariable implements Variable {
   }
 
   addAllOption() {
-    this.options.unshift({text: 'All', value: "$__all"});
+    this.options.unshift({text: 'All', value: "$__all",cn: '全选'});
   }
 
   metricNamesToVariableValues(metricNames) {
+    //alert(metricNames);
     var regex, options, i, matches;
     options = [];
 
@@ -172,7 +201,7 @@ export class QueryVariable implements Variable {
         }
       }
 
-      options.push({text: text, value: value});
+      options.push({text: text, value: value, cn: item.cn});
     }
 
     options = _.uniqBy(options, 'value');

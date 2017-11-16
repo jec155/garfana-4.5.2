@@ -49,17 +49,19 @@ function (angular, _, coreModule) {
           }
           return true;
         });
-
+        //
         // convert values to text
         var currentTexts = _.map(selectedAndNotInTag, 'text');
-
+        //console.info(currentTexts);
         // join texts
         vm.linkText = currentTexts.join(' + ');
         if (vm.linkText.length > 0) {
           vm.linkText += ' + ';
         }
       } else {
-        vm.linkText = vm.variable.current.text;
+
+        vm.linkText = vm.variable.current.cn?vm.variable.current.cn:vm.variable.current.text;
+        //console.info(vm.linkText);
       }
     };
 
@@ -177,6 +179,7 @@ function (angular, _, coreModule) {
       vm.selectedTags = _.filter(vm.tags, {selected: true});
       vm.variable.current.value = _.map(vm.selectedValues, 'value');
       vm.variable.current.text = _.map(vm.selectedValues, 'text').join(' + ');
+      vm.variable.current.cn=_.map(vm.selectedValues, 'cn').join(' + ');
       vm.variable.current.tags = vm.selectedTags;
 
       if (!vm.variable.multi) {

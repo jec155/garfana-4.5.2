@@ -20,6 +20,35 @@ function (angular, _, dateMath) {
     this.supportMetrics = true;
     this.tagKeys = {};
 
+    //console.info(res);
+    this.cnMap={
+      'env':'环境',
+      'env.air':'空气',
+      'env.water':'水质',
+      'env.gas':'废气',
+      'public':'公共',
+      'private':'私有',
+      'env.device':'设备',
+      'etc':'其他',
+      'evn':'evn',
+      'swm':'swm',
+      'swm.flowmeter':'流量计',
+      'swm.pressuremeter':'压力计',
+      'swm.watermeter':'水表',
+      'site':'站点',
+      'city':'城市',
+      'DT':'设备温度',
+      'PRESSURE':'压力',
+      'FLOW':'流量',
+      'TOTAL_FLOW_L':'大管总流量',
+      'TOTAL_FLOW_S':'小管总流量',
+      'TEMPERATURE':'温度',
+      'HUMIDITY':'湿度'
+    };
+    this.air=['AQI','PM25','PM10','O3','SO2','NO2','CO','TEMPERATURE','HUMIDITY'];
+    this.water=['PH','DO','COD','FTV','CT','TEM','TOTAL_P','NH3_N'];
+    this.gas=['CL2','ETO','HCL','NH3','C6H6','H2S','C7H8','TEMPERATURE','HUMIDITY'];
+
     // Called once per panel (graph)
     this.query = function(options) {
       var start = convertToTSDBTime(options.rangeRaw.from, false);
@@ -242,7 +271,7 @@ function (angular, _, dateMath) {
       }
     };
 
-    this.metricFindQuery = function(query) {
+    this.metricFindQuery = function(query,options) {
       if (!query) { return $q.when([]); }
 
       var interpolated;
@@ -252,10 +281,59 @@ function (angular, _, dateMath) {
       catch (err) {
         return $q.reject(err);
       }
+      var ds=this;
+      var responseTransform = function(result)
+      {
+        //排序
+        if(tag_values_query)
+        {
+          var keysArray = tag_values_query[2].split(",").map(function(key) {
+            return key.trim();
+          });
+          var key = keysArray[0];
+          if(key==='index')
+          {
+            if(tag_values_query[1]==='env.air')
+            {
+              /*for(let i=0;i<result.length;i++)
+              {
+                let item=result[i];
+                let index=ds.air.indexOf(item);
 
-      var responseTransform = function(result) {
+                result.splice(i,1);
+                result.splice()
+              }*/
+              result=ds.air;
+
+            }else if(tag_values_query[1]==='env.gas')
+            {
+              result=ds.gas;
+            }else if(tag_values_query[1]==='env.water')
+            {
+              result=ds.water;
+            }
+          }
+          if(key==='host')
+          {
+            if(options)
+            {
+              //console.info(options.variable.cnData);
+              var hostMap={};
+              _.map(options.variable.cnData,function (item) {
+                hostMap[item.key]=item.name;
+                return {item};
+              });
+              return _.map(result, function(value) {
+                return {text: value,cn:hostMap[value]};
+              });
+            }
+
+          }
+
+        }
+
         return _.map(result, function(value) {
-          return {text: value};
+          return {text: value,cn:ds.cnMap[value]};
         });
       };
 
@@ -265,7 +343,10 @@ function (angular, _, dateMath) {
       var tag_names_suggest_regex = /suggest_tagk\((.*)\)/;
       var tag_values_suggest_regex = /suggest_tagv\((.*)\)/;
 
+
+
       var metrics_query = interpolated.match(metrics_regex);
+      //console.info(metrics_query);
       if (metrics_query) {
         return this._performSuggestQuery(metrics_query[1], 'metrics').then(responseTransform);
       }
@@ -276,6 +357,8 @@ function (angular, _, dateMath) {
       }
 
       var tag_values_query = interpolated.match(tag_values_regex);
+      //console.info(interpolated);
+      //console.info(tag_values_query);
       if (tag_values_query) {
         return this._performMetricKeyValueLookup(tag_values_query[1], tag_values_query[2]).then(responseTransform);
       }

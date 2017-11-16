@@ -3,6 +3,7 @@ npm-debug.log
 coverage/
 .aws-config.json
 awsconfig
+<<<<<<< HEAD
 /dist
 /public/build
 /public/views/index.html
@@ -19,6 +20,19 @@ docs/AWS_S3_BUCKET
 docs/GIT_BRANCH
 docs/GITCOMMIT
 docs/changed-files
+=======
+/emails/dist
+/public_gen
+
+vendor/phantomjs/phantomjs
+
+docs/AWS_S3_BUCKET
+docs/GIT_BRANCH
+docs/VERSION
+docs/GITCOMMIT
+docs/changed-files
+docs/changed-files
+>>>>>>> ef5de231727b2252e1cbae42680bff4513593ec0
 
 # locally required config files
 public/css/*.min.css
@@ -28,15 +42,19 @@ public/css/*.min.css
 *.swp
 .idea/
 *.iml
+<<<<<<< HEAD
 *.tmp
 .DS_Store
 .vscode/
+=======
+>>>>>>> ef5de231727b2252e1cbae42680bff4513593ec0
 
 /data/*
 /bin/*
 
 conf/custom.ini
 fig.yml
+<<<<<<< HEAD
 docker-compose.yml
 docker-compose.yaml
 profile.cov
@@ -55,3 +73,8 @@ profile.cov
 /vendor/**/*_test.go
 /vendor/**/.editorconfig
 /vendor/**/appengine*
+=======
+profile.cov
+grafana
+.notouch
+>>>>>>> ef5de231727b2252e1cbae42680bff4513593ec0

@@ -36,6 +36,7 @@ export class VariableEditorCtrl {
       $scope.mode = 'list';
 
       $scope.variables = variableSrv.variables;
+      //alert($scope.variables);
       $scope.reset();
 
       $scope.$watch('mode', function(val) {
@@ -89,7 +90,9 @@ export class VariableEditorCtrl {
     };
 
     $scope.runQuery = function() {
-      return variableSrv.updateOptions($scope.current).then(null, function(err) {
+      return variableSrv.updateOptions($scope.current).then(function () {
+        //console.info($scope.current.options);
+      }, function(err) {
         if (err.data && err.data.message) { err.message = err.data.message; }
         $scope.appEvent("alert-error", ['Templating', 'Template variables could not be initialized: ' + err.message]);
       });

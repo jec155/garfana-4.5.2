@@ -113,7 +113,7 @@ function (angular, _, moment, dateMath, kbn, templatingVariable) {
     };
 
     this.performTimeSeriesQuery = function(request) {
-      return this.awsRequest('/api/tsdb/query', request).then(function (res) {
+      return backendSrv.post('/api/tsdb/query', request).then(function (res) {
         var data = [];
 
         if (res.results) {
@@ -139,7 +139,7 @@ function (angular, _, moment, dateMath, kbn, templatingVariable) {
 
     this.doMetricQueryRequest = function (subtype, parameters) {
       var range = timeSrv.timeRange();
-      return this.awsRequest('/api/tsdb/query', {
+      return backendSrv.post('/api/tsdb/query', {
         from: range.from.valueOf().toString(),
         to: range.to.valueOf().toString(),
         queries: [
@@ -277,7 +277,7 @@ function (angular, _, moment, dateMath, kbn, templatingVariable) {
         alarmNamePrefix: annotation.alarmNamePrefix || ''
       };
 
-      return this.awsRequest('/api/tsdb/query', {
+      return backendSrv.post('/api/tsdb/query', {
         from: options.range.from.valueOf().toString(),
         to: options.range.to.valueOf().toString(),
         queries: [
@@ -325,15 +325,15 @@ function (angular, _, moment, dateMath, kbn, templatingVariable) {
       });
     };
 
-    this.awsRequest = function(url, data) {
+    this.awsRequest = function(data) {
       var options = {
         method: 'POST',
-        url: url,
+        url: this.proxyUrl,
         data: data
       };
 
       return backendSrv.datasourceRequest(options).then(function(result) {
-        return result;
+        return result.data;
       });
     };
 

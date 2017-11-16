@@ -134,7 +134,7 @@ export class VariableSrv {
   selectOptionsForCurrentValue(variable) {
     var i, y, value, option;
     var selected: any = [];
-
+    //console.info(variable.options);
     for (i = 0; i < variable.options.length; i++) {
       option = variable.options[i];
       option.selected = false;
@@ -159,7 +159,7 @@ export class VariableSrv {
     if (!variable.current) {
       variable.current = {};
     }
-
+    //console.info(variable.options);
     if (_.isArray(variable.current.value)) {
       var selected = this.selectOptionsForCurrentValue(variable);
 
@@ -170,6 +170,7 @@ export class VariableSrv {
         selected = {
           value: _.map(selected, function(val) {return val.value;}),
           text: _.map(selected, function(val) {return val.text;}).join(' + '),
+          //cn:_.map()
         };
       }
 

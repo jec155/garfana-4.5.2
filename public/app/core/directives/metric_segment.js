@@ -39,8 +39,6 @@ function (_, $, coreModule) {
             return;
           }
 
-          value = _.unescape(value)
-
           $scope.$apply(function() {
             var selected = _.find($scope.altSegments, {value: value});
             if (selected) {
