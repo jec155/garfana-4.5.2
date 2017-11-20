@@ -10,7 +10,7 @@ awsconfig
 /emails/dist
 /public_gen
 /public/vendor/npm
-
+/tmp/data
 vendor/phantomjs/phantomjs
 vendor/phantomjs/phantomjs.exe
 profile.out

@@ -26,7 +26,7 @@ function (angular, _, coreModule, config) {
     $scope.loginHint     = config.loginHint;
 
     $scope.loginMode = true;
-    $scope.submitBtnText = 'Log in';
+    $scope.submitBtnText = '登录';
 
     $scope.init = function() {
       $scope.$watch("loginMode", $scope.loginModeChanged);
@@ -45,7 +45,7 @@ function (angular, _, coreModule, config) {
     };
 
     $scope.loginModeChanged = function(newValue) {
-      $scope.submitBtnText = newValue ? 'Log in' : 'Sign up';
+      $scope.submitBtnText = newValue ? '登录' : '注册';
     };
 
     $scope.signUp = function() {
