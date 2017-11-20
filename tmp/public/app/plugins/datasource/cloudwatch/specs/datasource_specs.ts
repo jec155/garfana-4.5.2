@@ -66,9 +66,15 @@ describe('CloudWatchDatasource', function() {
     };
 
     beforeEach(function() {
+<<<<<<< HEAD
       ctx.backendSrv.post = function(path, params) {
         requestParams = params;
         return ctx.$q.when(response);
+=======
+      ctx.backendSrv.datasourceRequest = function(params) {
+        requestParams = params.data;
+        return ctx.$q.when({data: response});
+>>>>>>> 6595be95eb9d4b9222cc9e2f1785780c83699523
       };
     });
 
@@ -211,9 +217,15 @@ describe('CloudWatchDatasource', function() {
     };
 
     beforeEach(function() {
+<<<<<<< HEAD
       ctx.backendSrv.post = function(path, params) {
         requestParams = params;
         return ctx.$q.when(response);
+=======
+      ctx.backendSrv.datasourceRequest = function(params) {
+        requestParams = params.data;
+        return ctx.$q.when({data: response});
+>>>>>>> 6595be95eb9d4b9222cc9e2f1785780c83699523
       };
     });
 
@@ -234,12 +246,17 @@ describe('CloudWatchDatasource', function() {
         beforeEach(() => {
           setupCallback();
           ctx.backendSrv.datasourceRequest = args => {
+<<<<<<< HEAD
             scenario.request = args;
             return ctx.$q.when({ data: scenario.requestResponse });
           };
           ctx.backendSrv.post = (path, args) => {
             scenario.request = args;
             return ctx.$q.when(scenario.requestResponse);
+=======
+            scenario.request = args.data;
+            return ctx.$q.when({data: scenario.requestResponse});
+>>>>>>> 6595be95eb9d4b9222cc9e2f1785780c83699523
           };
           ctx.ds.metricFindQuery(query).then(args => {
             scenario.result = args;

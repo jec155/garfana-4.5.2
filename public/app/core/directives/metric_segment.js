@@ -39,11 +39,9 @@ function (_, $, coreModule) {
             return;
           }
 
-<<<<<<< HEAD
-=======
+
           value = _.unescape(value);
 
->>>>>>> 6595be95eb9d4b9222cc9e2f1785780c83699523
           $scope.$apply(function() {
             var selected = _.find($scope.altSegments, {value: value});
             if (selected) {
