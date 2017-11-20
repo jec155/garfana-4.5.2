@@ -39,6 +39,11 @@ function (_, $, coreModule) {
             return;
           }
 
+<<<<<<< HEAD
+=======
+          value = _.unescape(value);
+
+>>>>>>> 6595be95eb9d4b9222cc9e2f1785780c83699523
           $scope.$apply(function() {
             var selected = _.find($scope.altSegments, {value: value});
             if (selected) {
@@ -46,6 +51,7 @@ function (_, $, coreModule) {
               segment.html = selected.html || selected.value;
               segment.fake = false;
               segment.expandable = selected.expandable;
+              segment.type = selected.type;
             }
             else if (segment.custom !== 'false') {
               segment.value = value;
