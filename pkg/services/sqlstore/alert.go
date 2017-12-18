@@ -156,7 +156,7 @@ func SaveAlerts(cmd *m.SaveAlertsCommand) error {
 		return nil
 	})
 }
-
+/*cmd 新待更新的alert*/
 func upsertAlerts(existingAlerts []*m.Alert, cmd *m.SaveAlertsCommand, sess *DBSession) error {
 	for _, alert := range cmd.Alerts {
 		update := false
@@ -184,6 +184,7 @@ func upsertAlerts(existingAlerts []*m.Alert, cmd *m.SaveAlertsCommand, sess *DBS
 				sqlog.Debug("Alert updated", "name", alert.Name, "id", alert.Id)
 			}
 		} else {
+
 			alert.Updated = time.Now()
 			alert.Created = time.Now()
 			alert.State = m.AlertStatePending
