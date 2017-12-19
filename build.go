@@ -94,13 +94,13 @@ func main() {
 			grunt("test")
 
 		case "package":
-			grunt(gruntBuildArg("release")...)
+			//grunt(gruntBuildArg("release")...)
       if runtime.GOOS != "windows" {
 			  createLinuxPackages()
       }
 
 		case "pkg-rpm":
-			grunt(gruntBuildArg("release")...)
+			//grunt(gruntBuildArg("release")...)
 			createRpmPackages()
 
 		case "pkg-deb":
@@ -347,6 +347,7 @@ func ChangeWorkingDir(dir string) {
 }
 
 func grunt(params ...string) {
+	fmt.Println(params)
   if runtime.GOOS == "windows" {
     runPrint(`.\node_modules\.bin\grunt`, params...)
   } else {
