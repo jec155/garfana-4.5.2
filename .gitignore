@@ -4,7 +4,7 @@ coverage/
 .aws-config.json
 awsconfig
 <<<<<<< HEAD
-/dist
+
 /public/build
 /public/views/index.html
 /emails/dist
