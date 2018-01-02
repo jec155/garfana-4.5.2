@@ -53,9 +53,9 @@ func EnsureAdminUser() {
 		return
 	}
 
-	if statsQuery.Result.Users > 0 {
+	/*if statsQuery.Result.Users > 0 {
 		return
-	}
+	}*/
 
 	cmd := m.CreateUserCommand{}
 	cmd.Login = setting.AdminUser
