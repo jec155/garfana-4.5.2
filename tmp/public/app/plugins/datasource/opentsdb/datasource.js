@@ -46,7 +46,7 @@ function (angular, _, dateMath) {
       'HUMIDITY':'湿度'
     };
     this.air=['AQI','PM25','PM10','O3','SO2','NO2','CO','TEMPERATURE','HUMIDITY'];
-    this.water=['PH','DO','COD','FTV','CT','TEM','TOTAL_P','NH3_N'];
+    this.water=['PH','DO','COD','FTU','CT','TEMPERATURE','TOTAL_P','NH3_N'];
     this.gas=['CL2','ETO','HCL','NH3','C6H6','H2S','C7H8','TEMPERATURE','HUMIDITY'];
 
     // Called once per panel (graph)
