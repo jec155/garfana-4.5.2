@@ -140,8 +140,8 @@ function graphDirective($rootScope, timeSrv, popoverSrv, contextSrv) {
             // auto decimals
             // legend and tooltip gets one more decimal precision
             // than graph legend ticks
-            var tickDecimals = (axis.tickDecimals || -1) + 1;
-            series.updateLegendValues(formater, tickDecimals, axis.scaledDecimals + 2);
+            var tickDecimals = ((axis?axis.tickDecimals : 0) || -1) + 1;
+            series.updateLegendValues(formater, tickDecimals, axis?axis.scaledDecimals : 0 + 2);
           }
 
           if (!rootScope.$$phase) { scope.$digest(); }
