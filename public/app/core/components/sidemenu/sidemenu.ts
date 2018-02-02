@@ -26,6 +26,7 @@ export class SideMenuCtrl {
     this.maxShownOrgs = 10;
 
     this.mainLinks = config.bootData.mainNavLinks;
+    console.log(this.mainLinks);
     this.openUserDropdown();
     this.loginUrl = 'login?redirect=' + encodeURIComponent(this.$location.path());
 
@@ -37,7 +38,21 @@ export class SideMenuCtrl {
     });
 
     this.orgFilter = '';
+
+    this.customLink();
   }
+
+
+  customLink(){
+    this.customLinks=[{text:'综合监视',icon:'icon-gf icon-gf-dashboard',url:'/'
+      ,children:[{text:'数据回放',url:''},{text:'单站对比分析',url:''},{text:'多站对比分析',url:''},
+        {text:'区域分析',url:''},{text:'数据排名',url:''},{text:'用电统计',url:''}]},
+                      {text:'综合统计分析',icon:'fa fa-fw fa-cogs',url:'/',img:''},
+                      {text:'预警预报',icon:'fa fa-fw fa-cogs',url:'/',img:''},
+                      {text:'综合报表',icon:'fa fa-fw fa-cogs',url:'/',img:''},
+                      {text:'用户权限管理',icon:'fa fa-fw fa-cogs',url:'/',img:''},];
+  }
+
 
  getUrl(url) {
    return config.appSubUrl + url;

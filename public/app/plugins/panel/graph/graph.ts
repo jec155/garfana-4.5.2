@@ -130,8 +130,8 @@ function graphDirective($rootScope, timeSrv, popoverSrv, contextSrv) {
         var yaxis = plot.getYAxes();
         for (var i = 0; i < data.length; i++) {
           var series = data[i];
-          var axis = yaxis[series.yaxis - 1];
-          var formater = kbn.valueFormats[panel.yaxes[series.yaxis - 1].format];
+          var axis = yaxis[series.yaxis||1 - 1];//console.log(series)
+          var formater = kbn.valueFormats[panel.yaxes[series.yaxis||1 - 1].format];
 
           // decimal override
           if (_.isNumber(panel.decimals)) {
