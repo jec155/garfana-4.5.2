@@ -54,6 +54,31 @@
 		</ul>
 	</li>
 
+
+
+  <!-- 自定义-->
+  <li ng-repeat="item in ::ctrl.customLinks" class="dropdown">
+    <a href="{{::item.url}}" class="sidemenu-item sidemenu-main-link" target="{{::item.target}}">
+			<span class="icon-circle sidemenu-icon">
+				<i class="{{::item.icon}}" ng-show="::item.icon"></i>
+				<img ng-src="{{::item.img}}" ng-show="::item.img">
+			</span>
+      <span class="sidemenu-item-text">{{::item.text}}</span>
+      <span class="fa fa-caret-right" ng-if="::item.children"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu" ng-if="::item.children">
+      <li ng-repeat="child in ::item.children" ng-class="{divider: child.divider}">
+        <a href="{{::child.url}}">
+          <i class="{{::child.icon}}" ng-show="::child.icon"></i>
+          {{::child.text}}
+        </a>
+      </li>
+    </ul>
+  </li>
+  <!--自定义-->
+
+
+
 	<li ng-show="::!ctrl.isSignedIn">
     <a href="{{ctrl.loginUrl}}" class="sidemenu-item" target="_self">
 			<span class="icon-circle sidemenu-icon"><i class="fa fa-fw fa-sign-in"></i></span>

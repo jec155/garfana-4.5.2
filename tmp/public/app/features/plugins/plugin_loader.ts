@@ -82,6 +82,15 @@ exposeToPlugin('app/features/dashboard/impression_store', {
   __esModule: true
 });
 
+////////////
+import { EventManager } from 'app/features/annotations/all';
+import {DataProcessor} from "../../plugins/panel/graph/data_processor";
+exposeToPlugin('app/features/annotations/all', EventManager);
+exposeToPlugin('app/plugins/panel/graph/graph', {name: 1});
+exposeToPlugin('app/plugins/panel/graph/legend', {name: 2});
+exposeToPlugin('app/plugins/panel/graph/data_processor', DataProcessor);
+///////////////
+
 exposeToPlugin('app/plugins/sdk', sdk);
 exposeToPlugin('app/core/utils/datemath', datemath);
 exposeToPlugin('app/core/utils/file_export', fileExport);
