@@ -43,14 +43,27 @@ export class SideMenuCtrl {
   }
 
 
-  customLink(){
-    this.customLinks=[{text:'综合监视',icon:'icon-gf icon-gf-dashboard',url:'/'
-      ,children:[{text:'数据回放',url:''},{text:'单站对比分析',url:''},{text:'多站对比分析',url:''},
-        {text:'区域分析',url:''},{text:'数据排名',url:''},{text:'用电统计',url:''}]},
-                      {text:'综合统计分析',icon:'fa fa-fw fa-cogs',url:'/',img:''},
-                      {text:'预警预报',icon:'fa fa-fw fa-cogs',url:'/',img:''},
-                      {text:'综合报表',icon:'fa fa-fw fa-cogs',url:'/',img:''},
-                      {text:'用户权限管理',icon:'fa fa-fw fa-cogs',url:'/',img:''},];
+  customLink() {
+    this.customLinks=[{text:'综合监视',icon:'icon-gf icon-gf-dashboard',url:'/dashboard/db/zong-he-jian-shi'},
+      {text:'综合统计分析',icon:'fa fa-fw fa-cogs',url:'/',img:'',
+      children:[{text:'数据回放',url:'/dashboard/db/shu-ju-hui-fang'},
+      {text:'单站对比分析',url:'/dashboard/db/dan-zhan-dian-dui-bi-fen-xi'},
+      {text:'多站对比分析',url:'/dashboard/db/duo-zhan-dian-dui-bi-fen-xi'},
+      {text:'区域分析',url:'/dashboard/db/qu-yu-fen-xi'},
+      {text:'数据排名',url:'/dashboard/db/shu-ju-pai-ming'},
+      {text:'用电统计',url:'/dashboard/db/yong-dian-tong-ji'}]},
+    {text:'预警预报',icon:'fa fa-fw fa-cogs',url:'/',img:'',
+      children:[{text:'趋势预报',url:'/dashboard/db/qu-shi-yu-bao'}]},
+    {text:'综合报表',icon:'fa fa-fw fa-cogs',url:'/',img:'',
+      children:[{text:'日报',url:'/dashboard/db/ri-bao'},
+        {text:'周报',url:'/dashboard/db/zhou-bao'},
+        {text:'月报',url:'/dashboard/db/yue-bao'},
+        {text:'季报',url:'/dashboard/db/ji-bao'},
+        {text:'半年报',url:'/dashboard/db/ban-nian-bao'},
+        {text:'年报',url:'/dashboard/db/nian-bao'}]},
+    {text:'用户权限管理',icon:'fa fa-fw fa-cogs',url:'/',img:'',
+      children:[{text:'用户管理',url:'/profile'},
+        {text:'权限管理',url:'/org/users'}]}];
   }
 
 
