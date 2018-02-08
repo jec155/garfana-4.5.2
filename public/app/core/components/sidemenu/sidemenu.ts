@@ -70,7 +70,7 @@ export class SideMenuCtrl {
     this.menus=new Array();
     for(var i=0;i<this.mainLinks.length;i++){
         if(this.mainLinks[i].text=='Dashboards'||this.mainLinks[i].text=='Data Sources'
-        ||this.mainLinks[i].text=='后台管理')
+        ||this.mainLinks[i].text=='平台管理')
           this.menus.push(this.mainLinks[i]);
     }
   }
