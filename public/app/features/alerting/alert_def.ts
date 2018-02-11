@@ -83,14 +83,14 @@ function getStateDisplayModel(state) {
     case 'alerting': {
       return {
         text: 'ALERTING',
-        iconClass: 'icon-gf icon-gf-critical',
+        iconClass: 'icon-gf fa-question1',
         stateClass: 'alert-state-critical'
       };
     }
     case 'no_data': {
       return {
         text: 'NO DATA',
-        iconClass: "fa fa-question",
+        iconClass: "fa icon-gf-critical1",
         stateClass: 'alert-state-warning'
       };
     }

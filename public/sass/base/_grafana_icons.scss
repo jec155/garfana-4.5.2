@@ -89,6 +89,12 @@
 .icon-gf-critical:before {
     content: "\e610";
 }
+.icon-gf-critical1:before {
+  content:url('/public/img/exception.svg');
+}
+.fa-question1:before {
+  content:url('/public/img/threshold.svg');
+}
 .icon-gf-crit:before {
   content: "\e610";
 }
