@@ -43,9 +43,9 @@ export class OrgUsersCtrl {
     if (this.externalUserMngLinkName) {
       return this.externalUserMngLinkName;
     } else if (config.disableLoginForm) {
-      return "Add Users";
+      return "添加用户";
     } else {
-      return "Add or Invite";
+      return "添加或邀请";
     }
   }
 

@@ -125,6 +125,7 @@ class AlertListPanel extends PanelCtrl {
           al.newStateDateAgo = moment(al.newStateDate).locale('en').fromNow(true);
           return al;
         }));
+
         this.noAlertsMessage = this.currentAlerts.length === 0 ? 'No alerts' : '';
       });
   }

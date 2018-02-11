@@ -2,7 +2,7 @@
 
 <div class="page-container">
 	<div class="page-header">
-		<h1>Organization users</h1>
+		<h1>分组用户</h1>
 
 		<div class="page-header-tabs">
 
@@ -19,12 +19,12 @@
 			<ul class="gf-tabs">
 				<li class="gf-tabs-item">
 					<a class="gf-tabs-link" ng-click="ctrl.editor.index = 0" ng-class="{active: ctrl.editor.index === 0}">
-						Users ({{ctrl.users.length}})
+						用户列表 ({{ctrl.users.length}})
 					</a>
 				</li>
 				<li class="gf-tabs-item" ng-show="ctrl.pendingInvites.length">
 					<a class="gf-tabs-link" ng-click="ctrl.editor.index = 1" ng-class="{active: ctrl.editor.index === 1}">
-						Pending Invitations ({{ctrl.pendingInvites.length}})
+						邀请 ({{ctrl.pendingInvites.length}})
 					</a>
 				</li>
 			</ul>
@@ -39,13 +39,13 @@
     <table class="filter-table form-inline">
       <thead>
         <tr>
-          <th>Login</th>
-          <th>Email</th>
+          <th>登录名</th>
+          <th>邮箱</th>
 					<th>
-						Seen
+						登录时间
 						<tip>Time since user was seen using Grafana</tip>
 					</th>
-          <th>Role</th>
+          <th>角色</th>
           <th style="width: 34px;"></th>
         </tr>
       </thead>
@@ -70,8 +70,8 @@
     <table class="filter-table form-inline">
       <thead>
         <tr>
-          <th>Email</th>
-          <th>Name</th>
+          <th>邮箱</th>
+          <th>名称</th>
           <th></th>
         </tr>
       </thead>
@@ -85,7 +85,7 @@
             </button>
             &nbsp;
             <button class="btn btn-inverse btn-mini">
-              Details
+              详情
               <i ng-show="!invite.expanded" class="fa fa-caret-right"></i>
               <i ng-show="invite.expanded" class="fa fa-caret-down"></i>
             </button>

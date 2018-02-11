@@ -27,6 +27,7 @@ export class SideMenuCtrl {
     this.maxShownOrgs = 10;
 
     this.mainLinks = config.bootData.mainNavLinks;
+    console.log(this.user);
     console.log(this.mainLinks);
     this.openUserDropdown();
     this.loginUrl = 'login?redirect=' + encodeURIComponent(this.$location.path());
@@ -64,14 +65,24 @@ export class SideMenuCtrl {
         {text:'半年报',url:'/dashboard/db/ban-nian-bao'},
         {text:'年报',url:'/dashboard/db/nian-bao'}]},
     {text:'用户权限管理',url:'/',img:'/public/img/Users.svg',
-      children:[{text:'用户管理',url:'/profile'},
+      children:[{text:'用户管理',url:'/admin/users'},{text:'用户设置',url:'/profile'},
         {text:'权限管理',url:'/org/users'}]}];
 
     this.menus=new Array();
     for(var i=0;i<this.mainLinks.length;i++){
-        if(this.mainLinks[i].text=='Dashboards'||this.mainLinks[i].text=='Data Sources'
-        ||this.mainLinks[i].text=='平台管理')
+      if(this.mainLinks[i].text=='平台管理')
+        this.menus.push(this.mainLinks[i]);
+
+
+      if(this.contextSrv.hasRole('Admin')&&this.user.name!='beichen') {
+        if(this.mainLinks[i].text=='Dashboards'||this.mainLinks[i].text=='Data Sources')
           this.menus.push(this.mainLinks[i]);
+      }
+    }
+    if (this.showSignout) {
+      this.menus.push(
+        {text: "退出系统", url: this.getUrl("/logout"),img:'/public/img/signout.svg' ,target: "_self"}
+      );
     }
   }
 
