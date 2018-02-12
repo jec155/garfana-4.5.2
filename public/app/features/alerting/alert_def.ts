@@ -76,7 +76,7 @@ function getStateDisplayModel(state) {
     case 'ok': {
       return {
         text: 'OK',
-        iconClass: 'icon-gf icon-gf-online',
+        iconClass: 'icon-gf icon-gf-ok1',
         stateClass: 'alert-state-ok'
       };
     }
