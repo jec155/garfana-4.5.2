@@ -97,9 +97,9 @@
 }
 .icon-gf-ok1:before {
   //content:url('../../../public/img/yellowgreen.gif');
-  //content:url('/public/img/yellowgreen.gif');
-  background:url('../../../public/img/yellowgreen.gif') !important;
-  display: block;
+  content:url('/public/img/yellowgreen.gif');
+  //background:url('../../../public/img/yellowgreen.gif') !important;
+  //display: inline;
   background-size: 50px 50px;
   width: 70px;
   height: 70px;
