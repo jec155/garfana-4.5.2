@@ -96,7 +96,13 @@
   content:url('/public/img/threshold.svg');
 }
 .icon-gf-ok1:before {
-  content:url('/public/img/yellowgreen.gif');
+  //content:url('../../../public/img/yellowgreen.gif');
+  //content:url('/public/img/yellowgreen.gif');
+  background:url('../../../public/img/yellowgreen.gif') !important;
+  display: block;
+  background-size: 50px 50px;
+  width: 70px;
+  height: 70px;
 }
 .icon-gf-crit:before {
   content: "\e610";

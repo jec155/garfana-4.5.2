@@ -22,6 +22,9 @@ function (angular, _, dateMath) {
 
     //console.info(res);
     this.cnMap={
+      'env.air.beichen':'大气监测站点',
+      'env.power.beichen':'企业电力监测站点',
+      'env.video.beichen':'视频监控站点',
       'env':'环境',
       'env.air':'空气',
       'env.water':'水质',
@@ -43,7 +46,22 @@ function (angular, _, dateMath) {
       'TOTAL_FLOW_L':'大管总流量',
       'TOTAL_FLOW_S':'小管总流量',
       'TEMPERATURE':'温度',
-      'HUMIDITY':'湿度'
+      'HUMIDITY':'湿度',
+      'epa':'市环保局监测信息系统',
+      'company':'国控市控重点企业监管系统',//重点企业电力电量负荷监测系统
+      'town':'镇级空气环境质量监测系统',
+      //'private':'空气网格化监测系统',
+      'odour':'恶臭污染物连续监测系统',
+      'police':'公安高清视频监控',
+      'straw':'监测秸秆焚烧的高架监控系统',
+      'SPEED':'风速',
+      'DIRECTION':'风向',
+      'CURRENT':'电流',
+      'POWER':'电量',
+      'SOC':'剩余电流',
+      'VOLTAGE'	:'电压',
+
+
     };
     this.air=['AQI','PM25','PM10','O3','SO2','NO2','CO','TEMPERATURE','HUMIDITY'];
     this.water=['PH','DO','COD','FTU','CT','TEMPERATURE','TOTAL_P','NH3_N'];
@@ -287,6 +305,7 @@ function (angular, _, dateMath) {
         //排序
         if(tag_values_query)
         {
+          //console.log(tag_values_query)
           var keysArray = tag_values_query[2].split(",").map(function(key) {
             return key.trim();
           });
@@ -329,6 +348,28 @@ function (angular, _, dateMath) {
             }
 
           }
+          if(key==='source')
+          {
+
+            if(options)
+            {
+              //console.info(options.variable.cnData);
+              var hostMap={};
+              _.map(options.variable.cnData,function (item) {
+                hostMap[item.key]=item.name;
+                return {item};
+              });
+              return _.map(result, function(value) {
+                if(tag_values_query[1]==='env.air.beichen'&&key=='source'&&value=='private')
+                  return {text: value,cn:'空气网格化监测系统'};
+                if(tag_values_query[1]==='env.power.beichen'&&key=='source'&&value=='company')
+                  return {text: value,cn:'重点企业电力电量负荷监测系统'};
+                return {text: value,cn:ds.cnMap[value]};
+                return {text: value,cn:hostMap[value]};
+              });
+            }
+
+          }
 
         }
 
@@ -358,7 +399,7 @@ function (angular, _, dateMath) {
 
       var tag_values_query = interpolated.match(tag_values_regex);
       //console.info(interpolated);
-      //console.info(tag_values_query);
+      console.info(tag_values_query);
       if (tag_values_query) {
         return this._performMetricKeyValueLookup(tag_values_query[1], tag_values_query[2]).then(responseTransform);
       }
