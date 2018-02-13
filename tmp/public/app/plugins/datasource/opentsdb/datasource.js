@@ -23,6 +23,7 @@ function (angular, _, dateMath) {
     //console.info(res);
     this.cnMap={
       'env.air.beichen':'大气监测站点',
+      'env.radar.beichen':'雷达监控站点',
       'env.power.beichen':'企业电力监测站点',
       'env.video.beichen':'视频监控站点',
       'env':'环境',
