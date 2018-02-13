@@ -340,7 +340,7 @@ function (angular, _, dateMath) {
               var hostMap={};
               _.map(options.variable.cnData,function (item) {
                 hostMap[item.key]=item.name;
-                return {item};
+                return item;
               });
               return _.map(result, function(value) {
                 return {text: value,cn:hostMap[value]};
@@ -357,7 +357,7 @@ function (angular, _, dateMath) {
               var hostMap={};
               _.map(options.variable.cnData,function (item) {
                 hostMap[item.key]=item.name;
-                return {item};
+                return item;
               });
               return _.map(result, function(value) {
                 if(tag_values_query[1]==='env.air.beichen'&&key=='source'&&value=='private')

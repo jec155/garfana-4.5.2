@@ -75,7 +75,9 @@ export class SideMenuCtrl {
 
 
       if(this.contextSrv.hasRole('Admin')&&this.user.name!='beichen') {
-        if(this.mainLinks[i].text=='Dashboards'||this.mainLinks[i].text=='Data Sources')
+        if(this.mainLinks[i].text=='Dashboards'
+          ||this.mainLinks[i].text=='Data Sources'
+          ||this.mainLinks[i].text=='Alerting')
           this.menus.push(this.mainLinks[i]);
       }
     }
