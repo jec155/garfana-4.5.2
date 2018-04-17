@@ -49,9 +49,11 @@ function (angular, _, dateMath) {
       'TEMPERATURE':'温度',
       'HUMIDITY':'湿度',
       'epa':'市环保局监测信息系统',
-      'company':'国控市控重点企业监管系统',//重点企业电力电量负荷监测系统
+      'company':'市控点企业监管系统',//重点企业电力电量负荷监测系统
       'town':'镇级空气环境质量监测系统',
       //'private':'空气网格化监测系统',
+      'dsws':'大双污水平台',
+      'ydxh':'永定新河平台',
       'odour':'恶臭污染物连续监测系统',
       'police':'公安高清视频监控',
       'straw':'监测秸秆焚烧的高架监控系统',
@@ -61,7 +63,7 @@ function (angular, _, dateMath) {
       'POWER':'电量',
       'SOC':'剩余电流',
       'VOLTAGE'	:'电压',
-
+      'DL':'电量'
 
     };
     this.air=['AQI','PM25','PM10','O3','SO2','NO2','CO','TEMPERATURE','HUMIDITY'];
