@@ -99,6 +99,29 @@ export class TimePickerCtrl {
     this.onRefresh();
     this.editTimeRaw = this.timeRaw;
     this.timeOptions = rangeUtil.getRelativeTimesList(this.panel, this.rangeString);
+    //console.log(this.timeOptions);
+    /*for(var i=0;i<this.timeOptions.length;i++){
+      console.log(this.timeOptions[i])
+    }*/
+    console.log(this.timeOptions);
+    console.log(this.timeOptions[0]);
+    var a1=['过去2天','过去7天','过去30天','过去90天','过去6月','过去1年','过去2年','过去5年'];
+    var a2=['昨天','前天','本周最后一天','上一周','上一月','上一年'];
+    var a3=['今天当天','今天截止','本周','本周截止','本月','本月截止','本年','本年截止'];
+    var a4=['过去5分钟','过去15分子','过去 30分钟','过去1小时','过去3小时','过去6小时','过去12小时','过去30小时'];
+      for(var i=0;i<this.timeOptions[0].length;i++){
+        this.timeOptions[0][i].display=a1[i];
+      }
+    for(var i=0;i<this.timeOptions[1].length;i++){
+      this.timeOptions[1][i].display=a2[i];
+    }
+    for(var i=0;i<this.timeOptions[2].length;i++){
+      this.timeOptions[2][i].display=a3[i];
+    }
+    for(var i=0;i<this.timeOptions[3].length;i++){
+      this.timeOptions[3][i].display=a4[i];
+    }
+
     this.refresh = {
       value: this.dashboard.refresh,
       options: _.map(this.panel.refresh_intervals, (interval: any) => {

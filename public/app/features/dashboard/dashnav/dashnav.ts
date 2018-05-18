@@ -22,6 +22,10 @@ export class DashNavCtrl {
     public playlistSrv,
     navModelSrv) {
       this.navModel = navModelSrv.getDashboardNav(this.dashboard, this);
+     /* console.log(this.navModel);
+      this.navModel.forEach(function (item) {
+
+      });*/
 
       appEvents.on('save-dashboard', this.saveDashboard.bind(this), $scope);
       appEvents.on('delete-dashboard', this.deleteDashboard.bind(this), $scope);

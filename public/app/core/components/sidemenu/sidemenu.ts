@@ -75,7 +75,7 @@ export class SideMenuCtrl {
         this.menus.push(this.mainLinks[i]);
 
 
-      if(this.contextSrv.hasRole('Admin')&&this.user.name!='beichen') {
+      if(this.contextSrv.hasRole('Admin')&&this.user.name==='admin') {
         if(this.mainLinks[i].text=='Dashboards'
           ||this.mainLinks[i].text=='Data Sources'
           ||this.mainLinks[i].text=='Alerting')
