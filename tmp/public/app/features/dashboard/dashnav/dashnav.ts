@@ -22,10 +22,13 @@ export class DashNavCtrl {
     public playlistSrv,
     navModelSrv) {
       this.navModel = navModelSrv.getDashboardNav(this.dashboard, this);
-     /* console.log(this.navModel);
-      this.navModel.forEach(function (item) {
-
-      });*/
+    console.log(this.navModel);
+     const vals={'Settings':'设置','Templating':'变量','Annotations':'注释'
+       ,'Version history':'历史版本','View JSON':'查看JSON','Shortcuts':'快捷方式','Save As ...':'另存为'
+       ,'Delete':'删除','Test':'测试'}
+    this.navModel.menu.forEach(function (item) {
+        item.title=vals[item.title]
+    })
 
       appEvents.on('save-dashboard', this.saveDashboard.bind(this), $scope);
       appEvents.on('delete-dashboard', this.deleteDashboard.bind(this), $scope);

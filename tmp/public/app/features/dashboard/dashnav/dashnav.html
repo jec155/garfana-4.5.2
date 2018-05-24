@@ -64,11 +64,11 @@
 			<li ng-if="::ctrl.dashboard.snapshot.originalUrl">
 				<a ng-href="{{ctrl.dashboard.snapshot.originalUrl}}" bs-tooltip="'Open original dashboard'" data-placement="bottom"><i class="fa fa-link"></i></a>
 			</li>
-			<!--<li class="dropdown">
+			<li class="dropdown">
 				<a class="pointer" data-toggle="dropdown">
 					<i class="fa fa-cog"></i>
 				</a>
-				<ul class="dropdown-menu dropdown-menu&#45;&#45;navbar">
+				<ul class="dropdown-menu dropdown-menu--navbar">
 					<li ng-repeat="navItem in ::ctrl.navModel.menu" ng-class="{active: navItem.active}">
 						<a class="pointer" ng-href="{{::navItem.url}}" ng-click="ctrl.navItemClicked(navItem, $event)">
 							<i class="{{::navItem.icon}}" ng-show="::navItem.icon"></i>
@@ -76,7 +76,7 @@
 						</a>
 					</li>
 				</ul>
-			</li>-->
+			</li>
 		</ul>
 
 		<ul class="nav pull-right">

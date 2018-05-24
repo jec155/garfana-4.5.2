@@ -90,10 +90,12 @@ export class VariableEditorCtrl {
     };
 
     $scope.runQuery = function() {
+      console.log($scope.current);
       return variableSrv.updateOptions($scope.current).then(function () {
-        //console.info($scope.current.options);
+        //
       }, function(err) {
         if (err.data && err.data.message) { err.message = err.data.message; }
+        console.log( err.message)
         $scope.appEvent("alert-error", ['Templating', 'Template variables could not be initialized: ' + err.message]);
       });
     };

@@ -32,6 +32,7 @@ class GraphCtrl extends MetricsPanelCtrl {
     datasource: null,
     // sets client side (flot) or native graphite png renderer (png)
     renderer: 'flot',
+    cnData: null,
     yaxes: [
       {
         label: null,
@@ -112,7 +113,7 @@ class GraphCtrl extends MetricsPanelCtrl {
   };
 
   /** @ngInject */
-  constructor($scope, $injector, private annotationsSrv) {
+  constructor($scope, $injector, private annotationsSrv,$http) {
     super($scope, $injector);
 
     _.defaults(this.panel, this.panelDefaults);
@@ -128,6 +129,23 @@ class GraphCtrl extends MetricsPanelCtrl {
     this.events.on('data-snapshot-load', this.onDataSnapshotLoad.bind(this));
     this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
     this.events.on('init-panel-actions', this.onInitPanelActions.bind(this));
+    this.http=$http;
+    //this.cn();
+  }
+
+
+  cn(datalist){
+    this.http({
+      method: 'GET',
+      url: 'http://61.164.218.158:8080/AirServer/site/findAllSites'
+
+    }).then(data=> {
+      console.log(data);
+      this.cnData=data.data;
+      this.onDataReceived(datalist);
+    },errdata=> {
+
+    });
   }
 
   onInitEditMode() {
@@ -177,8 +195,11 @@ class GraphCtrl extends MetricsPanelCtrl {
 
   onDataReceived(dataList) {
     this.dataList = dataList;
+    if(!this.cnData){
+      this.cn(this.dataList);
+    }
     this.seriesList = this.processor.getSeriesList({dataList: dataList, range: this.range});
-
+    console.log(this.seriesList);
     this.dataWarning = null;
     const datapointsCount = this.seriesList.reduce((prev, series) => {
       return prev + series.datapoints.length;
@@ -199,6 +220,16 @@ class GraphCtrl extends MetricsPanelCtrl {
           };
           break;
         }
+        if(this.cnData){
+          this.cnData.forEach(function (item) {
+            if(series.alias==item.key){
+              series.alias=item.name;
+              series.label=item.name;
+              series.aliasEscaped=item.name;
+            }
+          });
+        }
+
       }
     }
 
@@ -206,6 +237,7 @@ class GraphCtrl extends MetricsPanelCtrl {
       this.loading = false;
       this.alertState = result.alertState;
       this.annotations = result.annotations;
+      console.log('render')
       this.render(this.seriesList);
     }, () => {
       this.loading = false;
